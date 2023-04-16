@@ -1,0 +1,54 @@
+.scrollBottomButton {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: calc(100% - 10px);
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--background-light);
+  cursor: pointer;
+  z-index: 10000;
+  transition: background 0.1s;
+  contain: content;
+  animation: scrollShow 0.2s forwards;
+}
+
+.scrollBottomButton:hover {
+  background: var(--blue-500);
+}
+
+/* ======= */
+
+.messageDivider {
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ======= */
+
+.chatBeginning {
+  padding: 20px 10px;
+}
+
+.chatBeginning,
+.chatBeginning span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.chatBeginning span {
+  color: var(--purple-400);
+}
+
+@keyframes scrollShow {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

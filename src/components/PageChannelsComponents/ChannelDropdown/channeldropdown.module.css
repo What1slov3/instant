@@ -1,0 +1,45 @@
+.wrapper {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  padding: 4px;
+  border-radius: 10px;
+  width: calc(100% - 10px);
+  background: var(--background-tooltip);
+  contain: content;
+  z-index: 500;
+  overflow: hidden;
+  animation: show 0.2s forwards;
+}
+
+.option {
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+.option:hover {
+  background: var(--background-secondary);
+  border-radius: 8px;
+}
+
+.option i {
+  width: 20px;
+}
+
+.invite {
+  font-weight: 500;
+}
+
+.invite,
+.invite * {
+  color: var(--purple-400);
+}
+
+@keyframes show {
+  from {
+    transform: translateY(calc(100% + 20px)) translateX(-50%);
+  }
+  to {
+    transform: translateY(100%) translateX(-50%);
+  }
+}

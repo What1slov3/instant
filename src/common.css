@@ -1,0 +1,85 @@
+.flex {
+  display: flex;
+}
+
+.flexaic {
+  align-items: center;
+}
+
+.flexaie {
+  align-items: end;
+}
+
+.flexjcsb {
+  justify-content: space-between;
+}
+
+.flexjcc {
+  justify-content: center;
+}
+
+.flexjce {
+  justify-content: end;
+}
+
+.flexcolumn {
+  flex-direction: column;
+}
+
+.gap5 {
+  gap: 5px;
+}
+
+.gap10 {
+  gap: 10px;
+}
+
+.gap15 {
+  gap: 15px;
+}
+
+.gap20 {
+  gap: 20px;
+}
+
+.gap25 {
+  gap: 25px;
+}
+
+.modal {
+  padding: 20px;
+  background: var(--background-dark);
+  border-radius: 10px;
+}
+
+.textOverflowEllipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.main-shadow {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
+}
+
+.secondary-shadow {
+  box-shadow: rgba(0, 0, 0, 0.16) 2px 0px 2px;
+}
+
+/* in message */
+
+.inMessageUrl {
+  color: var(--blue-500);
+}
+.inMessageUrl:hover {
+  text-decoration: underline;
+}
+.inMessageEmoji {
+  cursor: text;
+}
+.inMessageEmoji,
+.inMessageEmoji > * {
+  display: inline-block;
+  user-select: text;
+  font-size: 18px;
+}

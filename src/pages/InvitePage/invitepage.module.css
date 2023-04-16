@@ -1,0 +1,25 @@
+.wrapper {
+  border-radius: 10px;
+}
+
+.card {
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--background-secondary);
+  min-width: 400px;
+}
+
+.channelName {
+  font-weight: 600;
+  color: #fff;
+}
+
+.membersCount,
+.membersCount * {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.joinButton {
+  background: var(--blue-500);
+}

@@ -1,0 +1,15 @@
+.styledButton {
+  cursor: pointer;
+  padding: 8px 10px;
+  width: max-content;
+  border-radius: 5px;
+  background: var(--purple-600);
+  color: var(--purple-25);
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.1s;
+}
+
+.styledButton:hover {
+  opacity: 0.8;
+}

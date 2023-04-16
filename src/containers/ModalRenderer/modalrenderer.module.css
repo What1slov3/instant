@@ -1,0 +1,51 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: show 0.2s forwards;
+  contain: content;
+}
+
+.modalWrapper {
+  user-select: none;
+  position: static;
+  animation: modalShow 0.2s forwards;
+}
+
+.fading {
+  animation: fading 0.2s forwards;
+}
+
+@keyframes show {
+  from {
+    background: #00000000;
+  }
+  to {
+    background: #0000008e;
+  }
+}
+
+@keyframes fading {
+  from {
+    background: #0000008e;
+  }
+  to {
+    background: #00000000;
+  }
+}
+
+@keyframes modalShow {
+  from {
+    transform: translateY(-10%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

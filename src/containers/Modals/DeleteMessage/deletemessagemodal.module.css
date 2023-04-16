@@ -1,0 +1,48 @@
+.wrapper {
+  min-width: 450px;
+  max-width: 600px;
+}
+
+.message {
+  display: flex;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: var(--background-secondary);
+  position: relative;
+  user-select: none;
+}
+
+.timestampWrapper {
+  max-height: 20px;
+}
+
+.timestamp {
+  width: 33px;
+  font-size: 12px;
+  margin-top: 2px;
+  color: var(--gray-400);
+}
+
+.ownerName {
+  font-weight: 500;
+  color: var(--gray-100);
+}
+
+.inner {
+  margin-left: 10px;
+}
+
+.content {
+  max-height: 250px;
+  padding-right: 10px;
+  overflow: auto;
+  word-break: break-all;
+  word-break: break-word;
+  white-space: pre-wrap;
+  max-width: max-content;
+}
+
+.deleteButton {
+  background: var(--error-500);
+}

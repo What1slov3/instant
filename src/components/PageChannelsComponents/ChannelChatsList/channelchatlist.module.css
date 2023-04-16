@@ -1,0 +1,24 @@
+.wrapper {
+  padding: 10px 5px;
+}
+
+.chatItem {
+  padding: 3px 10px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  width: calc(var(--chats-list-width) - 20px);
+  display: block;
+}
+
+.chatItem:hover,
+.active {
+  background: var(--background-secondary);
+}
+
+.chatItem span {
+  margin-right: 3px;
+  font-size: 16px;
+  color: var(--gray-400);
+}

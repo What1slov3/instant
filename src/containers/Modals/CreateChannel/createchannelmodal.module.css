@@ -1,0 +1,16 @@
+.wrapper {
+  width: 440px;
+}
+
+.channelNameInput {
+  margin-bottom: 20px;
+}
+
+.iconInfo div > span {
+  color: var(--gray-100);
+  word-break: break-all;
+}
+
+.uploader {
+  margin-bottom: 10px;
+}

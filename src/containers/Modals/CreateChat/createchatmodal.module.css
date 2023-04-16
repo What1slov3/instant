@@ -1,0 +1,12 @@
+.wrapper {
+  width: 500px;
+}
+
+.chatGroupName {
+  color: var(--purple-400);
+  font-weight: 500;
+}
+
+.wrapper > div:last-child {
+  margin-top: 10px;
+}

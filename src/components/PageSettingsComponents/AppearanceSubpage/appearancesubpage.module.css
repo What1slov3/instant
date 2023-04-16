@@ -1,0 +1,6 @@
+.wrapper {
+  max-height: calc(100vh - var(--window-margin) * 2);
+  padding: 20px;
+  background: var(--background-secondary);
+  border-radius: 10px;
+}

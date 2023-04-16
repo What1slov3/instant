@@ -1,0 +1,11 @@
+.link {
+  width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  background: var(--background-tooltip);
+  font-size: 15px;
+  margin: 10px 0;
+  color: var(--indigo-400);
+  cursor: text;
+  user-select: all;
+}

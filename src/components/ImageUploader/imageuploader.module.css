@@ -1,0 +1,41 @@
+.imgUploader {
+  position: relative;
+  border: 2px solid var(--background-light);
+  overflow: hidden;
+}
+
+.imgUploader input {
+  opacity: 0;
+}
+
+.imgUploader,
+.imgUploader input {
+  border-radius: 10px;
+}
+
+.imgUploader i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: var(--background-light);
+}
+
+.imgUploader,
+.imgUploader i {
+  transition: 0.1s;
+}
+
+.imgUploader i,
+.imgUploader input {
+  cursor: pointer;
+}
+
+.imgUploader:hover {
+  border: 2px solid var(--purple-500);
+}
+
+.imgUploader:hover i {
+  color: var(--purple-500);
+}

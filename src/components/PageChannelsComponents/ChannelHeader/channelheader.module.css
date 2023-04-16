@@ -1,0 +1,20 @@
+.wrapper {
+  position: relative;
+}
+
+.header {
+  height: 100%;
+  padding: 0 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.name {
+  width: calc(var(--chats-list-width) - 50px);
+  color: var(--gray-100);
+  font-size: 20px;
+  font-weight: 600;
+}

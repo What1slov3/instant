@@ -1,0 +1,16 @@
+.popoverBox {
+  animation: gelatine 0.2s ease;
+}
+
+.children {
+  cursor: pointer;
+}
+
+@keyframes gelatine {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

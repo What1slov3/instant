@@ -1,0 +1,99 @@
+.message {
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.message * {
+  user-select: none;
+}
+
+.message:hover {
+  background: var(--background-dark);
+}
+
+.timestampWrapper {
+  max-height: 20px;
+}
+
+.short .timestampWrapper {
+  opacity: 0;
+}
+
+.short:hover .timestampWrapper {
+  opacity: 1;
+}
+
+.timestamp {
+  width: 33px;
+  font-size: 12px;
+  margin-top: 2px;
+  color: var(--gray-400);
+}
+
+.ownerName {
+  width: max-content;
+  font-weight: 500;
+  color: var(--gray-100);
+  cursor: pointer;
+}
+
+.ownerName:hover {
+  text-decoration: underline;
+}
+
+.inner {
+  margin-left: 10px;
+}
+
+.content,
+.content > * {
+  font-family: Consolas, "SF Mono", "Roboto Mono", "DejaVu Sans Mono", monospace;
+  word-break: break-all;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  max-width: max-content;
+}
+
+.content,
+.content * {
+  user-select: text;
+  line-height: 21px;
+}
+
+.contextMenu {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  transform: translateY(-50%);
+  background: var(--background-dark);
+}
+
+.contextMenu > * {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-100);
+  cursor: pointer;
+}
+
+.contextMenu,
+.contextMenu > * {
+  border-radius: 10px;
+}
+
+.contextMenu > *:hover {
+  background: var(--background-inactive);
+}
+
+.message:hover .contextMenu {
+  display: flex;
+}
+
+.deleteMessage {
+  color: var(--error-400);
+}

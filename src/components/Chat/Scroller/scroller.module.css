@@ -1,0 +1,13 @@
+.chatWindow {
+  border-radius: 10px;
+  padding-right: 5px;
+  overflow: auto;
+  height: 100%;
+}
+
+.inner {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  min-height: 100%;
+}
