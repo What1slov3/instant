@@ -6,6 +6,7 @@ import type {
   ChannelSettingsModalPayload,
   ChannelInviteModalPayload,
   CreateChatModalPayload,
+  ImageAttachmentPayload,
 } from '@customTypes/index';
 
 export type UIState = {
@@ -37,7 +38,11 @@ export type Modal =
   | {
       name: 'changePassword';
       payload?: never;
+    }
+  | {
+      name: 'imageAttachment';
+      payload: ImageAttachmentPayload;
     };
 
 export type ModalsWihtoutPayload = 'createChannel' | 'channelSettings' | 'changePassword';
-export type ModalName = ModalsWihtoutPayload | 'deleteMessage' | 'channelInvite' | 'createChat';
+export type ModalName = ModalsWihtoutPayload | 'deleteMessage' | 'channelInvite' | 'createChat' | 'imageAttachment';

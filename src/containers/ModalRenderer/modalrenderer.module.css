@@ -28,13 +28,13 @@
     background: #00000000;
   }
   to {
-    background: #0000008e;
+    background: #000000a2;
   }
 }
 
 @keyframes fading {
   from {
-    background: #0000008e;
+    background: #000000a2;
   }
   to {
     background: #00000000;

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import InputTitle from '@layouts/Input/InputeTitle';
+import InputTitle from '@layouts/Input/InputTitle';
 import Input from '@layouts/Input/Input';
 import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
 import ModalHeader from '@layouts/Modals/ModalHeader';

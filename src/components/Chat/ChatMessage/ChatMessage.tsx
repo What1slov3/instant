@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Tooltip from '@components/Tooltip/Tooltip';
 import { wrapAllFormatting } from '@common/libs';
 import { LSAInstance } from '../../..';
+import MessageAttachment from '@components/Attachments/MessageAttachment/MessageAttachment';
 import type { Message } from '@customTypes/index';
 import s from './chatmessage.module.css';
 
@@ -34,6 +35,7 @@ const ChatMessage: React.FC<Props> = ({
         <div className={s.content} style={{ fontSize: LSAInstance.getSetting('messageTextSize') }}>
           {wrapAllFormatting(content.text)}
         </div>
+        {content.attachments && <MessageAttachment attachments={content.attachments} />}
       </div>
       <div className={classNames(s.contextMenu, 'main-shadow')}>
         {userIsOwner && (

@@ -6,7 +6,7 @@ import { thunkUpdateUser } from '@state/index';
 import { useModalControls, useUploadImage } from '@common/hooks';
 import CONSTANTS from '@common/constants';
 import Input from '@layouts/Input/Input';
-import InputTitle from '@layouts/Input/InputeTitle';
+import InputTitle from '@layouts/Input/InputTitle';
 import ImageUploader from '@components/ImageUploader/ImageUploader';
 import StyledButton from '@layouts/Buttons/StyledButton/StyledButton';
 import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
@@ -31,7 +31,7 @@ const UserProfileSubpage: React.FC<Props> = ({ username, avatar, tag, email, cre
   const [avatarFile, avatarURL, handleUpload, handleDrop] = useUploadImage();
 
   useEffect(() => {
-    reset({})
+    reset({});
   }, [username, email]);
 
   const onSubmitHandler = (data: any) => {

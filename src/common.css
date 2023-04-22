@@ -26,6 +26,10 @@
   flex-direction: column;
 }
 
+.flexwrap {
+  flex-wrap: wrap;
+}
+
 .gap5 {
   gap: 5px;
 }
@@ -82,4 +86,17 @@
   display: inline-block;
   user-select: text;
   font-size: 18px;
+}
+
+.smoothAppearance {
+  animation: smoothAppearance 0.2s forwards;
+}
+
+@keyframes smoothAppearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

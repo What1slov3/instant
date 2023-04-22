@@ -19,12 +19,14 @@ userIntegrityCacheListener.startListening({
         }
       });
     }
+
     if (action.type === 'messages/send/fulfilled') {
       const payload = action.payload as Message;
       if (!state.usersCache[payload.senderId]) {
         nonCachedUsersSet.add(payload.senderId);
       }
     }
+    
     if (nonCachedUsersSet.size > 0) {
       listenerApi.dispatch(thunkGetUsers({ ids: [...nonCachedUsersSet.values()] }));
     }

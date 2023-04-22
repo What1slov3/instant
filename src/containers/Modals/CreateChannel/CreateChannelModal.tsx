@@ -11,7 +11,7 @@ import { useInput, useUploadImage, useModalControls } from '@common/hooks';
 import { toMB } from '@common/utils';
 import TEXTS from '@common/texts';
 import ImageUploader from '@components/ImageUploader/ImageUploader';
-import InputTitle from '@layouts/Input/InputeTitle';
+import InputTitle from '@layouts/Input/InputTitle';
 import InputTitleError from '@layouts/Input/InputTitleError';
 import LineError from '@layouts/Line/LineError';
 import s from './createchannelmodal.module.css';

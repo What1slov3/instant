@@ -177,6 +177,7 @@ const Scroller: React.FC<Props> = ({
           </InfiniteScroll>
           <div ref={anchorRef}></div>
         </div>
+        <div className={s.anchor}></div>
       </div>
       <ScrollBottomButton show={showBottomScroll} onClick={scrollToBottom} />
     </>

@@ -1,20 +1,18 @@
 import axios, { AxiosInstance } from 'axios';
 import { API_ROUTES, API_BASE } from './routes';
-import { parseJwt } from '@common/utils';
-import { channelsQueries, chatsQueries, messagesQueries, userQueries, usersQueries } from './queries';
+import { filesQueries, channelsQueries, chatsQueries, messagesQueries, userQueries, usersQueries } from './queries';
 
 export function logout() {
-  localStorage.removeItem('user');
-  fetch(`${API_BASE}/auth/logout`).then((res) => {
+  fetch(`${API_BASE}${API_ROUTES.AUTH.LOGOUT}`).then((res) => {
     if (res.status === 200) {
-      window.location.replace('http://localhost:3000/signup.html');
+      window.location.replace(`${process.env.REACT_APP_HOST_URL}${process.env.REACT_APP_SIGNUP_PAGE_ROUTE}`);
     }
   });
 }
 
 export class API {
   private _APIAccessor: AxiosInstance;
-  private _accessToken: string = localStorage.getItem('access') || '';
+  private _accessToken: string = localStorage.getItem(process.env.REACT_APP_ACCESS_TOKEN_LS_FIELD) || '';
 
   constructor() {
     this._APIAccessor = axios.create({
@@ -40,7 +38,7 @@ export class API {
           originalRequest._retry = true;
 
           this._accessToken = await this.refresh();
-          localStorage.setItem('access', `Bearer ${this._accessToken}`);
+          localStorage.setItem(process.env.REACT_APP_ACCESS_TOKEN_LS_FIELD, `Bearer ${this._accessToken}`);
           axios.defaults.headers.common['Authorization'] = `Bearer ${this._accessToken}`;
 
           return this._APIAccessor(originalRequest);
@@ -84,4 +82,5 @@ export const APIQueries = {
   chats: chatsQueries,
   messages: messagesQueries,
   users: usersQueries,
+  files: filesQueries,
 };
