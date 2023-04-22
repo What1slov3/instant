@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Range from '@components/Range/Range';
-import InputTitle from '@layouts/Input/InputeTitle';
+import InputTitle from '@layouts/Input/InputTitle';
 import { LSAInstance } from '../../..';
 import s from './appearancesubpage.module.css';
 

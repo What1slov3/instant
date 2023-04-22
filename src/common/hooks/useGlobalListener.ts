@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 export const useGlobalListener = (
-  event: keyof GlobalEventHandlersEventMap,
+  event: keyof DocumentEventMap,
   listen: boolean | (() => boolean),
   cb: (e: any) => void,
   deps: any[] = []

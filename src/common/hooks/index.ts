@@ -4,3 +4,4 @@ export * from './useResizeObserver';
 export * from './useGlobalListener';
 export * from './useUploadImage';
 export * from './useModalControls';
+export * from './useMultipleUploadImages';

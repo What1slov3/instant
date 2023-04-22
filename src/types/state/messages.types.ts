@@ -11,8 +11,13 @@ export type Message = {
   senderId: ID;
 };
 
+export type MessageAttachments = {
+  files?: string[];
+};
+
 export type MessageContent = {
   text: string;
+  attachments?: MessageAttachments;
 };
 
 export type MessageContext = {

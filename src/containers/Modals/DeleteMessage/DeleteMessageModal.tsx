@@ -10,6 +10,7 @@ import { thunkDeleteMessage } from '@state/index';
 import TEXTS from '@common/texts';
 import type { DeleteMessageModalPayload } from '@customTypes/index';
 import s from './deletemessagemodal.module.css';
+import MessageAttachment from '@components/Attachments/MessageAttachment/MessageAttachment';
 
 const DeleteMessageModal: React.FC<DeleteMessageModalPayload> = ({ message }): JSX.Element => {
   const dispatch = useDispatch<any>();
@@ -36,6 +37,9 @@ const DeleteMessageModal: React.FC<DeleteMessageModalPayload> = ({ message }): J
         <div className={s.inner}>
           <div className={s.ownerName}>What1slov3</div>
           <div className={s.content}>{message.content.text}</div>
+          {message.content.attachments && (
+            <MessageAttachment attachments={message.content.attachments} canOpenModal={false} />
+          )}
         </div>
       </div>
       <div className="flex flexjce gap10">

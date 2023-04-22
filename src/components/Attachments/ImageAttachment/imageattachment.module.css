@@ -1,0 +1,48 @@
+.attachmentImage {
+  display: block;
+  height: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+
+.loadedImage,
+.failedImage {
+  opacity: 1;
+}
+
+.loadedImage {
+  min-width: 100px;
+  max-width: 400px;
+  max-height: 300px;
+  height: auto;
+}
+
+.failedImage {
+  width: 350px;
+  height: 150px;
+  border-radius: 5px;
+  color: #fff;
+  background: linear-gradient(to right, #a8c0ff, #3f2b96);
+  background-size: 600% 600%;
+  animation: gradient 15s linear infinite;
+  user-select: none;
+}
+
+.img {
+  border-radius: 100px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

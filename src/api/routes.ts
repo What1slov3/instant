@@ -1,4 +1,4 @@
-export const API_BASE = 'http://localhost:3001/api';
+export const API_BASE = process.env.REACT_APP_API_URL;
 
 export const API_ROUTES = {
   AUTH: {
@@ -9,7 +9,7 @@ export const API_ROUTES = {
     GET_USERS: '/user/users',
     GET_ME: '/user/me',
     CHANGE_PASSWORD: '/user/password',
-    UPDATE: '/user/update'
+    UPDATE: '/user/update',
   },
   CHANNELS: {
     CREATE: '/channels/create',
@@ -28,5 +28,8 @@ export const API_ROUTES = {
   INVITES: {
     GET_CHANNEL_INVITE: '/invites/channel',
     GET_CHANNEL_FROM_INVITE: '/invites',
+  },
+  FILES: {
+    UPLOAD: '/files/upload',
   },
 };

@@ -49,7 +49,6 @@
 
 .content,
 .content > * {
-  font-family: Consolas, "SF Mono", "Roboto Mono", "DejaVu Sans Mono", monospace;
   word-break: break-all;
   white-space: pre-wrap;
   overflow-wrap: break-word;

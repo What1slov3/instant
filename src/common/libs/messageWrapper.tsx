@@ -25,7 +25,7 @@ export const contentWrappers = {
     });
   },
   wrapEmoji: (text: string | ReactNode[]) => {
-    return reactStringReplace(text, regexEmoji, (match, i) => {
+    return reactStringReplace(text, /(\p{Emoji_Presentation})/gu, (match, i) => {
       const shortname = Object.keys(shortnameEmojiObj).find(
         (key: string) => shortnameEmojiObj[key as keyof typeof shortnameEmojiObj] === match
       );

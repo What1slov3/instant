@@ -12,3 +12,6 @@ export type CreateChatModalPayload = {
   chatGroup: Omit<ChatGroup<Chat>, 'chats'>;
   channelId: ID;
 };
+export type ImageAttachmentPayload = {
+  url: string;
+};

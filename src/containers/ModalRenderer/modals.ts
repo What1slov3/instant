@@ -5,6 +5,7 @@ import ChannelInviteModal from '@containers/Modals/ChannelInvite/ChannelInviteMo
 import CreateChatModal from '@containers/Modals/CreateChat/CreateChatModal';
 import ChangePasswordModal from '@containers/Modals/ChangePassword/ChangePassword';
 import type { ModalName } from '@customTypes/index';
+import ImageAttachmentModal from '@containers/Modals/ImageAttachment/ImageAttachmentmodal';
 
 export const MODALS: Record<NonNullable<ModalName>, React.FC<any>> = {
   createChannel: CreateChannelModal,
@@ -13,4 +14,5 @@ export const MODALS: Record<NonNullable<ModalName>, React.FC<any>> = {
   channelInvite: ChannelInviteModal,
   createChat: CreateChatModal,
   changePassword: ChangePasswordModal,
+  imageAttachment: ImageAttachmentModal,
 };

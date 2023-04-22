@@ -6,7 +6,7 @@ import TEXTS from '@common/texts';
 import { useModalControls } from '@common/hooks';
 import CONSTANTS from '@common/constants';
 import ModalHeader from '@layouts/Modals/ModalHeader';
-import InputTitle from '@layouts/Input/InputeTitle';
+import InputTitle from '@layouts/Input/InputTitle';
 import Input from '@layouts/Input/Input';
 import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
 import InputTitleError from '@layouts/Input/InputTitleError';

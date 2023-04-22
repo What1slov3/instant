@@ -1,0 +1,12 @@
+.attachment {
+  cursor: pointer;
+  display: flex;
+}
+
+.attachment > * {
+  font-size: 18px;
+}
+
+.attachmentInput {
+  display: none;
+}

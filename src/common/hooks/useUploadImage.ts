@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import CONSTANTS from '@common/constants';
+import TEXTS from '@common/texts';
 
 type ReturnUseUploadImage = [
   null | File,
@@ -28,19 +29,21 @@ export const useUploadImage = (): ReturnUseUploadImage => {
     setError(null);
     if (file && file.type.startsWith('image/')) {
       if (file.size > CONSTANTS.MAX_FILE_SIZE) {
-        setError('Размер файла слишком большой (>10МБ)');
+        setError(`${TEXTS.ERRORS.FILES.FILE_SIZE} (>${CONSTANTS.MAX_FILE_SIZE / 1024 ** 2}МБ)`);
         return;
       }
       setImg(file);
       return;
     }
     if (!img) {
-      setError('Файл не выбран или это не изображение');
+      setError(TEXTS.ERRORS.FILES.NO_ACCEPTABLE_FILE);
     }
   };
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIcon(e.target.files![0]);
+    if (e.target.files) {
+      setIcon(e.target.files[0]);
+    }
   };
 
   const handleDrop = (e: React.DragEvent<HTMLInputElement>) => {

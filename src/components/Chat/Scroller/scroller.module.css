@@ -5,6 +5,15 @@
   height: 100%;
 }
 
+.chatWindow * {
+  overflow-anchor: none;
+}
+
+.anchor {
+  height: 1px;
+  overflow-anchor: auto;
+}
+
 .inner {
   display: flex;
   justify-content: flex-end;
