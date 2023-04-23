@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill, { Quill } from 'react-quill';
 import classNames from 'classnames';
 import Delta from 'quill-delta';
 import { useDispatch } from 'react-redux';
@@ -7,14 +7,17 @@ import 'react-quill/dist/quill.bubble.css';
 import Emoji from '@components/Emoji/Emoji';
 import { thunkSendMessage } from '@state/index';
 import { quillGetText, quillModules } from '@common/Quill';
-import { shortcutInstance } from '../../..';
+import { shortcutInstance } from '../..';
 import AttachmentInput from '@components/Attachments/AttachmentInput/AttachmentInput';
 import AttachmentsPreview from '@components/Attachments/AttachmentsPreview/AttachmentsPreview';
 import { useGlobalListener, useMultipleUploadAndProcessingImages } from '@common/hooks';
 import CONSTANTS from '@common/constants';
+import { emojiQuill } from '@common/Quill/emoji';
 import type { Connection } from '@customTypes/index';
 import type { DeltaStatic } from 'quill';
 import s from './chatinput.module.css';
+
+Quill.register('modules/emoji', emojiQuill);
 
 type Props = {
   placeholder?: string;

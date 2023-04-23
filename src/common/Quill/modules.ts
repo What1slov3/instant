@@ -28,8 +28,8 @@ export const quillModules = {
   history: {
     delay: 1000,
     maxStack: 100,
-    userOnly: true,
   },
+  emoji: true,
   keyboard: {
     bindings: {
       tab: {

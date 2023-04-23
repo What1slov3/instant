@@ -1,4 +1,4 @@
-const shortnameEmojiObj = {
+const emojiShortnames = {
   ':cowboy_hat_face:': '🤠',
   ':clown_face:': '🤡',
   ':nauseated_face:': '🤢',
@@ -1394,4 +1394,4 @@ const shortnameEmojiObj = {
   ':octagonal_sign:': '🛑',
 };
 
-export default shortnameEmojiObj;
+export default emojiShortnames;
