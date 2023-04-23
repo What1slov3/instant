@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import reactStringReplace from 'react-string-replace';
 import { regexEmoji, regexEmojiShortname, regexURL } from '@common/regexs';
-import shortnameEmojiObj from '@common/shortnameEmojiObj';
+import emojiShortnames from '@common/emojiShortnames';
 import TEXTS from '@common/texts';
 import Tooltip from '@components/Tooltip/Tooltip';
 
@@ -26,8 +26,8 @@ export const contentWrappers = {
   },
   wrapEmoji: (text: string | ReactNode[]) => {
     return reactStringReplace(text, /(\p{Emoji_Presentation})/gu, (match, i) => {
-      const shortname = Object.keys(shortnameEmojiObj).find(
-        (key: string) => shortnameEmojiObj[key as keyof typeof shortnameEmojiObj] === match
+      const shortname = Object.keys(emojiShortnames).find(
+        (key: string) => emojiShortnames[key as keyof typeof emojiShortnames] === match
       );
       return (
         <Tooltip key={match + i} className="inMessageEmoji" position="top" text={shortname || TEXTS.UNSUPPORTED_EMOJI}>
@@ -38,7 +38,7 @@ export const contentWrappers = {
   },
   wrapEmojiShortname: (text: string | ReactNode[]) => {
     return reactStringReplace(text, regexEmojiShortname, (match, i) => {
-      const emoji = shortnameEmojiObj[`:${match}:` as keyof typeof shortnameEmojiObj];
+      const emoji = emojiShortnames[`:${match}:` as keyof typeof emojiShortnames];
       if (emoji) {
         return (
           <Tooltip

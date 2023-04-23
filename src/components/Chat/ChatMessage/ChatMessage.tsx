@@ -37,7 +37,7 @@ const ChatMessage: React.FC<Props> = ({
         </div>
         {content.attachments && <MessageAttachment attachments={content.attachments} />}
       </div>
-      <div className={classNames(s.contextMenu, 'main-shadow')}>
+      <div className={s.contextMenu}>
         {userIsOwner && (
           <i className={classNames('fa-solid fa-trash-can', s.deleteMessage)} data-message-action="delete"></i>
         )}

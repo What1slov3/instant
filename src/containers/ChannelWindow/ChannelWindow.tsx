@@ -7,7 +7,7 @@ import ChannelGreetings from '@components/PageChannelsComponents/ChannelGreeting
 import ChannelChatsList from '@components/PageChannelsComponents/ChannelChatsList/ChannelChatsList';
 import ChannelTopBar from '@components/PageChannelsComponents/ChannelTopBar/ChannelTopBar';
 import ChatWindow from '@containers/ChatWindow/ChatWindow';
-import MessageInput from '@components/Chat/ChatInput/ChatInput';
+import MessageInput from '@containers/ChatInput/ChatInput';
 import { parseURLtoConnection } from '@common/utils';
 import { setConnection, thunkGetChats, useAppSelector } from '@state/index';
 import type { Channel, Chat, ChatGroup, Connection, ID } from '@customTypes/index';
