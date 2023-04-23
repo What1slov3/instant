@@ -38,7 +38,7 @@ export class API {
           originalRequest._retry = true;
 
           this._accessToken = await this.refresh();
-          localStorage.setItem(process.env.REACT_APP_ACCESS_TOKEN_LS_FIELD, `Bearer ${this._accessToken}`);
+          localStorage.setItem(process.env.REACT_APP_ACCESS_TOKEN_LS_FIELD, this._accessToken);
           axios.defaults.headers.common['Authorization'] = `Bearer ${this._accessToken}`;
 
           return this._APIAccessor(originalRequest);
