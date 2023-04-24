@@ -1,4 +1,4 @@
-import { useRef, useState, useTransition } from 'react';
+import { useCallback, useRef, useState, useTransition } from 'react';
 import classNames from 'classnames';
 import Input from '@layouts/Input/Input';
 import emojisCategoryList from '@common/emojisCategoryList';
@@ -65,13 +65,14 @@ type PropsEmojiRow = {
 
 const Row: React.FC<PropsEmojiRow> = ({ children, virtual = true }): JSX.Element => {
   const [, startTranstition] = useTransition();
-  const [isShowing, setIsShowing] = useState(virtual ? false : true);
+  const [isShowing, setIsShowing] = useState(!virtual);
 
   const rowRef = useRef<HTMLDivElement>(null);
 
-  useIntersectionObserver(rowRef.current, (entries) => {
+  const intersectionCb = useCallback<IntersectionObserverCallback>((entries) => {
     startTranstition(() => setIsShowing(entries[0].isIntersecting));
-  });
+  }, []);
+  useIntersectionObserver(rowRef.current, intersectionCb);
 
   return (
     <div ref={virtual ? rowRef : undefined} className="flex" style={{ height: '36px', width: '100%' }}>

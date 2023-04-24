@@ -9,14 +9,14 @@
   font-weight: 500;
   background: var(--background-light);
   cursor: pointer;
+  contain: content;
   z-index: 10000;
   transition: background 0.1s;
-  contain: content;
   animation: scrollShow 0.2s forwards;
 }
 
 .scrollBottomButton:hover {
-  background: var(--blue-500);
+  background: var(--purple-500);
 }
 
 /* ======= */

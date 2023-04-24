@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setChatLoadingStatus, thunkGetHistory, useAppSelector } from '@state/index';
 import ChatMessage from '@components/Chat/ChatMessage/ChatMessage';
 import InfiniteScroll from '@components/InfiniteScroll/InfiniteScroll';
+import Chunk from './Chunk';
 import MessagePreloader from '@layouts/MessagePreloader/MessagePreloader';
 import MessageDivider from '../UI/MessageDivider';
 import ChatBeginning from '../UI/ChatBeginning';
@@ -145,21 +146,31 @@ const Scroller: React.FC<Props> = ({
     anchorRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const renderMessages = () => {
-    const messageComponents: JSX.Element[] = [];
+  const renderChunks = () => {
+    let messageComponents: JSX.Element[] = [];
 
+    const chunks: JSX.Element[][] = [];
+
+    // TODO переписать более оптимально (не создавать компоненты сразу???) необходим ресерч
+    // ? Обрезать кол-во обрабатываемых сообщений при скролле вниз, тк виртуализация скрола сверху нам не нужна
+    // ? и это можно переложить на бесконечный скролл
     for (let i = history.length - 1; i >= 0; i--) {
       messageComponents.push(renderMessage(history[i], history[i + 1], user, usersCache));
+
+      if (messageComponents.length === CONSTANTS.CHAT_CHUNK_SIZE || i === 0) {
+        chunks.push(messageComponents);
+        messageComponents = [];
+      }
     }
 
-    return messageComponents;
+    return chunks.map((chunk) => <Chunk key={chunk[0].key} content={chunk} />);
   };
 
   const renderContent = () => {
     if (!history.length && chatLoadingStatus.loading) {
       return renderPreloader();
     }
-    return renderMessages();
+    return renderChunks();
   };
 
   return (

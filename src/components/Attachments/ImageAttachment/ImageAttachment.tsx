@@ -27,7 +27,7 @@ const ImageAttachment: React.FC<Props> = ({ url, canOpenModal = true }): JSX.Ele
     }
   };
 
-  const renderAttachments = () => {
+  const renderAttachment = () => {
     if (error) {
       return (
         <div className={classNames(s.failedImage, 'flex flexaic flexjcc')}>
@@ -48,7 +48,7 @@ const ImageAttachment: React.FC<Props> = ({ url, canOpenModal = true }): JSX.Ele
     );
   };
 
-  return renderAttachments();
+  return renderAttachment();
 };
 
 export default ImageAttachment;
