@@ -6,13 +6,12 @@ import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
 import { thunkCreateChannel } from '@state/index';
 import ModalHeader from '@layouts/Modals/ModalHeader';
 import ModalDescription from '@layouts/Modals/ModalDescription';
-import CONSTANTS from '@common/constants';
+import CONSTANTS from '@config/config';
+import TEXTS from '@config/texts';
 import { useInput, useUploadImage, useModalControls } from '@common/hooks';
 import { toMB } from '@common/utils';
-import TEXTS from '@common/texts';
 import ImageUploader from '@components/ImageUploader/ImageUploader';
 import InputTitle from '@layouts/Input/InputTitle';
-import InputTitleError from '@layouts/Input/InputTitleError';
 import LineError from '@layouts/Line/LineError';
 import s from './createchannelmodal.module.css';
 

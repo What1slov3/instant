@@ -4,6 +4,7 @@
   overflow: auto;
   height: 100%;
   contain: size style;
+  transform: translate(0, 0, 0);
 }
 
 .chatWindow * {

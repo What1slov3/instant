@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { thunkUpdateUser } from '@state/index';
 import { useModalControls, useUploadImage } from '@common/hooks';
-import CONSTANTS from '@common/constants';
+import CONSTANTS from '@config/config';
 import Input from '@layouts/Input/Input';
 import InputTitle from '@layouts/Input/InputTitle';
 import ImageUploader from '@components/ImageUploader/ImageUploader';

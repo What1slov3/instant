@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { APIQueries } from '@api/index';
-import CONSTANTS from '@common/constants';
-import TEXTS from '@common/texts';
+import CONSTANTS from '../../config/config';
+import TEXTS from '../../config/texts';
 
 export interface IMultipleUploadHandlers {
   uploadHandler: React.ChangeEventHandler<HTMLInputElement>;

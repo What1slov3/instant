@@ -11,7 +11,7 @@ import { shortcutInstance } from '../..';
 import AttachmentInput from '@components/Attachments/AttachmentInput/AttachmentInput';
 import AttachmentsPreview from '@components/Attachments/AttachmentsPreview/AttachmentsPreview';
 import { useGlobalListener, useMultipleUploadAndProcessingImages } from '@common/hooks';
-import CONSTANTS from '@common/constants';
+import CONSTANTS from '@config/config';
 import { emojiQuill } from '@common/Quill/emoji';
 import type { Connection } from '@customTypes/index';
 import type { DeltaStatic } from 'quill';

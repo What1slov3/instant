@@ -7,7 +7,7 @@ import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
 import ModalHeader from '@layouts/Modals/ModalHeader';
 import InputTitleError from '@layouts/Input/InputTitleError';
 import { APIQueries } from '@api/index';
-import TEXTS from '@common/texts';
+import TEXTS from '@config/texts';
 import { useModalControls } from '@common/hooks';
 import s from './changepassword.module.css';
 

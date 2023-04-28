@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { useGlobalListener } from '@common/hooks';
 import type { FCChildren } from '@customTypes/common.types';
 
