@@ -22,7 +22,7 @@ export class API {
 
     this._APIAccessor.interceptors.request.use(
       async (config) => {
-        config.headers = { Authorization: `Bearer ${this._accessToken}` };
+        config.headers.setAuthorization(`Bearer ${this._accessToken}`);
         return config;
       },
       (err) => Promise.reject(err)
