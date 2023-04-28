@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Accordion from '@components/Accordion/Accordion';
 import Tooltip from '@components/Tooltip/Tooltip';
+import { useModalControls } from '@common/hooks';
 import type { Chat, ChatGroup, ChatsState, Connection, ID } from '@customTypes/index';
 import s from './channelchatlist.module.css';
-import { useModalControls } from '@common/hooks';
 
 type PropsItem = {
   name: string;

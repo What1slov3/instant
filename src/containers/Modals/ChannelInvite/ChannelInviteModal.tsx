@@ -4,7 +4,7 @@ import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
 import ModalHeader from '@layouts/Modals/ModalHeader';
 import ModalDescription from '@layouts/Modals/ModalDescription';
 import { getRandom } from '@common/utils';
-import TEXTS from '@common/texts';
+import TEXTS from '@config/texts';
 import { invitesAPI } from '@api/services';
 import type { ChannelInviteModalPayload } from '@customTypes/index';
 import s from './channelinvitemodal.module.css';

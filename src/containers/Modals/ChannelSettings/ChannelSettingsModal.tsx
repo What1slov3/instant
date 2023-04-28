@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { ErrorMessage } from '@hookform/error-message';
 import ImageUploader from '@components/ImageUploader/ImageUploader';
 import { useModalControls, useUploadImage } from '@common/hooks';
-import CONSTANTS from '@common/constants';
+import CONSTANTS from '@config/config';
 import ModalHeader from '@layouts/Modals/ModalHeader';
 import InputTitle from '@layouts/Input/InputTitle';
 import Input from '@layouts/Input/Input';

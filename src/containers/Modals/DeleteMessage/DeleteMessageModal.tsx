@@ -7,7 +7,7 @@ import { TimeFormatter } from '@common/utils';
 import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
 import { useModalControls } from '@common/hooks/useModalControls';
 import { thunkDeleteMessage } from '@state/index';
-import TEXTS from '@common/texts';
+import TEXTS from '@config/texts';
 import type { DeleteMessageModalPayload } from '@customTypes/index';
 import s from './deletemessagemodal.module.css';
 import MessageAttachment from '@components/Attachments/MessageAttachment/MessageAttachment';

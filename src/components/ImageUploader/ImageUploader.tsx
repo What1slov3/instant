@@ -28,12 +28,17 @@ const ImageUploader: React.FC<Props> = ({ src, handleDrop, handleUpload, width, 
         multiple={false}
         type="file"
         accept="image/*"
+        id="imageUploader"
         title=""
         onChange={handleUpload}
         onDrop={handleDrop}
         style={sizeStyles}
       />
-      {!src && <i className="fas fa-camera-alt"></i>}
+      {!src && (
+        <label htmlFor="imageUploader">
+          <i className="fas fa-camera-alt"></i>
+        </label>
+      )}
     </div>
   );
 };

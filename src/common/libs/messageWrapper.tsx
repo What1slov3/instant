@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import reactStringReplace from 'react-string-replace';
 import { regexEmoji, regexEmojiShortname, regexURL } from '@common/regexs';
 import emojiShortnames from '@common/emojiShortnames';
-import TEXTS from '@common/texts';
+import TEXTS from '../../config/texts';
 import Tooltip from '@components/Tooltip/Tooltip';
 
 export const contentWrappers = {

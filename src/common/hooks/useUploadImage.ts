@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import CONSTANTS from '@common/constants';
-import TEXTS from '@common/texts';
+import CONSTANTS from '../../config/config';
+import TEXTS from '../../config/texts';
 
 type ReturnUseUploadImage = [
   null | File,

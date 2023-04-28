@@ -49,9 +49,8 @@
 
 .content,
 .content > * {
-  word-break: break-all;
   white-space: pre-wrap;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   max-width: max-content;
 }
 

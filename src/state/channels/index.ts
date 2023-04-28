@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { thunkCreateChannel, thunkGetChannels, thunkUpdateChannel } from './thunk';
-import type { ChannelsState } from '@customTypes/index';
 import { thunkCreateChat } from '..';
+import type { ChannelsState } from '@customTypes/index';
 
 const initialState: ChannelsState = {
   channels: [],

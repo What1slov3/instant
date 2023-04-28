@@ -23,4 +23,4 @@ jobs:
       - name: Install package dependencies
         run: npm ci
       - name: Create test build
-        run: npm run build --if-present
+        run: npm run build
