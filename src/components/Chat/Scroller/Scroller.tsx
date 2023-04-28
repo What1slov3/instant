@@ -146,7 +146,7 @@ const Scroller: React.FC<Props> = ({
     });
     anchorRef.current.scrollIntoView({ behavior: 'smooth' });
   };
-  
+
   const savePrevScroll = useCallback(() => {
     prevScrollHeightRef.current = scrollRef.current.scrollHeight;
     setCanHistory(false);
