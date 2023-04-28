@@ -15,8 +15,8 @@ const ChatWindow: React.FC<Props> = ({ chat }): JSX.Element => {
 
   const modalControls = useModalControls();
 
-  const fullyLoadedResources = useAppSelector((state) => state.app.fullyLoadedResources);
-  const chatLoadingStatus = useAppSelector((state) => state.app.chatLoadingStatus);
+  const fullyLoadedResources = useAppSelector((state) => state.statuses.fullyLoadedResources);
+  const chatLoadingStatus = useAppSelector((state) => state.statuses.chatLoadingStatus);
   const history = useAppSelector((state) => state.messages[chat._id] || []);
 
   useEffect(() => {

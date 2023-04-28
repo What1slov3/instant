@@ -9,7 +9,7 @@ import s from './channelspage.module.css';
 export const ChannelsPage: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<any>();
 
-  const connection = useAppSelector((state) => state.app.connection);
+  const connection = useAppSelector((state) => state.statuses.connection);
   const channels = useAppSelector((state) => state.channels.channels);
   const userChannels = useAppSelector((state) => state.user.channels);
 

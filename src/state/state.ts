@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import thunk from 'redux-thunk';
-import { appReducer, channelsReducer, chatsReducer, messagesReducer, uiReducer, userReducer } from './index';
+import { statusesReducer, channelsReducer, chatsReducer, messagesReducer, uiReducer, userReducer } from './index';
 import { commonAPI } from '@api/services';
 import { userIntegrityCacheListener } from './middlewares/userIntegrity';
 import type { TypedUseSelectorHook } from 'react-redux';
@@ -10,7 +10,7 @@ import { usersReducer } from './users';
 const rootReducer = combineReducers({
   ui: uiReducer,
   user: userReducer,
-  app: appReducer,
+  statuses: statusesReducer,
   channels: channelsReducer,
   chats: chatsReducer,
   messages: messagesReducer,

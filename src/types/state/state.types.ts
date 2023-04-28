@@ -1,4 +1,4 @@
-import { AppState } from './app.types';
+import { StatusesState } from './app.types';
 import { UserState } from './user.types';
 import { UIState } from './ui.types';
 import { ChannelsState } from './channels.types';
@@ -8,7 +8,7 @@ import { MessagesState } from './messages.types';
 export type Store = {
   ui: UIState;
   user: UserState;
-  app: AppState;
+  statuses: StatusesState;
   channels: ChannelsState;
   chats: ChatsState;
   messages: MessagesState;

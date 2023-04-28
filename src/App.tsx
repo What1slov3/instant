@@ -13,8 +13,8 @@ function App() {
   const dispatch = useDispatch<any>();
 
   const user = useAppSelector((state) => state.user);
-  const isInitated = useAppSelector((state) => state.app.initated);
-  const connection = useAppSelector((state) => state.app.connection);
+  const isInitated = useAppSelector((state) => state.statuses.initated);
+  const connection = useAppSelector((state) => state.statuses.connection);
   const chats = useAppSelector((state) => state.chats);
 
   useEffect(() => {

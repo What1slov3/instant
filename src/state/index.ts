@@ -1,4 +1,4 @@
-export * from './app/index';
+export * from './statuses/index';
 export * from './channels/index';
 export * from './channels/thunk';
 export * from './chats/index';

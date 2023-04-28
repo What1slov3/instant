@@ -25,7 +25,7 @@ const ChannelSettingsModal: React.FC = (): JSX.Element => {
   const [iconFile, iconURL, handleUpload, handleDrop] = useUploadImage();
   const [bannerFile, bannerURL, handleUploadBanner, handleDropBanner] = useUploadImage();
 
-  const connection = useAppSelector((state) => state.app.connection);
+  const connection = useAppSelector((state) => state.statuses.connection);
   const channels = useAppSelector((state) => state.channels.channels);
 
   const currentChannel = channels.find((channel) => channel._id === connection.channelId)!;

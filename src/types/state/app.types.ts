@@ -1,6 +1,6 @@
 import { ID } from '@customTypes/index';
 
-export type AppState = {
+export type StatusesState = {
   initated: boolean;
   connection: Connection;
   fullyLoadedResources: FullyLoadedResources;

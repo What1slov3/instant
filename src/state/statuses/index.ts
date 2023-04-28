@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { thunkGetHistory, thunkGetMe } from '..';
 import { stateStyledLogger } from '@common/libs';
-import type { Connection, ChatLoadingStatus, FullyLoadedResources, AppState } from '@customTypes/index';
+import type { Connection, ChatLoadingStatus, FullyLoadedResources, StatusesState } from '@customTypes/index';
 
-const initialState: AppState = {
+const initialState: StatusesState = {
   initated: false,
   connection: {
     channelId: '',
@@ -21,8 +21,8 @@ const initialState: AppState = {
   },
 };
 
-const appSlice = createSlice({
-  name: 'app',
+const statusesSlice = createSlice({
+  name: 'statuses',
   initialState,
   reducers: {
     setConnection: (state, action: PayloadAction<Partial<Connection>>) => {
@@ -39,10 +39,10 @@ const appSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(thunkGetMe.fulfilled, (state, action) => {
+    builder.addCase(thunkGetMe.fulfilled, (state) => {
       state.initated = true;
     });
-    builder.addCase(thunkGetHistory.pending, (state, action) => {
+    builder.addCase(thunkGetHistory.pending, (state) => {
       state.chatLoadingStatus = {
         hasMore: false,
         loading: true,
@@ -59,7 +59,7 @@ const appSlice = createSlice({
         isLoaded: true,
       };
     });
-    builder.addCase(thunkGetHistory.rejected, (state, action) => {
+    builder.addCase(thunkGetHistory.rejected, (state) => {
       state.chatLoadingStatus = {
         hasMore: false,
         loading: false,
@@ -69,5 +69,5 @@ const appSlice = createSlice({
   },
 });
 
-export const { setConnection, setFullyLoadedResources, setChatLoadingStatus } = appSlice.actions;
-export const appReducer = appSlice.reducer;
+export const { setConnection, setFullyLoadedResources, setChatLoadingStatus } = statusesSlice.actions;
+export const statusesReducer = statusesSlice.reducer;
