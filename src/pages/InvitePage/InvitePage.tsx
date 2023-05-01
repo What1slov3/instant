@@ -1,8 +1,7 @@
-import Page from '@layouts/Page/Page';
 import classNames from 'classnames';
-import { invitesAPI } from '@api/services';
-import Avatar from '@components/Avatar/Avatar';
-import ModalButton from '@layouts/Buttons/ModalButton/ModalButton';
+import { invitesAPI } from '@shared/api/rest/services';
+import { ModalButton, Page } from '@shared/ui';
+import { Avatar } from '@shared/components';
 import s from './invitepage.module.css';
 
 export const InvitePage: React.FC = (): JSX.Element => {

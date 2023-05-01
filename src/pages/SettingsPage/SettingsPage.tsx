@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import SettingsSidebar from '@components/PageSettingsComponents/SettingsSidebar/SettingsSidebar';
-import UserProfileSubpage from '@components/PageSettingsComponents/UserProfileSubpage/UserProfileSubpage';
-import AppearanceSubpage from '@components/PageSettingsComponents/AppearanceSubpage/AppearanceSubpage';
-import { useAppSelector } from '@state/index';
-import Page from '@layouts/Page/Page';
+import { useAppSelector } from '@shared/state';
+import { Page } from '@shared/ui';
+import SettingsSidebar from '@entities/settings/ui/SettingsSidebar/SettingsSidebar';
+import UserProfileSubpage from '@entities/settings/ui/UserProfileSubpage/UserProfileSubpage';
+import AppearanceSubpage from '@entities/settings/ui/AppearanceSubpage/AppearanceSubpage';
 import s from './settingspage.module.css';
 
 export const SettingsPage: React.FC = (): JSX.Element => {
