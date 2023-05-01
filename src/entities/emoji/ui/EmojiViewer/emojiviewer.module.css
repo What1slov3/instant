@@ -1,0 +1,9 @@
+.hoveredEmojiWrapper {
+  padding: 10px;
+  background: var(--background-secondary);
+}
+
+.hoveredEmoji {
+  font-size: 20px;
+  margin-right: 10px;
+}

@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@common/*": ["./src/common/*"],
-      "@api/*": ["./src/api/*"],
-      "@customTypes/*": ["./src/types/*"],
-      "@state/*": ["./src/state/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@containers/*": ["./src/containers/*"],
-      "@config/*": ["./src/config/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@app/*": ["./src/app/*"],
+      "@features/*": ["./src/features/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@processes/*": ["./src/processes/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

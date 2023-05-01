@@ -1,0 +1,13 @@
+.chatBeginning {
+  padding: 20px 10px;
+}
+
+.chatBeginning,
+.chatBeginning span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.chatBeginning span {
+  color: var(--purple-400);
+}

@@ -1,0 +1,13 @@
+.emoji {
+  height: 32px;
+  min-width: 32px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 22px;
+  margin: 2px;
+}
+
+.emoji:hover {
+  background: var(--background-light);
+  border-radius: 10px;
+}
