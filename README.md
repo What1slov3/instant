@@ -3,7 +3,14 @@
 Discord-like мессенджер. Переделка [Veloorum](https://github.com/What1slov3/veloorum).
 В активной стадии разработки.
 
-Скоро тут появится видение проекта.
+### Info
+
+Скоро тут появится видение проекта.  
+
+**Stack:**  
+>TypeScript, ReactJS (v18.0.2), CSS Modules, Redux Toolkit, react-router-dom, classnames, redux-persist, redux-thunk, RTK Query, react-hook-form, axios, socket.io, QuillJS, craco  
+
+Реализация на основе архитектуры FSD  
 
 ### Возможности
 
