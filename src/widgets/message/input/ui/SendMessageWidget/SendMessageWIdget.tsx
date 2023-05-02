@@ -87,7 +87,7 @@ export const MessageInputWidget: React.FC<Props> = ({ connection, placeholder })
           inputRef={inputRef}
           placeholder={placeholder}
         />
-        <EmojiPicker emojiSetter={setEmoji} />
+        <EmojiPicker setEmoji={setEmoji} />
       </div>
     </div>
   );

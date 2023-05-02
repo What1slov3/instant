@@ -1,0 +1,7 @@
+.emojiList {
+  height: 350px;
+  width: 380px;
+  padding: 0 10px 0 5px;
+  overflow: auto; 
+  contain: content;
+}
