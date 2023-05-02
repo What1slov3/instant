@@ -34,10 +34,12 @@ export const DeleteMessageModal: React.FC<DeleteMessageModalPayload> = ({ messag
         </Tooltip>
         <div className={s.inner}>
           <div className={s.ownerName}>What1slov3</div>
-          <div className={s.content}>{message.content.text}</div>
-          {message.content.attachments && (
-            <MessageAttachment attachments={message.content.attachments} canOpenModal={false} />
-          )}
+          <div className={s.content}>
+            {message.content.text}
+            {message.content.attachments && (
+              <MessageAttachment attachments={message.content.attachments} canOpenModal={false} />
+            )}
+          </div>
         </div>
       </div>
       <div className="flex flexjce gap10">

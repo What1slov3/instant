@@ -1,8 +1,20 @@
-import { EmojiCategory } from "../model/types";
+import { EmojiCategory } from '../model/types';
+
+export const emojiCategoryNamesEngToRus = {
+  'Smileys & Emotion': 'Смайлики и эмоции',
+  'People & Body': 'Люди и тело',
+  Symbols: 'Символы',
+  'Food & Drink': 'Еда и напитки',
+  Activities: 'Мероприятия',
+  'Animals & Nature': 'Животные и природа',
+  Objects: 'Объекты',
+  'Travel & Places': 'Путешествия и места',
+};
 
 export const emojisCategoryList: EmojiCategory[] = [
   {
     name: 'Smileys & Emotion',
+    emojiIcon: '😋',
     emojis: [
       { emoji: '🤠', shortname: ':cowboy_hat_face:' },
       { emoji: '🤡', shortname: ':clown_face:' },
@@ -154,6 +166,7 @@ export const emojisCategoryList: EmojiCategory[] = [
   },
   {
     name: 'People & Body',
+    emojiIcon: '👋',
     emojis: [
       { emoji: '🚶‍♀', shortname: ':woman_walking:' },
       { emoji: '🙎‍♂', shortname: ':man_pouting:' },
@@ -562,6 +575,7 @@ export const emojisCategoryList: EmojiCategory[] = [
   },
   {
     name: 'Symbols',
+    emojiIcon: '💬',
     emojis: [
       { emoji: '™️', shortname: ':trade_mark:' },
       { emoji: '®️', shortname: ':registered:' },
@@ -767,6 +781,7 @@ export const emojisCategoryList: EmojiCategory[] = [
   },
   {
     name: 'Food & Drink',
+    emojiIcon: '🍺',
     emojis: [
       { emoji: '🔪', shortname: ':kitchen_knife:' },
       { emoji: '🎂', shortname: ':birthday:' },
@@ -893,6 +908,7 @@ export const emojisCategoryList: EmojiCategory[] = [
   },
   {
     name: 'Activities',
+    emojiIcon: '🏓',
     emojis: [
       { emoji: '🔮', shortname: ':crystal_ball:' },
       { emoji: '🏈', shortname: ':football:' },
@@ -974,6 +990,7 @@ export const emojisCategoryList: EmojiCategory[] = [
   },
   {
     name: 'Animals & Nature',
+    emojiIcon: '🐝',
     emojis: [
       { emoji: '💐', shortname: ':bouquet:' },
       { emoji: '🐾', shortname: ':feet:' },
@@ -1106,6 +1123,7 @@ export const emojisCategoryList: EmojiCategory[] = [
   },
   {
     name: 'Objects',
+    emojiIcon: '💡',
     emojis: [
       { emoji: '✉️', shortname: ':envelope:' },
       { emoji: '🚿', shortname: ':shower:' },
@@ -1344,6 +1362,7 @@ export const emojisCategoryList: EmojiCategory[] = [
   },
   {
     name: 'Travel & Places',
+    emojiIcon: '✈️',
     emojis: [
       { emoji: '🚲', shortname: ':bike:' },
       { emoji: '🚨', shortname: ':rotating_light:' },

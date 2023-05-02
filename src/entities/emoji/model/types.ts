@@ -6,6 +6,7 @@ export type Emoji = {
 export type EmojiCategory = {
   name: CategoryName;
   emojis: Emoji[];
+  emojiIcon: string;
 };
 
 export type CategoryName =

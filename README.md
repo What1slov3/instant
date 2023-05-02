@@ -10,7 +10,7 @@ Discord-like мессенджер. Переделка [Veloorum](https://github.
 **Stack:**  
 >TypeScript, ReactJS (v18.0.2), CSS Modules, Redux Toolkit, react-router-dom, classnames, redux-persist, redux-thunk, RTK Query, react-hook-form, axios, socket.io, QuillJS, craco  
 
-Реализация на основе архитектуры FSD  
+Реализация на основе архитектуры FSD (в стадии переноса) 
 
 ### Возможности
 

@@ -1,0 +1,20 @@
+.categoryList {
+  width: 50px;
+  padding: 10px 0;
+  border-right: 1px solid var(--background-darker);
+}
+
+.categoryIcon {
+  width: 34px;
+  height: 34px;
+  font-size: 22px;
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: filter 0.2s;
+}
+
+.categoryIcon:hover {
+  background: var(--background-light);
+  border-radius: 10px;
+  filter: grayscale(0%);
+}
