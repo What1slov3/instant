@@ -7,7 +7,7 @@ export const thunkGetMe = createAsyncThunk('user/getMe', async () => {
   return res.data;
 });
 
-export const thunkUpdateUser = createAsyncThunk('user/update', async (data: Partial<User>) => {
+export const thunkUpdateUserProfile = createAsyncThunk('user/updateProfile', async (data: Partial<User>) => {
   const res = await APIQueries.user.update(data);
   return res.data;
 });

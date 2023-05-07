@@ -1,5 +1,5 @@
 import { API_ROUTES } from '@shared/api/rest/routes';
-import { commonAPI } from '@shared/state';
+import { commonAPI } from './common.api';
 import type { Channel, ID } from '@shared/types';
 
 export const invitesAPI = commonAPI.injectEndpoints({

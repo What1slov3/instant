@@ -67,7 +67,7 @@
 }
 
 .secondary-shadow {
-  box-shadow: rgba(0, 0, 0, 0.16) 2px 0px 2px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
 }
 
 /* in message */

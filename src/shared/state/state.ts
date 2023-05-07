@@ -11,16 +11,9 @@ import {
   appReducer,
 } from '@shared/state';
 import { userIntegrityCacheListener } from './middlewares/userIntegrity';
-import { createApi } from '@reduxjs/toolkit/dist/query/react';
-import { baseQueryWithReauth } from '@shared/api/rest/utils';
 import { usersReducer } from './users';
+import { commonAPI } from '@shared/api/rest/services';
 import type { TypedUseSelectorHook } from 'react-redux';
-
-export const commonAPI = createApi({
-  reducerPath: 'commonAPI',
-  baseQuery: baseQueryWithReauth,
-  endpoints: () => ({}),
-});
 
 const rootReducer = combineReducers({
   ui: uiReducer,

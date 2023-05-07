@@ -22,7 +22,7 @@ export const CreateChannelModal: React.FC = (): JSX.Element => {
     },
   });
 
-  const [icon, iconURL, handleUpload, handleDrop, iconError] = useUploadImage();
+  const { img: icon, imgURL: iconURL, handleUpload, handleDrop } = useUploadImage();
 
   const [error, setError] = useState<null | string>(null);
 

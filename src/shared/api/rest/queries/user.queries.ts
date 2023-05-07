@@ -10,6 +10,8 @@ export const userQueries = {
     return APIAccessor.patch(API_ROUTES.USERS.CHANGE_PASSWORD, { currentPassword, newPassword });
   },
   update: (data: Partial<User>) => {
-    return APIAccessor.patch<User>(API_ROUTES.USERS.UPDATE, data);
+    return APIAccessor.patch<User>(API_ROUTES.USERS.UPDATE, data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
   },
 };
