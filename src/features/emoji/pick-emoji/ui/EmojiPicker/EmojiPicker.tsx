@@ -49,7 +49,11 @@ export const EmojiPicker: React.FC<Props> = ({ setEmoji }): JSX.Element => {
     []
   );
 
-  useWindowResize(() => setNormalizedCoords());
+  useWindowResize(() => {
+    if (isOpen) {
+      setNormalizedCoords();
+    }
+  }, [isOpen]);
 
   const toggleIsOpen = () => {
     setIsOpen((prev) => !prev);
@@ -81,7 +85,11 @@ export const EmojiPicker: React.FC<Props> = ({ setEmoji }): JSX.Element => {
   return (
     <div className={s.wrapper} data-emoji="true">
       {isOpen && (
-        <div ref={menuRef} className={s.menuWrapper} style={{ top: menuCoords.y, left: menuCoords.x }}>
+        <div
+          ref={menuRef}
+          className={classNames(s.menuWrapper, 'secondary-shadow')}
+          style={{ top: menuCoords.y, left: menuCoords.x }}
+        >
           <EmojiFinder searcher={searcher} />
           <div className="flex gap5">
             <EmojiCategoryList onClick={moveToCategory} />

@@ -37,7 +37,7 @@ function App() {
               <Route path="/" element={<MainPage />} />
               <Route path="/environment/*" element={<EnvironmentPage />} />
               <Route path="/channels/*" element={<ChannelsPage />} />
-              <Route path="/settings/*" element={<SettingsPage />} />
+              <Route path="/settings/*" element={<SettingsPage user={user} />} />
               <Route path="/invites/*" element={<InvitePage />} />
             </Routes>
           </>

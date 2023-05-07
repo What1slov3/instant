@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { TEXTS, CONSTANTS } from '@shared/config';
 
-type ReturnUseUploadImage = [
-  null | File,
-  string,
-  (e: React.ChangeEvent<HTMLInputElement>) => void,
-  (e: React.DragEvent<HTMLInputElement>) => void,
-  null | string
-];
+type ReturnUseUploadImage = {
+  img: null | File;
+  imgURL: string;
+  handleUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleDrop: (e: React.DragEvent<HTMLInputElement>) => void;
+  error: null | string;
+  reset: () => void;
+};
 
 export const useUploadImage = (): ReturnUseUploadImage => {
   const [img, setImg] = useState<null | File>(null);
@@ -51,5 +52,11 @@ export const useUploadImage = (): ReturnUseUploadImage => {
     setIcon(e.dataTransfer.files[0]);
   };
 
-  return [img, imgURL, handleUpload, handleDrop, error];
+  const reset = () => {
+    setImg(null);
+    setImgURL('');
+    setError(null);
+  };
+
+  return { img, imgURL, handleUpload, handleDrop, error, reset };
 };

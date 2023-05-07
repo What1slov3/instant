@@ -6,11 +6,11 @@ import { setConnection, thunkGetChannels, thunkGetChats, useAppSelector } from '
 import { parseURLtoConnection } from '@shared/utils';
 import { Page } from '@shared/ui';
 import { ChannelChatsList, ChannelGreetings, ChannelHeader, ChannelsList } from '@entities/channel';
-import type { Channel, Chat, ChatGroup, ID } from '@shared/types';
-import s from './channelspage.module.css';
 import { MessageFeedWidget } from '@widgets/message/feed';
 import { MessageInputWidget } from '@widgets/message/input';
 import { ChannelTopBarWidget } from '@widgets/chat/channelTopbar';
+import type { Channel, Chat, ChatGroup, ID } from '@shared/types';
+import s from './channelspage.module.css';
 
 export const ChannelsPage: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<any>();

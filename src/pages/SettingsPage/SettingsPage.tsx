@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '@shared/state';
 import { Page } from '@shared/ui';
 import SettingsSidebar from '@entities/settings/ui/SettingsSidebar/SettingsSidebar';
-import UserProfileSubpage from '@entities/settings/ui/UserProfileSubpage/UserProfileSubpage';
 import AppearanceSubpage from '@entities/settings/ui/AppearanceSubpage/AppearanceSubpage';
+import { ProfileSettingsPage } from './ProfileSettingsPage/ProfileSettingsPage';
+import type { UserState } from '@shared/types';
 import s from './settingspage.module.css';
 
-export const SettingsPage: React.FC = (): JSX.Element => {
-  const navigate = useNavigate();
+type Props = {
+  user: UserState;
+};
 
-  const user = useAppSelector((state) => state.user);
+export const SettingsPage: React.FC<Props> = ({ user }): JSX.Element => {
+  const navigate = useNavigate();
 
   useEffect(() => {
     navigate('profile');
@@ -23,12 +25,13 @@ export const SettingsPage: React.FC = (): JSX.Element => {
         <Route
           path="profile"
           element={
-            <UserProfileSubpage
+            <ProfileSettingsPage
               username={user.username}
               avatar={user.avatar}
               tag={user.tag}
               email={user.email}
               createdAt={user.createdAt}
+              loadingStatus={user.loadingStatus}
             />
           }
         />

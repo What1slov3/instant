@@ -1,0 +1,45 @@
+.wrapper {
+  max-height: calc(100vh - var(--window-margin) * 2);
+  padding: 20px;
+  background: var(--background-secondary);
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+}
+
+.content {
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+
+.wrapper section {
+  margin: 20px 0;
+  padding: 10px 0;
+  cursor: default;
+  user-select: none;
+}
+
+.wrapper section h2 {
+  padding-bottom: 10px;
+}
+
+.saveButtonWrapper {
+  animation: saveButtonShows 0.2s forwards;
+}
+
+@keyframes saveButtonShows {
+  from {
+    transform: translateY(10vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .infoChanger {
+    flex-direction: column;
+  }
+}

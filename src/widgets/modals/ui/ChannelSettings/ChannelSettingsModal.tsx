@@ -24,8 +24,13 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
 
   const modalControls = useModalControls();
 
-  const [iconFile, iconURL, handleUpload, handleDrop] = useUploadImage();
-  const [bannerFile, bannerURL, handleUploadBanner, handleDropBanner] = useUploadImage();
+  const { img: iconFile, imgURL: iconURL, handleUpload, handleDrop } = useUploadImage();
+  const {
+    img: bannerFile,
+    imgURL: bannerURL,
+    handleUpload: handleUploadBanner,
+    handleDrop: handleDropBanner,
+  } = useUploadImage();
 
   const connection = useAppSelector((state) => state.statuses.connection);
   const channels = useAppSelector((state) => state.channels.channels);

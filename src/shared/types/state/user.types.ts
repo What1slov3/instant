@@ -1,6 +1,6 @@
-import type { ID } from '@shared/types';
+import type { ID, LoadingStatus } from '@shared/types';
 
-export type UserState = User & {};
+export type UserState = User & LoadingStatus;
 
 export type User = {
   _id: ID;
@@ -11,5 +11,3 @@ export type User = {
   channels: ID[];
   createdAt: string | number;
 };
-
-export type TUserActivityStatus = 'offline' | 'online' | 'AFK' | 'busy' | 'invisible';

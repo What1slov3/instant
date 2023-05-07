@@ -1,0 +1,28 @@
+.wrapper {
+  user-select: none;
+  cursor: default;
+  display: flex;
+  gap: 20px;
+  min-width: max-content;
+}
+
+.username {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gray-200);
+}
+
+.username span {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--purple-400);
+}
+
+.registerDate {
+  font-size: 15px;
+}
+
+.registerDate span {
+  font-weight: 500;
+  color: var(--gray-200);
+}
