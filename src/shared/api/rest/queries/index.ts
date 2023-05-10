@@ -4,3 +4,4 @@ export * from './messages.queries';
 export * from './user.queries';
 export * from './users.queries';
 export * from './files.queries';
+export * from './invites.queries';

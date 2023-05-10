@@ -32,32 +32,8 @@
   color: var(--gray-400);
 }
 
-.ownerName {
-  width: max-content;
-  font-weight: 500;
-  color: var(--gray-100);
-  cursor: pointer;
-}
-
-.ownerName:hover {
-  text-decoration: underline;
-}
-
 .inner {
   margin-left: 10px;
-}
-
-.content,
-.content > * {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  max-width: max-content;
-}
-
-.content,
-.content * {
-  user-select: text;
-  line-height: 21px;
 }
 
 .contextMenu {

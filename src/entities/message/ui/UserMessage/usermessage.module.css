@@ -1,0 +1,10 @@
+.username {
+  width: max-content;
+  font-weight: 500;
+  color: var(--gray-100);
+  cursor: pointer;
+}
+
+.username:hover {
+  text-decoration: underline;
+}

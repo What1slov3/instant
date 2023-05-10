@@ -1,12 +1,9 @@
 import type {
-  Message,
-  ID,
-  CreateChannelModalPayload,
   DeleteMessageModalPayload,
-  ChannelSettingsModalPayload,
   ChannelInviteModalPayload,
   CreateChatModalPayload,
   ImageAttachmentPayload,
+  ChatMembersListPayload,
 } from '@shared/types';
 
 export type UIState = {
@@ -17,7 +14,7 @@ export type Modal =
   | { name: null; payload: null }
   | {
       name: 'createChannel';
-      payload?: CreateChannelModalPayload;
+      payload?: never;
     }
   | {
       name: 'deleteMessage';
@@ -25,7 +22,7 @@ export type Modal =
     }
   | {
       name: 'channelSettings';
-      payload?: ChannelSettingsModalPayload;
+      payload?: never;
     }
   | {
       name: 'channelInvite';
@@ -42,7 +39,14 @@ export type Modal =
   | {
       name: 'imageAttachment';
       payload: ImageAttachmentPayload;
-    };
+    }
+  | { name: 'chatMembersList'; payload: ChatMembersListPayload };
 
 export type ModalsWihtoutPayload = 'createChannel' | 'channelSettings' | 'changePassword';
-export type ModalName = ModalsWihtoutPayload | 'deleteMessage' | 'channelInvite' | 'createChat' | 'imageAttachment';
+export type ModalName =
+  | ModalsWihtoutPayload
+  | 'deleteMessage'
+  | 'channelInvite'
+  | 'createChat'
+  | 'imageAttachment'
+  | 'chatMembersList';

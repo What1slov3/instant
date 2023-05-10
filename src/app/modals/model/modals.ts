@@ -3,6 +3,7 @@ import {
   ChangePasswordModal,
   ChannelInviteModal,
   ChannelSettingsModal,
+  ChatMembersListModal,
   CreateChannelModal,
   CreateChatModal,
   DeleteMessageModal,
@@ -17,4 +18,5 @@ export const MODALS: Record<NonNullable<ModalName>, React.FC<any>> = {
   createChat: CreateChatModal,
   changePassword: ChangePasswordModal,
   imageAttachment: ImageAttachmentModal,
+  chatMembersList: ChatMembersListModal,
 };

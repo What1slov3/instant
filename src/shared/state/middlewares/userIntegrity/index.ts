@@ -17,6 +17,9 @@ userIntegrityCacheListener.startListening({
         if (!state.usersCache[message.senderId]) {
           nonCachedUsersSet.add(message.senderId);
         }
+        if (message.meta?.data.userId && !state.usersCache[message.meta?.data.userId]) {
+          nonCachedUsersSet.add(message.meta.data.userId);
+        }
       });
     }
 
@@ -24,6 +27,9 @@ userIntegrityCacheListener.startListening({
       const payload = action.payload as Message;
       if (!state.usersCache[payload.senderId]) {
         nonCachedUsersSet.add(payload.senderId);
+      }
+      if (action.payload.meta?.data.userId && !state.usersCache[action.payload.meta?.data.userId]) {
+        nonCachedUsersSet.add(action.payload.meta.data.userId);
       }
     }
 

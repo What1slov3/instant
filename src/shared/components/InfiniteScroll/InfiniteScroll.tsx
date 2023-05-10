@@ -1,21 +1,21 @@
-import { Component, useRef } from 'react';
+import { useRef } from 'react';
 import { useIntersectionObserver } from '@shared/hooks';
 import type { FCChildren } from '@shared/types';
 
 type Props = (
   | {
-      loader?: JSX.Element | Component; // Прелоадер, показывается, если передан
+      loader?: JSX.Element | React.Component; // Прелоадер, показывается, если передан
       next: Function; // Функция загрузки следующих данных
-      end?: JSX.Element | Component; // Компонент отображаемый в конце, когда загрузка кончилась
+      end?: JSX.Element | React.Component; // Компонент отображаемый в конце, когда загрузка кончилась
       hasMore: boolean; // Есть ли еще данные для загрузки
       loading: boolean; // Идет ли сейчас загрузка
       getScroll: Function; // Переместиться не предыдущее место скролла, чтобы избежать залипания
       direction: 'top';
     }
   | {
-      loader?: JSX.Element | Component; // Прелоадер, показывается, если передан
+      loader?: JSX.Element | React.Component; // Прелоадер, показывается, если передан
       next: Function; // Функция загрузки следующих данных
-      end?: JSX.Element | Component; // Компонент отображаемый в конце, когда загрузка кончилась
+      end?: JSX.Element | React.Component; // Компонент отображаемый в конце, когда загрузка кончилась
       hasMore: boolean; // Есть ли еще данные для загрузки
       loading: boolean; // Идет ли сейчас загрузка
       getScroll?: never; // Переместиться не предыдущее место скролла, чтобы избежать залипания
@@ -34,9 +34,9 @@ export const InfiniteScroll: React.FC<Props> = ({
   getScroll,
   direction,
 }): JSX.Element => {
-  const topScrollRef = useRef<HTMLDivElement>(null!);
+  const scrollerRef = useRef<HTMLDivElement>(null);
 
-  useIntersectionObserver(topScrollRef.current, (entries) => {
+  useIntersectionObserver(scrollerRef.current, (entries) => {
     if (entries[0].isIntersecting && !loading && hasMore) {
       getScroll?.();
       next();
@@ -46,7 +46,7 @@ export const InfiniteScroll: React.FC<Props> = ({
   const renderLogic = () => {
     return (
       <>
-        <div ref={topScrollRef}></div>
+        <div ref={scrollerRef}></div>
         {!hasMore && !loading && end}
         {loading && loader}
       </>
@@ -54,10 +54,10 @@ export const InfiniteScroll: React.FC<Props> = ({
   };
 
   return (
-    <div>
+    <>
       {direction === 'top' && renderLogic()}
       {children}
       {direction === 'bottom' && renderLogic()}
-    </div>
+    </>
   );
 };

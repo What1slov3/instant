@@ -22,3 +22,9 @@
 .formBlock {
   flex: 1;
 }
+
+@media screen and (max-width: 976px) {
+  .formWrapper {
+    flex-direction: column;
+  }
+}

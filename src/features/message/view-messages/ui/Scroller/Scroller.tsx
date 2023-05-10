@@ -2,16 +2,17 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { useDispatch } from 'react-redux';
 import { setChatLoadingStatus, thunkGetHistory, useAppSelector } from '@shared/state';
 import { CONSTANTS } from '@shared/config';
-import { renderMessageFeedMessageWithDividers } from '../../model/utils/renderMessageFeedContent';
 import { MessagesSkeletonPreloader } from '@entities/preloaders';
 import { MessageFeedBeginning, ScrollBottomButton } from '@entities/message';
 import { InfiniteScroll } from '@shared/components';
+import { renderMessageFeedMessageWithDividers } from '../../libs/renderMessageFeedContent';
 import type { ChatLoadingStatus, FullyLoadedResources, Message } from '@shared/types';
 import s from './scroller.module.css';
 
 type Props = {
   chatId: string;
   chatName: string;
+  channelName: string;
   history: Message[];
   chatLoadingStatus: ChatLoadingStatus;
   fullyLoadedResources: FullyLoadedResources;
@@ -23,6 +24,7 @@ export const Scroller: React.FC<Props> = ({
   history,
   chatLoadingStatus,
   fullyLoadedResources,
+  channelName,
 }): JSX.Element => {
   const dispatch = useDispatch<any>();
 
@@ -141,7 +143,7 @@ export const Scroller: React.FC<Props> = ({
 
     for (let i = history.length - (maxIndex - visibleIndex) * CONSTANTS.CHAT_CHUNK_SIZE - 1; i >= 0; i--) {
       if (history[i]) {
-        messages.push(renderMessageFeedMessageWithDividers(history[i], history[i + 1], user, usersCache));
+        messages.push(renderMessageFeedMessageWithDividers(history[i], history[i + 1], channelName, user, usersCache));
       }
     }
 

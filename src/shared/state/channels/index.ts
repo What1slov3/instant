@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { thunkCreateChannel, thunkGetChannels, thunkUpdateChannel } from './thunk';
+import { thunkCreateChannel, thunkGetChannels, thunkJoinChannelByInvite, thunkUpdateChannel } from './thunk';
 import { thunkCreateChat } from '..';
 import type { ChannelsState } from '@shared/types';
 
@@ -28,6 +28,9 @@ const channelsSlice = createSlice({
         (chatGroup) => chatGroup._id === action.meta.arg.chatGroupId
       );
       state.channels[index].chatGroups[chatGroupIndex].chats.push(action.payload._id);
+    });
+    builder.addCase(thunkJoinChannelByInvite.fulfilled, (state, action) => {
+      state.channels.push(action.payload);
     });
   },
 });

@@ -28,6 +28,7 @@ export const API_ROUTES = {
   INVITES: {
     GET_CHANNEL_INVITE: '/invites/channel',
     GET_CHANNEL_FROM_INVITE: '/invites',
+    JOIN_CHANNEL_BY_INVITE: '/invites/join',
   },
   FILES: {
     UPLOAD: '/files/upload',

@@ -5,3 +5,4 @@ export * from './ui/CreateChannel/CreateChannelModal';
 export * from './ui/CreateChat/CreateChatModal';
 export * from './ui/DeleteMessage/DeleteMessageModal';
 export * from './ui/ImageAttachment/ImageAttachmentmodal';
+export * from './ui/ChatMemebersList/ChatMembersListModal';

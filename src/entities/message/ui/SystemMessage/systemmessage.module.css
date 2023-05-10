@@ -1,0 +1,19 @@
+.systemName {
+  width: max-content;
+  font-weight: 500;
+  color: var(--purple-300);
+  cursor: pointer;
+}
+
+.systemName:hover {
+  text-decoration: underline;
+}
+
+.channelName {
+  margin-left: 6px;
+  padding: 0 5px 2px 5px;
+  background: var(--indigo-500);
+  color: var(--gray-50);
+  border-radius: 5px;
+  text-transform: lowercase;
+}

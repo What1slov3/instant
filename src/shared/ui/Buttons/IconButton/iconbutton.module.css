@@ -1,0 +1,7 @@
+.iconButton {
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  filter: brightness(110%);
+}

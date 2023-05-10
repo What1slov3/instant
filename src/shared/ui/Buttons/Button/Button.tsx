@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import { useGlobalListener } from '@shared/hooks';
 import type { FCChildren } from '@shared/types';
+import s from './button.module.css';
 
 type Props = FCChildren & {
   style?: React.CSSProperties;
@@ -28,7 +30,14 @@ export const Button: React.FC<Props> = ({ children, style, onClick, className, o
   };
 
   return (
-    <div className={className} style={style} onClick={onClick} onKeyDown={handleKeyDown} role="button" tabIndex={0}>
+    <div
+      className={classNames(s.button, className)}
+      style={style}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+    >
       {children}
     </div>
   );

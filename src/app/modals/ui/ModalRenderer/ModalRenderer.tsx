@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetModal } from '@shared/state';
 import { useGlobalListener } from '@shared/hooks';
+import { MODALS } from '../../model/modals';
 import type { Store } from '@shared/types';
 import s from './modalrenderer.module.css';
-import { MODALS } from '@app/modals/model/modals';
 
 export const ModalRenderer: React.FC = ({}): JSX.Element | null => {
   const dispatch = useDispatch<any>();

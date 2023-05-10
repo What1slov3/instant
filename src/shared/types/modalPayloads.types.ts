@@ -1,10 +1,8 @@
 import { Chat, ChatGroup, ID, Message } from '@shared/types';
 
-export type CreateChannelModalPayload = never;
 export type DeleteMessageModalPayload = {
   message: Message;
 };
-export type ChannelSettingsModalPayload = never;
 export type ChannelInviteModalPayload = {
   channelId: ID;
 };
@@ -14,4 +12,7 @@ export type CreateChatModalPayload = {
 };
 export type ImageAttachmentPayload = {
   url: string;
+};
+export type ChatMembersListPayload = {
+  chatId: ID;
 };

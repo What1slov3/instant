@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { thunkGetMe, thunkUpdateUserProfile } from './thunk';
-import { thunkCreateChannel } from '@shared/state';
+import { thunkCreateChannel, thunkJoinChannelByInvite } from '@shared/state';
 import type { LoadingStatus, UserState } from '@shared/types';
 
 const initialState: UserState = {
@@ -43,6 +43,9 @@ const userSlice = createSlice({
     });
     builder.addCase(thunkUpdateUserProfile.rejected, (state) => {
       state.loadingStatus = { status: 'failed', error: 'Error' };
+    });
+    builder.addCase(thunkJoinChannelByInvite.fulfilled, (state, action) => {
+      state.channels.push(action.payload._id);
     });
   },
 });

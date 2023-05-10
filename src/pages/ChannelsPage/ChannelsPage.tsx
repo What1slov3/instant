@@ -100,8 +100,8 @@ export const ChannelsPage: React.FC = (): JSX.Element => {
           </div>
           {chat && (
             <div className={s.main}>
-              <ChannelTopBarWidget activeChatName={chat.name} />
-              <MessageFeedWidget chat={chat} />
+              <ChannelTopBarWidget chatName={chat.name} chatId={chat._id} />
+              <MessageFeedWidget chat={chat} channelName={channel.name} />
               <MessageInputWidget connection={connection} placeholder={`Написать в #${chat.name}`} />
             </div>
           )}

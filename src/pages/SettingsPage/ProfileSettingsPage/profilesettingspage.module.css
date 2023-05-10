@@ -37,9 +37,3 @@
     transform: translateY(0);
   }
 }
-
-@media screen and (max-width: 970px) {
-  .infoChanger {
-    flex-direction: column;
-  }
-}

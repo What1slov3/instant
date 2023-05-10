@@ -6,8 +6,8 @@ import { toMB } from '@shared/utils';
 import { CONSTANTS, TEXTS } from '@shared/config';
 import { thunkCreateChannel } from '@shared/state';
 import { Input, InputTitle, LineError, ModalButton, ModalDescription, ModalHeader } from '@shared/ui';
-import s from './createchannelmodal.module.css';
 import { ImageUploader } from '@shared/components';
+import s from './createchannelmodal.module.css';
 
 export const CreateChannelModal: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<any>();

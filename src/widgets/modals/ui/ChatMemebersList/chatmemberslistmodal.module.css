@@ -1,0 +1,13 @@
+.wrapper {
+  width: 100vw;
+  max-width: 400px;
+}
+
+.chatName,
+.chatName * {
+  font-size: 21px;
+}
+
+.chatName span {
+  color: var(--gray-400);
+}
