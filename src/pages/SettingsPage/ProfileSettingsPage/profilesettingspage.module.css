@@ -13,7 +13,6 @@
   padding-right: 10px;
 }
 
-
 .wrapper section {
   margin: 20px 0;
   padding: 10px 0;
@@ -35,11 +34,5 @@
   }
   to {
     transform: translateY(0);
-  }
-}
-
-@media screen and (max-width: 970px) {
-  .infoChanger {
-    flex-direction: column;
   }
 }

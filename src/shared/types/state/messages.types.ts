@@ -9,6 +9,7 @@ export type Message = {
   updatedAt: string;
   createdAt: string;
   senderId: ID;
+  meta: MessageMeta;
 };
 
 export type MessageAttachments = {
@@ -24,5 +25,14 @@ export type MessageContext = {
   chatId: ID;
   channelId: ID;
 };
+
+export type MessageType = 'greetings' | never;
+
+export type MessageMeta = {
+  type: 'greetings';
+  data: {
+    userId: ID;
+  };
+} | null;
 
 export type MessageAction = 'delete' | 'edit';

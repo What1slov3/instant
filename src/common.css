@@ -70,6 +70,15 @@
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
 }
 
+.mainGradient {
+  background: linear-gradient(to right, var(--purple-400), var(--indigo-500));
+}
+
+.textBgClip {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* in message */
 
 .inMessageUrl {

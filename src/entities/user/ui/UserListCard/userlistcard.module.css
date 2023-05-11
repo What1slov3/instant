@@ -1,0 +1,17 @@
+.userCard {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.username,
+.username * {
+  font-size: 16px;
+}
+
+.username span {
+  color: var(--gray-400);
+}
+
+.userCard:hover {
+  background: var(--background-secondary);
+}

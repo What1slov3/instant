@@ -28,3 +28,8 @@ export const thunkUpdateChannel = createAsyncThunk(
     return res.data;
   }
 );
+
+export const thunkJoinChannelByInvite = createAsyncThunk('channels/join', async (inviteId: string) => {
+  const res = await APIQueries.invites.joinChannelByInvite(inviteId);
+  return res.data;
+});

@@ -1,6 +1,6 @@
 import { ID } from '@shared/types';
 
-export type CachedUsers = Record<ID, CachedUser>;
+export type UsersCache = Record<ID, CachedUser & { timestamp: number }>;
 
 export type CachedUser = {
   _id: ID;

@@ -4,7 +4,7 @@ import { useModalControls } from '@shared/hooks';
 import { invitesAPI } from '@shared/api/rest/services';
 import { getRandom } from '@shared/utils';
 import { TEXTS } from '@shared/config';
-import { ModalButton, ModalDescription, ModalHeader } from '@shared/ui';
+import { ModalButton, ModalDescription, ModalHeader, ModalSegment } from '@shared/ui';
 import type { ChannelInviteModalPayload } from '@shared/types';
 import s from './channelinvitemodal.module.css';
 
@@ -35,12 +35,14 @@ export const ChannelInviteModal: React.FC<ChannelInviteModalPayload> = ({ channe
     <div className={classNames(s.wrapper, 'modal')}>
       <ModalHeader>{headerTitle.current}</ModalHeader>
       <ModalDescription>Ссылка будет действовать до пересоздания</ModalDescription>
-      <div className={s.link} onClick={selectInvite}>
-        {isLoading ? 'Загружаем...' : data?.link}
-      </div>
+      <ModalSegment>
+        <div className={s.link} onClick={selectInvite}>
+          {isLoading ? 'Загружаем...' : data?.link}
+        </div>
+      </ModalSegment>
       <div className="flex flexjce gap10">
         <ModalButton onClick={() => {}}>Обновить</ModalButton>
-        <ModalButton style={{ background: 'var(--purple-500)' }} onClick={handleCopy}>
+        <ModalButton className="mainGradient" onClick={handleCopy}>
           Копировать
         </ModalButton>
       </div>

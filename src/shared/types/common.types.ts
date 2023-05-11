@@ -17,3 +17,6 @@ export type JWT = {
   exp: number;
 };
 export type ID = string;
+export type AllRequried<T> = {
+  [P in keyof T]: NonNullable<T[P]>;
+};

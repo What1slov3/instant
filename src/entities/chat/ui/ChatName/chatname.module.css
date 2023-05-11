@@ -1,0 +1,9 @@
+.chatName {
+  font-size: 16px;
+}
+
+.chatName span {
+  font-size: 18px;
+  margin-right: 3px;
+  color: var(--gray-400);
+}

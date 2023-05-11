@@ -19,6 +19,7 @@ export const API_ROUTES = {
   CHATS: {
     GET: '/chats',
     CREATE: '/chats/create',
+    UPDATE: '/chats',
   },
   MESSAGES: {
     GET_HISTORY: '/messages/history',
@@ -28,6 +29,7 @@ export const API_ROUTES = {
   INVITES: {
     GET_CHANNEL_INVITE: '/invites/channel',
     GET_CHANNEL_FROM_INVITE: '/invites',
+    JOIN_CHANNEL_BY_INVITE: '/invites/join',
   },
   FILES: {
     UPLOAD: '/files/upload',

@@ -1,11 +1,23 @@
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 import { invitesAPI } from '@shared/api/rest/services';
 import { ModalButton, Page } from '@shared/ui';
 import { Avatar } from '@shared/components';
+import { thunkJoinChannelByInvite } from '@shared/state';
 import s from './invitepage.module.css';
 
 export const InvitePage: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch<any>();
+
+  const navigate = useNavigate();
+
   const { data } = invitesAPI.useGetChannelFromInviteQuery(window.location.href.split('/').at(-1));
+
+  const handleJoin = () => {
+    dispatch(thunkJoinChannelByInvite(window.location.href.split('/').at(-1)!));
+    navigate(`/channels/${data!._id}`);
+  };
 
   return (
     <Page style={{ display: 'grid' }}>
@@ -25,7 +37,7 @@ export const InvitePage: React.FC = (): JSX.Element => {
                   Участников: <span>{data.membersCount}</span>
                 </div>
               </div>
-              <ModalButton onClick={() => {}} className={s.joinButton}>
+              <ModalButton onClick={handleJoin} style={{ background: 'var(--purple-500)' }}>
                 Присоединиться
               </ModalButton>
             </div>

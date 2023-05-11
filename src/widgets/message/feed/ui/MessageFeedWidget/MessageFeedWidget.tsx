@@ -8,9 +8,10 @@ import s from './messagefeedwidget.module.css';
 
 type Props = {
   chat: Chat;
+  channelName: string;
 };
 
-export const MessageFeedWidget: React.FC<Props> = ({ chat }): JSX.Element => {
+export const MessageFeedWidget: React.FC<Props> = ({ chat, channelName }): JSX.Element => {
   const dispatch = useDispatch<any>();
 
   const modalControls = useModalControls();
@@ -59,6 +60,7 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat }): JSX.Element => {
         chatId={chat._id}
         chatName={chat.name}
         history={history}
+        channelName={channelName}
         chatLoadingStatus={chatLoadingStatus}
         fullyLoadedResources={fullyLoadedResources}
       />

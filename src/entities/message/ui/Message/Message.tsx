@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { Tooltip } from '@shared/components';
-import { wrapAllFormatting } from '@shared/libs';
-import { MessageAttachment } from '../MessageAttachment/MessageAttachment';
+import { UserMessage } from '../UserMessage/UserMessage';
+import { SystemMessage } from '../SystemMessage/SystemMessage';
 import type { Message as TMessage } from '@shared/types';
 import s from './message.module.css';
 
@@ -17,12 +17,13 @@ type Props = {
 
 const Message: React.FC<Props> = ({
   _id,
-  content,
   createdAt,
   fullTime,
   isShort,
-  username,
   userIsOwner,
+  content,
+  username,
+  meta,
 }): JSX.Element => {
   return (
     <div className={classNames(s.message, { [s.short]: isShort })} data-message="true" data-message-id={_id}>
@@ -30,9 +31,11 @@ const Message: React.FC<Props> = ({
         <div className={s.timestamp}>{createdAt}</div>
       </Tooltip>
       <div className={s.inner}>
-        {!isShort && <div className={s.ownerName}>{username}</div>}
-        <div className={s.content}>{wrapAllFormatting(content.text)}</div>
-        {content.attachments && <MessageAttachment attachments={content.attachments} />}
+        {meta?.type ? (
+          <SystemMessage content={content} username={username} />
+        ) : (
+          <UserMessage content={content} username={username} />
+        )}
       </div>
       <div className={s.contextMenu}>
         {userIsOwner && (

@@ -12,7 +12,14 @@ type Props = {
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
 } & FCChildren;
 
-export const ModalButton: React.FC<Props> = ({ children, onClick, className, style, onEnter, onKeyDown }): JSX.Element => {
+export const ModalButton: React.FC<Props> = ({
+  children,
+  onClick,
+  className,
+  style,
+  onEnter,
+  onKeyDown,
+}): JSX.Element => {
   return (
     <StyledButton
       className={classNames(s.modalButton, className)}

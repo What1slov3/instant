@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
 import { APIQueries } from '@shared/api/rest';
 import { useModalControls } from '@shared/hooks';
 import { TEXTS } from '@shared/config';
-import { Input, InputTitle, InputTitleError, ModalButton, ModalHeader } from '@shared/ui';
+import { Input, InputTitleWithError, ModalButton, ModalHeader } from '@shared/ui';
 import s from './changepassword.module.css';
 
 export const ChangePasswordModal: React.FC = (): JSX.Element => {
@@ -29,16 +28,9 @@ export const ChangePasswordModal: React.FC = (): JSX.Element => {
     <div className={classNames(s.wrapper, 'modal flex flexcolumn gap15')}>
       <ModalHeader>{TEXTS.MODALS.HEADERS.UPDATE_PASSWORD}</ModalHeader>
       <div>
-        <InputTitle>
-          текущий пароль
-          {
-            <ErrorMessage
-              errors={errors}
-              name="currentPassword"
-              render={({ message }) => <InputTitleError>{message}</InputTitleError>}
-            />
-          }
-        </InputTitle>
+        <InputTitleWithError name="currentPassword" errors={errors}>
+          Текущий пароль
+        </InputTitleWithError>
         <Input
           type="password"
           register={register}
@@ -47,16 +39,9 @@ export const ChangePasswordModal: React.FC = (): JSX.Element => {
         ></Input>
       </div>
       <div>
-        <InputTitle>
+        <InputTitleWithError name="newPassword" errors={errors}>
           Новый пароль
-          {
-            <ErrorMessage
-              errors={errors}
-              name="newPassword"
-              render={({ message }) => <InputTitleError>{message}</InputTitleError>}
-            />
-          }
-        </InputTitle>
+        </InputTitleWithError>
         <Input
           type="password"
           register={register}
@@ -65,16 +50,9 @@ export const ChangePasswordModal: React.FC = (): JSX.Element => {
         ></Input>
       </div>
       <div>
-        <InputTitle>
+        <InputTitleWithError name="repeatPassword" errors={errors}>
           Повторите пароль
-          {
-            <ErrorMessage
-              errors={errors}
-              name="repeatPassword"
-              render={({ message }) => <InputTitleError>{message}</InputTitleError>}
-            />
-          }
-        </InputTitle>
+        </InputTitleWithError>
         <Input
           type="password"
           register={register}
