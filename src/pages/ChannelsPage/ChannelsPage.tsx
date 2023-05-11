@@ -5,10 +5,11 @@ import classNames from 'classnames';
 import { setConnection, thunkGetChannels, thunkGetChats, useAppSelector } from '@shared/state';
 import { parseURLtoConnection } from '@shared/utils';
 import { Page } from '@shared/ui';
-import { ChannelChatsList, ChannelGreetings, ChannelHeader, ChannelsList } from '@entities/channel';
+import { ChannelGreetings, ChannelHeader, ChannelsList } from '@entities/channel';
 import { MessageFeedWidget } from '@widgets/message/feed';
 import { MessageInputWidget } from '@widgets/message/input';
 import { ChannelTopBarWidget } from '@widgets/chat/channelTopbar';
+import { ChannelChatsList } from '@features/channel/view-channel-chats';
 import type { Channel, Chat, ChatGroup, ID } from '@shared/types';
 import s from './channelspage.module.css';
 
@@ -100,7 +101,7 @@ export const ChannelsPage: React.FC = (): JSX.Element => {
           </div>
           {chat && (
             <div className={s.main}>
-              <ChannelTopBarWidget chatName={chat.name} chatId={chat._id} />
+              <ChannelTopBarWidget chatName={chat.name} connection={connection} />
               <MessageFeedWidget chat={chat} channelName={channel.name} />
               <MessageInputWidget connection={connection} placeholder={`Написать в #${chat.name}`} />
             </div>

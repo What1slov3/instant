@@ -62,7 +62,7 @@ export const CreateChannelModal: React.FC = (): JSX.Element => {
       {error && <LineError>{error}</LineError>}
       <div className="flex flexjce gap10">
         <ModalButton onClick={modalControls.close}>Отмена</ModalButton>
-        <ModalButton style={{ background: 'var(--purple-600)' }} onClick={handleCreateChannel}>
+        <ModalButton className="mainGradient" onClick={handleCreateChannel}>
           Готово
         </ModalButton>
       </div>

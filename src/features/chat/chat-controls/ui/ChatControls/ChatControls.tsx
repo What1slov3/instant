@@ -1,16 +1,16 @@
 import { useModalControls } from '@shared/hooks';
 import { IconButton } from '@shared/ui';
-import type { ID } from '@shared/types';
+import type { Connection } from '@shared/types';
 
 type Props = {
-  chatId: ID;
+  connection: Connection;
 };
 
-export const ChatControls: React.FC<Props> = ({ chatId }): JSX.Element => {
+export const ChatControls: React.FC<Props> = ({ connection }): JSX.Element => {
   const modalControls = useModalControls();
 
   const handleMemberListClick = () => {
-    modalControls.open({ name: 'chatMembersList', payload: { chatId } });
+    modalControls.open({ name: 'chatMembersList', payload: { ...connection } });
   };
 
   return (

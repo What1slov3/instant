@@ -19,6 +19,7 @@ export const API_ROUTES = {
   CHATS: {
     GET: '/chats',
     CREATE: '/chats/create',
+    UPDATE: '/chats',
   },
   MESSAGES: {
     GET_HISTORY: '/messages/history',

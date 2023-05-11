@@ -9,4 +9,7 @@ export const chatsQueries = {
   createChat: (name: string, chatGroupId: ID, owningChannelId: ID) => {
     return APIAccessor.post<Chat>(API_ROUTES.CHATS.CREATE, { name, chatGroupId, owningChannelId });
   },
+  updateChat: (chatId: ID, data: Partial<Chat>) => {
+    return APIAccessor.patch<Chat>(`${API_ROUTES.CHATS.UPDATE}/${chatId}`, { ...data });
+  },
 };

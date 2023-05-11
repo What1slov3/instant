@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { thunkCreateChat, thunkGetChats } from './thunk';
+import { thunkCreateChat, thunkGetChats, thunkUpdateChat } from './thunk';
 import type { Chat, ChatsState } from '@shared/types';
 
 const initialState: ChatsState = {};
@@ -19,7 +19,10 @@ const chatsSlice = createSlice({
     });
     builder.addCase(thunkCreateChat.fulfilled, (state, action) => {
       state[action.payload._id] = action.payload;
-    })
+    });
+    builder.addCase(thunkUpdateChat.fulfilled, (state, action) => {
+      state[action.payload._id] = action.payload;
+    });
   },
 });
 

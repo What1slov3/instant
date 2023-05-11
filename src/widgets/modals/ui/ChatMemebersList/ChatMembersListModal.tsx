@@ -7,7 +7,7 @@ import type { ChatMembersListPayload } from '@shared/types';
 import s from './chatmemberslistmodal.module.css';
 
 export const ChatMembersListModal: React.FC<ChatMembersListPayload> = ({ chatId }): JSX.Element => {
-  const chatName = useAppSelector((state) => state.chats[chatId].name);
+  const chatName = useAppSelector((state) => state.chats[chatId!].name);
 
   return (
     <div className={classNames(s.wrapper, 'modal')}>
@@ -18,7 +18,7 @@ export const ChatMembersListModal: React.FC<ChatMembersListPayload> = ({ chatId 
           {chatName}
         </span>
       </ModalHeader>
-      <ViewChatMembers chatId={chatId} />
+      <ViewChatMembers chatId={chatId!} />
     </div>
   );
 };

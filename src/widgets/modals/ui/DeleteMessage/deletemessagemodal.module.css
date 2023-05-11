@@ -6,7 +6,6 @@
 .message {
   display: flex;
   padding: 5px 10px;
-  margin-bottom: 20px;
   border-radius: 10px;
   background: var(--background-secondary);
   position: relative;

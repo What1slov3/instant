@@ -1,5 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { Input, InputTitle, InputTitleError } from '@shared/ui';
+import { Input, InputTitle, InputTitleError, InputTitleWithError } from '@shared/ui';
 import { CONSTANTS } from '@shared/config';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import type { User } from '@shared/types';
@@ -16,14 +16,9 @@ export const PersonalDataForm: React.FC<Props> = ({ errors, register, tag }): JS
       <h2>Личные данные</h2>
       <div className={s.formWrapper}>
         <div className={s.formBlock}>
-          <InputTitle>
+          <InputTitleWithError name="username" errors={errors}>
             Ваш никнейм
-            <ErrorMessage
-              errors={errors}
-              name="username"
-              render={({ message }) => <InputTitleError>{message}</InputTitleError>}
-            />
-          </InputTitle>
+          </InputTitleWithError>
           <div className="flex flexaic">
             <Input
               register={register}
@@ -32,11 +27,11 @@ export const PersonalDataForm: React.FC<Props> = ({ errors, register, tag }): JS
                 required: 'Обязательно к заполнению',
                 minLength: {
                   value: CONSTANTS.MIN_USERNAME_LENGTH,
-                  message: 'Никнейм должен быть не менее 3 символов длиной',
+                  message: 'Не менее 3 символов длиной',
                 },
                 maxLength: {
                   value: CONSTANTS.MAX_USERNAME_LENGTH,
-                  message: 'Никнейм должен быть не более 32 символов длиной',
+                  message: 'Не более 32 символов длиной',
                 },
               }}
             />
@@ -44,21 +39,16 @@ export const PersonalDataForm: React.FC<Props> = ({ errors, register, tag }): JS
           </div>
         </div>
         <div className={s.formBlock}>
-          <InputTitle>
+          <InputTitleWithError name="email" errors={errors}>
             Электронная почта
-            <ErrorMessage
-              errors={errors}
-              name="email"
-              render={({ message }) => <InputTitleError>{message}</InputTitleError>}
-            />
-          </InputTitle>
+          </InputTitleWithError>
           <Input
             register={register}
             name="email"
             options={{
               required: 'Обязательно к заполнению',
               validate: {
-                containAt: (value: string) => value.includes('@') || 'Невалидная почта',
+                containAt: (value: string) => value.includes('@') || 'Неверная почта',
               },
             }}
           />

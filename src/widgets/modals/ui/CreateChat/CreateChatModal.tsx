@@ -25,6 +25,7 @@ export const CreateChatModal: React.FC<Props> = ({ chatGroup, channelId }): JSX.
 
   const onSubmitHandler = (data: any) => {
     dispatch(thunkCreateChat({ name: data.name, chatGroupId: chatGroup._id, owningChannelId: channelId }));
+    modalControls.close();
   };
 
   return (
@@ -65,7 +66,7 @@ export const CreateChatModal: React.FC<Props> = ({ chatGroup, channelId }): JSX.
       <div className="flex flexjce gap10">
         <ModalButton onClick={modalControls.close}>Отмена</ModalButton>
         <ModalButton
-          style={{ background: 'var(--success-500)' }}
+          className="mainGradient"
           onClick={handleSubmit(onSubmitHandler)}
           onEnter={handleSubmit(onSubmitHandler)}
         >

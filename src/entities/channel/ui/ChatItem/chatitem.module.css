@@ -1,0 +1,41 @@
+.chatItem {
+  display: block;
+  position: relative;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.chatItem:hover,
+.active {
+  background: var(--background-secondary);
+}
+
+.hash {
+  margin-right: 3px;
+  font-size: 16px;
+  color: var(--gray-400);
+}
+
+.name {
+  width: calc(var(--chats-list-width) - 70px);
+}
+
+.link {
+  width: calc(var(--chats-list-width) - 20px);
+  padding: 3px 10px;
+}
+
+.settingsButton {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.chatItem:hover .settingsButton {
+  display: block;
+}

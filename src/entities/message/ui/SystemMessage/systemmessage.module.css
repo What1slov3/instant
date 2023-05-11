@@ -11,8 +11,9 @@
 
 .channelName {
   margin-left: 6px;
-  padding: 0 5px 2px 5px;
-  background: var(--indigo-500);
+  padding: 0 5px;
+  background: linear-gradient(-45deg, var(--indigo-500), var(--purple-500));
+  font-size: 12px;
   color: var(--gray-50);
   border-radius: 5px;
   text-transform: lowercase;

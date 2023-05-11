@@ -1,7 +1,5 @@
-import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { ErrorMessage } from '@hookform/error-message';
 import { useModalControls, useUploadImage } from '@shared/hooks';
 import { CONSTANTS } from '@shared/config';
 import { useAppSelector, thunkUpdateChannel } from '@shared/state';
@@ -9,15 +7,15 @@ import { getModifiedValues } from '@shared/utils/getModifiedValues';
 import {
   Input,
   InputTitle,
-  InputTitleError,
+  InputTitleWithError,
   ModalButton,
   ModalHeader,
   ModalSegment,
   ModalSegmentTitle,
 } from '@shared/ui';
+import { ImageUploader } from '@shared/components';
 import type { Channel } from '@shared/types';
 import s from './channelsettingsmodal.module.css';
-import { ImageUploader } from '@shared/components';
 
 export const ChannelSettingsModal: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<any>();
@@ -71,7 +69,7 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
   };
 
   return (
-    <div className={classNames(s.wrapper, 'modal')}>
+    <div className="modal flex flexcolumn gap10">
       <ModalHeader>
         Настройки «<span className={s.channelName}>{currentChannel.name}</span>»
       </ModalHeader>
@@ -97,16 +95,9 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
       <ModalSegment>
         <ModalSegmentTitle>Базовые настройки</ModalSegmentTitle>
         <div>
-          <InputTitle>
+          <InputTitleWithError name="name" errors={errors}>
             Название сервера
-            {
-              <ErrorMessage
-                errors={errors}
-                name="name"
-                render={({ message }) => <InputTitleError>{message}</InputTitleError>}
-              />
-            }
-          </InputTitle>
+          </InputTitleWithError>
           <Input
             register={register}
             name="name"
@@ -114,11 +105,11 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
               required: 'Обязательно к заполнению',
               minLength: {
                 value: CONSTANTS.MIN_CHANNEL_TITLE_LENGTH,
-                message: 'Название должно быть не менее 3 символов длиной',
+                message: 'Не менее 3 символов длиной',
               },
               maxLength: {
                 value: CONSTANTS.MAX_CHANNEL_TITLE_LENGTH,
-                message: 'Название должно быть не более 32 символов длиной',
+                message: 'Не более 32 символов длиной',
               },
             }}
           />
@@ -129,7 +120,7 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
           Отмена
         </ModalButton>
         <ModalButton
-          style={{ background: 'var(--success-500)' }}
+          className="mainGradient"
           onClick={handleSubmit(onSubmitHandler)}
           onEnter={handleSubmit(onSubmitHandler)}
         >

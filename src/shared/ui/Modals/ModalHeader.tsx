@@ -11,7 +11,7 @@ type Props = {
 
 export const ModalHeader: FC<Props> = ({ style, className, children }): JSX.Element => {
   return (
-    <h2 className={classNames(s.header, className)} style={style}>
+    <h2 className={classNames(s.header, className, 'mainGradient textBgClip')} style={style}>
       {children}
     </h2>
   );

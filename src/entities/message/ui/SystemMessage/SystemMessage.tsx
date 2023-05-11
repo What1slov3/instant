@@ -11,7 +11,7 @@ export const SystemMessage: React.FC<Props> = ({ isShort, username, content }): 
   return (
     <>
       {!isShort && (
-        <div className={s.name}>
+        <div className="flex flexaic">
           <span className={s.systemName}>{username}</span>
           <span className={s.channelName}>канал</span>
         </div>
