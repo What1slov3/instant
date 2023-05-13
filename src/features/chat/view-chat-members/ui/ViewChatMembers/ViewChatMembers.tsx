@@ -3,7 +3,7 @@ import { UserListCard } from '@entities/user';
 import { useAppSelector } from '@shared/state';
 import { InfiniteScroll } from '@shared/components';
 import { useUsersCache } from '@shared/hooks';
-import { CONSTANTS } from '@shared/config';
+import { config } from '@shared/config';
 import s from './viewchatmembers.module.css';
 
 type Props = {
@@ -35,7 +35,7 @@ export const ViewChatMembers: React.FC<Props> = ({ chatId }): JSX.Element => {
   };
 
   const renderUserCards = useMemo(() => {
-    return channelMembers.slice(0, page * CONSTANTS.GET_USERS_LIST_LIMIT).map((userId) => {
+    return channelMembers.slice(0, page * config.GET_USERS_LIST_LIMIT).map((userId) => {
       if (cache[userId]) {
         return <UserListCard key={userId} {...cache[userId]} />;
       }
@@ -47,7 +47,7 @@ export const ViewChatMembers: React.FC<Props> = ({ chatId }): JSX.Element => {
       <InfiniteScroll
         direction="bottom"
         next={loadUsers}
-        hasMore={page < Math.ceil(channelMembers.length / CONSTANTS.GET_USERS_LIST_LIMIT)}
+        hasMore={page < Math.ceil(channelMembers.length / config.GET_USERS_LIST_LIMIT)}
         loading={isLoading}
       >
         {setted && renderUserCards}

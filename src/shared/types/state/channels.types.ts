@@ -6,7 +6,7 @@ export type ChannelsState = {
 
 export type Channel = {
   _id: ID;
-  chatGroups: ChatGroup<string>[];
+  chatGroups: ChatGroup<ID>[];
   icon: string;
   name: string;
   members: ID[];

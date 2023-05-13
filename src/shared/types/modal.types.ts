@@ -16,9 +16,9 @@ export type ImageAttachmentPayload = {
 export type ChatMembersListPayload = Connection;
 export type ChatSettingsPayload = Connection;
 
-export type ModalsWihtoutPayload = 'createChannel' | 'channelSettings' | 'changePassword';
+export type ModalsWithoutPayload = 'createChannel' | 'channelSettings' | 'changePassword';
 export type ModalName =
-  | ModalsWihtoutPayload
+  | ModalsWithoutPayload
   | 'deleteMessage'
   | 'channelInvite'
   | 'createChat'

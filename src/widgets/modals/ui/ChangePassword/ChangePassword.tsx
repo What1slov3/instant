@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { APIQueries } from '@shared/api/rest';
 import { useModalControls } from '@shared/hooks';
 import { TEXTS } from '@shared/config';
-import { Input, InputTitleWithError, ModalButton, ModalHeader } from '@shared/ui';
+import { PasswordChange } from '@features/settings/update-user-profile';
+import { ModalButton, ModalHeader } from '@shared/ui';
 import s from './changepassword.module.css';
 
 export const ChangePasswordModal: React.FC = (): JSX.Element => {
@@ -25,48 +26,9 @@ export const ChangePasswordModal: React.FC = (): JSX.Element => {
   };
 
   return (
-    <div className={classNames(s.wrapper, 'modal flex flexcolumn gap15')}>
+    <div className={classNames(s.wrapper, 'modal')}>
       <ModalHeader>{TEXTS.MODALS.HEADERS.UPDATE_PASSWORD}</ModalHeader>
-      <div>
-        <InputTitleWithError name="currentPassword" errors={errors}>
-          Текущий пароль
-        </InputTitleWithError>
-        <Input
-          type="password"
-          register={register}
-          name="currentPassword"
-          options={{ required: 'Обязательно к заполнению' }}
-        ></Input>
-      </div>
-      <div>
-        <InputTitleWithError name="newPassword" errors={errors}>
-          Новый пароль
-        </InputTitleWithError>
-        <Input
-          type="password"
-          register={register}
-          name="newPassword"
-          options={{ required: 'Обязательно к заполнению' }}
-        ></Input>
-      </div>
-      <div>
-        <InputTitleWithError name="repeatPassword" errors={errors}>
-          Повторите пароль
-        </InputTitleWithError>
-        <Input
-          type="password"
-          register={register}
-          name="repeatPassword"
-          options={{
-            required: 'Обязательно к заполнению',
-            validate: (value: string) => {
-              if (watch('newPassword') != value) {
-                return 'Пароли не совпадают';
-              }
-            },
-          }}
-        ></Input>
-      </div>
+      <PasswordChange register={register} watch={watch} errors={errors} />
       <ModalButton onClick={handleSubmit(onSubmitHandler)}>Сохранить</ModalButton>
     </div>
   );

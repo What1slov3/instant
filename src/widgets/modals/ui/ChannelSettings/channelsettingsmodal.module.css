@@ -3,12 +3,3 @@
   font-weight: 600;
   color: var(--primary-500);
 }
-
-.mainSettings {
-  display: flex;
-  gap: 20px;
-}
-
-.flex {
-  flex: 1;
-}

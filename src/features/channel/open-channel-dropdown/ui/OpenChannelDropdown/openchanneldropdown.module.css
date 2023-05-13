@@ -1,0 +1,22 @@
+.option {
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+.option:hover {
+  background: var(--background-secondary);
+  border-radius: 8px;
+}
+
+.option i {
+  width: 20px;
+}
+
+.invite {
+  font-weight: 500;
+}
+
+.invite,
+.invite * {
+  color: var(--purple-400);
+}

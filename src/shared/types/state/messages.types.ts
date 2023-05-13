@@ -9,7 +9,7 @@ export type Message = {
   updatedAt: string;
   createdAt: string;
   senderId: ID;
-  meta: MessageMeta;
+  meta?: MessageMeta;
 };
 
 export type MessageAttachments = {

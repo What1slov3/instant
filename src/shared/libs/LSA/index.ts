@@ -1,5 +1,5 @@
 import LSSDefault from './defaultStructure';
-import type { LSStructure as LSStructure } from '@shared/types';
+import type { LSStructure } from '@shared/types';
 
 // LSA - Local Storage Accessor
 
@@ -35,16 +35,4 @@ export class LSA {
       }
     }
   }
-
-  // public setSetting(field: keyof LSSettings, value: string | number | null) {
-  //   if (LSSDefault.settings[field as keyof LSSettings]) {
-  //     const settings: LSSettings = JSON.parse(this._ls.getItem('settings')!);
-  //     this._ls.setItem('settings', JSON.stringify({ ...settings, [field]: value }));
-  //   }
-  // }
-
-  // public getSetting(field: keyof LSSettings): any {
-  //   const settings: LSSettings = JSON.parse(this._ls.getItem('settings')!);
-  //   return settings[field as keyof LSSettings];
-  // }
 }

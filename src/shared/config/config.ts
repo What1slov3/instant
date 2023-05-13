@@ -1,4 +1,4 @@
-export const CONSTANTS = {
+export const config = {
   MAX_FILE_SIZE: 8388608,
   MAX_ATTACHMENT_SIZE: 6291456,
   MIN_CHANNEL_TITLE_LENGTH: 3,

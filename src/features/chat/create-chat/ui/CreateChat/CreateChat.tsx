@@ -3,15 +3,15 @@ import { config } from '@shared/config';
 import type { FieldErrors, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
 type Props = {
-  register: UseFormRegister<any>;
   errors: FieldErrors;
+  register: UseFormRegister<any>;
   setValue: UseFormSetValue<any>;
 };
 
-export const UpdateChatSettings: React.FC<Props> = ({ register, errors, setValue }): JSX.Element => {
+export const CreateChat: React.FC<Props> = ({ errors, register, setValue }): JSX.Element => {
   return (
     <ModalSegment>
-      <InputTitleWithError name="name" errors={errors}>
+      <InputTitleWithError errors={errors} name="name">
         Название чата
       </InputTitleWithError>
       <Input
@@ -21,11 +21,11 @@ export const UpdateChatSettings: React.FC<Props> = ({ register, errors, setValue
           required: 'Обязательно к заполнению',
           minLength: {
             value: config.MIN_CHAT_TITLE_LENGTH,
-            message: 'Название должно быть не менее 3 символов длиной',
+            message: 'Не менее 3 символов длиной',
           },
           maxLength: {
             value: config.MAX_CHAT_TITLE_LENGTH,
-            message: 'Название должно быть не более 32 символов длиной',
+            message: 'Не более 32 символов длиной',
           },
           onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
             setValue('name', e.currentTarget.value.replace(/\s+/g, '-').replace(/-+/g, '-'));

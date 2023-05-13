@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { APIQueries } from '@shared/api/rest';
-import { TEXTS, CONSTANTS } from '@shared/config';
+import { TEXTS, config } from '@shared/config';
 
 export interface IMultipleUploadHandlers {
   uploadHandler: React.ChangeEventHandler<HTMLInputElement>;
@@ -33,8 +33,8 @@ export const useMultipleUploadAndProcessingImages = (maxFilesCount: number) => {
   const setIcon = (file: File | undefined) => {
     setError(null);
     if (file && file.type.startsWith('image/')) {
-      if (file.size > CONSTANTS.MAX_FILE_SIZE) {
-        setError(`${TEXTS.ERRORS.ATTACHMENTS.FILE_SIZE} (>${CONSTANTS.MAX_FILE_SIZE / 1024 ** 2}МБ)`);
+      if (file.size > config.MAX_FILE_SIZE) {
+        setError(`${TEXTS.ERRORS.ATTACHMENTS.FILE_SIZE} (>${config.MAX_FILE_SIZE / 1024 ** 2}МБ)`);
         return;
       }
 

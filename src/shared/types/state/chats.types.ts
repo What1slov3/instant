@@ -6,9 +6,6 @@ export type Chat = {
   _id: ID;
   owningChannelId: ID;
   name: string;
-  stats: {
-    messageCount: number;
-  };
   createdAt: string;
   updatedAt: string;
 };

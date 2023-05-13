@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import { useInput, useUploadImage, useModalControls } from '@shared/hooks';
 import { toMB } from '@shared/utils';
-import { CONSTANTS, TEXTS } from '@shared/config';
+import { config, TEXTS } from '@shared/config';
 import { thunkCreateChannel } from '@shared/state';
 import { Input, InputTitle, LineError, ModalButton, ModalDescription, ModalHeader } from '@shared/ui';
 import { ImageUploader } from '@shared/components';
@@ -30,7 +30,7 @@ export const CreateChannelModal: React.FC = (): JSX.Element => {
     if (!value.trim()) {
       return setError('У канала должно быть название');
     }
-    if (value.length > CONSTANTS.MAX_CHANNEL_TITLE_LENGTH) {
+    if (value.length > config.MAX_CHANNEL_TITLE_LENGTH) {
       return setError('Слишком длинное название');
     }
     if (!icon) {

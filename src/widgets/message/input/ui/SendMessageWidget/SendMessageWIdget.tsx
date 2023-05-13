@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import { SendMessageInput } from '@features/message/send-message';
 import { useGlobalListener, useMultipleUploadAndProcessingImages } from '@shared/hooks';
-import { CONSTANTS } from '@shared/config';
+import { config } from '@shared/config';
 import { AttachmentInput, AttachmentsPreview } from '@entities/attachment';
 import { EmojiPicker } from '@features/emoji/pick-emoji';
 import { setEmojiInQuill } from '@entities/input';
@@ -22,7 +22,7 @@ export const MessageInputWidget: React.FC<Props> = ({ connection, placeholder })
     error,
     reset: resetImages,
     processUpload,
-  } = useMultipleUploadAndProcessingImages(CONSTANTS.MAX_ATTACHMENTS_COUNT);
+  } = useMultipleUploadAndProcessingImages(config.MAX_ATTACHMENTS_COUNT);
 
   const inputRef = useRef<ReactQuill>(null!);
   const dragEventCountRef = useRef<number>(0);

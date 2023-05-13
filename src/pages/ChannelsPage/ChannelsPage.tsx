@@ -73,8 +73,10 @@ export const ChannelsPage: React.FC = (): JSX.Element => {
   useEffect(() => {
     if (channel) {
       const chatsToLoad: ID[] = channel.chatGroups.reduce((prev, curr) => {
-        return [...prev, ...curr.chats.filter((chatId) => !loadedChats[chatId])];
+        prev.push(...curr.chats.filter((chatId) => !loadedChats[chatId]));
+        return prev;
       }, [] as ID[]);
+
       if (chatsToLoad.length) {
         dispatch(thunkGetChats({ ids: chatsToLoad }));
       }

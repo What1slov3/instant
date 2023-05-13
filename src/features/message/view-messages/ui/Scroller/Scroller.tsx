@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setChatLoadingStatus, thunkGetHistory, useAppSelector } from '@shared/state';
-import { CONSTANTS } from '@shared/config';
+import { config } from '@shared/config';
 import { MessagesSkeletonPreloader } from '@entities/preloaders';
 import { MessageFeedBeginning, ScrollBottomButton } from '@entities/message';
 import { InfiniteScroll } from '@shared/components';
@@ -91,7 +91,7 @@ export const Scroller: React.FC<Props> = ({
   }, [visibleIndex]);
 
   const historyNext = useCallback(() => {
-    const maxIndex = Math.floor(history.length / CONSTANTS.CHAT_CHUNK_SIZE);
+    const maxIndex = Math.floor(history.length / config.CHAT_CHUNK_SIZE);
 
     if (visibleIndex < maxIndex) {
       setVisibleIndex((prev) => prev + 1);
@@ -101,7 +101,7 @@ export const Scroller: React.FC<Props> = ({
           thunkGetHistory({
             chatId: chatId!,
             offset: history?.length || 0,
-            limit: CONSTANTS.GET_HISTORY_LIMIT,
+            limit: config.GET_HISTORY_LIMIT,
           })
         );
       }
@@ -129,7 +129,7 @@ export const Scroller: React.FC<Props> = ({
   const handleOnScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
     const scrollBottom = target.scrollHeight - target.scrollTop - target.clientHeight;
-    setShowBottomScroll(scrollBottom > CONSTANTS.SCROLL_TO_SHOW_SCROLL_BUTTON);
+    setShowBottomScroll(scrollBottom > config.SCROLL_TO_SHOW_SCROLL_BUTTON);
     setIsScrolledBottom(scrollBottom === 0);
     if (!chatLoadingStatus.isLoaded) {
       prevScrollTopRef.current = target.scrollTop;
@@ -139,9 +139,9 @@ export const Scroller: React.FC<Props> = ({
   const renderedChunks = useMemo(() => {
     let messages: JSX.Element[] = [];
 
-    const maxIndex = Math.floor(history.length / CONSTANTS.CHAT_CHUNK_SIZE);
+    const maxIndex = Math.floor(history.length / config.CHAT_CHUNK_SIZE);
 
-    for (let i = history.length - (maxIndex - visibleIndex) * CONSTANTS.CHAT_CHUNK_SIZE - 1; i >= 0; i--) {
+    for (let i = history.length - (maxIndex - visibleIndex) * config.CHAT_CHUNK_SIZE - 1; i >= 0; i--) {
       if (history[i]) {
         messages.push(renderMessageFeedMessageWithDividers(history[i], history[i + 1], channelName, user, usersCache));
       }
