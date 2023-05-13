@@ -1,6 +1,5 @@
-import { ErrorMessage } from '@hookform/error-message';
-import { Input, InputTitle, InputTitleError, InputTitleWithError } from '@shared/ui';
-import { CONSTANTS } from '@shared/config';
+import { Input, InputTitleWithError } from '@shared/ui';
+import { config } from '@shared/config';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 import type { User } from '@shared/types';
 import s from './personaldataform.module.css';
@@ -26,11 +25,11 @@ export const PersonalDataForm: React.FC<Props> = ({ errors, register, tag }): JS
               options={{
                 required: 'Обязательно к заполнению',
                 minLength: {
-                  value: CONSTANTS.MIN_USERNAME_LENGTH,
+                  value: config.MIN_USERNAME_LENGTH,
                   message: 'Не менее 3 символов длиной',
                 },
                 maxLength: {
-                  value: CONSTANTS.MAX_USERNAME_LENGTH,
+                  value: config.MAX_USERNAME_LENGTH,
                   message: 'Не более 32 символов длиной',
                 },
               }}

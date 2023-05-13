@@ -6,4 +6,4 @@ export const EnvironmentPage: React.FC = (): JSX.Element => {
       <h1>Окружение</h1>
     </div>
   );
-}
+};

@@ -1,4 +1,4 @@
-import type { ModalName } from '@shared/types';
+import type { Modal, ModalName } from '@shared/types';
 import {
   ChangePasswordModal,
   ChannelInviteModal,

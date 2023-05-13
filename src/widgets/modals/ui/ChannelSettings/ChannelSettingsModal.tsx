@@ -1,19 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useModalControls, useUploadImage } from '@shared/hooks';
-import { CONSTANTS } from '@shared/config';
 import { useAppSelector, thunkUpdateChannel } from '@shared/state';
 import { getModifiedValues } from '@shared/utils/getModifiedValues';
-import {
-  Input,
-  InputTitle,
-  InputTitleWithError,
-  ModalButton,
-  ModalHeader,
-  ModalSegment,
-  ModalSegmentTitle,
-} from '@shared/ui';
-import { ImageUploader } from '@shared/components';
+import { ModalButton, ModalHeader } from '@shared/ui';
+import { ChannelAppearanceSettings, ChannelBasicSettings } from '@features/channel/update-channel-settings';
 import type { Channel } from '@shared/types';
 import s from './channelsettingsmodal.module.css';
 
@@ -22,32 +13,37 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
 
   const modalControls = useModalControls();
 
-  const { img: iconFile, imgURL: iconURL, handleUpload, handleDrop } = useUploadImage();
+  const {
+    img: iconFile,
+    imgURL: iconURL,
+    handleUpload: iconHandleUpload,
+    handleDrop: iconHandleDrop,
+  } = useUploadImage();
   const {
     img: bannerFile,
     imgURL: bannerURL,
-    handleUpload: handleUploadBanner,
-    handleDrop: handleDropBanner,
+    handleUpload: bannerHandleUpload,
+    handleDrop: bannerHandleDrop,
   } = useUploadImage();
 
   const connection = useAppSelector((state) => state.statuses.connection);
   const channels = useAppSelector((state) => state.channels.channels);
 
-  const currentChannel = channels.find((channel) => channel._id === connection.channelId)!;
+  const channel = channels.find((channel) => channel._id === connection.channelId)!;
 
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty, dirtyFields },
-  } = useForm({ defaultValues: { name: currentChannel.name } });
+  } = useForm({ defaultValues: { name: channel.name } });
 
   const onSubmitHandler = (data: Partial<Channel>) => {
     let filesData: { banner?: File; icon?: File } = {};
 
-    if (bannerURL && currentChannel.banner !== bannerURL) {
+    if (bannerURL && channel.banner !== bannerURL) {
       filesData.banner = bannerFile!;
     }
-    if (iconURL && currentChannel.icon !== iconURL) {
+    if (iconURL && channel.icon !== iconURL) {
       filesData.icon = iconFile!;
     }
 
@@ -60,7 +56,7 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
       console.log(dirtyData);
       dispatch(
         thunkUpdateChannel({
-          channelId: currentChannel._id,
+          channelId: channel._id,
           data: dirtyData,
         })
       );
@@ -69,52 +65,21 @@ export const ChannelSettingsModal: React.FC = (): JSX.Element => {
   };
 
   return (
-    <div className="modal flex flexcolumn gap10">
+    <div className="modal">
       <ModalHeader>
-        Настройки «<span className={s.channelName}>{currentChannel.name}</span>»
+        Настройки «<span className={s.channelName}>{channel.name}</span>»
       </ModalHeader>
-      <ModalSegment>
-        <ModalSegmentTitle>Внешний вид</ModalSegmentTitle>
-        <div className={s.mainSettings}>
-          <div>
-            <InputTitle>Иконка сервера</InputTitle>
-            <ImageUploader src={iconURL || currentChannel.icon} handleDrop={handleDrop} handleUpload={handleUpload} />
-          </div>
-          <div>
-            <InputTitle>Баннер сервера</InputTitle>
-            <ImageUploader
-              src={bannerURL || currentChannel.banner}
-              handleDrop={handleDropBanner}
-              handleUpload={handleUploadBanner}
-              width={400}
-              height={150}
-            />
-          </div>
-        </div>
-      </ModalSegment>
-      <ModalSegment>
-        <ModalSegmentTitle>Базовые настройки</ModalSegmentTitle>
-        <div>
-          <InputTitleWithError name="name" errors={errors}>
-            Название сервера
-          </InputTitleWithError>
-          <Input
-            register={register}
-            name="name"
-            options={{
-              required: 'Обязательно к заполнению',
-              minLength: {
-                value: CONSTANTS.MIN_CHANNEL_TITLE_LENGTH,
-                message: 'Не менее 3 символов длиной',
-              },
-              maxLength: {
-                value: CONSTANTS.MAX_CHANNEL_TITLE_LENGTH,
-                message: 'Не более 32 символов длиной',
-              },
-            }}
-          />
-        </div>
-      </ModalSegment>
+      <ChannelAppearanceSettings
+        iconHandleDrop={iconHandleDrop}
+        iconHandleUpload={iconHandleUpload}
+        bannerHandleDrop={bannerHandleDrop}
+        bannerHandleUpload={bannerHandleUpload}
+        currentIconURL={channel.icon}
+        currentBannerURL={channel.banner}
+        iconURL={iconURL}
+        bannerURL={bannerURL}
+      />
+      <ChannelBasicSettings errors={errors} register={register} />
       <div className="flex flexjce gap10">
         <ModalButton className={s.cancelButton} onClick={modalControls.close}>
           Отмена

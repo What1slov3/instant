@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { APIQueries } from '@shared/api/rest';
 import { useAxiosQuery } from '@shared/hooks';
 import { updateUsersCache, useAppSelector } from '@shared/state';
-import { CONSTANTS } from '@shared/config';
+import { config } from '@shared/config';
 import type { ID } from '@shared/types';
 
 export const useUsersCache = () => {
@@ -30,14 +30,14 @@ export const useUsersCache = () => {
 
   const proxyCache = useMemo(() => {
     return new Proxy(cache, {
-      get: (target, name) => {
-        if (target[name as string]) {
-          if (Date.now() - target[name as string].timestamp > CONSTANTS.USER_CACHE_TIMEOUT) {
-            bufferRef.current.add(name as string);
+      get: (target, name: string) => {
+        if (target[name]) {
+          if (Date.now() - target[name].timestamp > config.USER_CACHE_TIMEOUT) {
+            bufferRef.current.add(name);
           }
-          return target[name as string];
+          return target[name];
         } else {
-          bufferRef.current.add(name as string);
+          bufferRef.current.add(name);
         }
       },
     });
