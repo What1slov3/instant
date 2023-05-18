@@ -40,6 +40,8 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat, channelName }): JSX.E
           case 'delete':
             deleteMessage(elem.dataset.messageId!);
             break;
+          case 'copy':
+            copyText(elem.dataset.messageText!);
         }
       }
     },
@@ -51,6 +53,10 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat, channelName }): JSX.E
       name: 'deleteMessage',
       payload: { message: history.find((message) => message._id === messageId)! },
     });
+  };
+
+  const copyText = (text: string) => {
+    navigator.clipboard.writeText(text);
   };
 
   return (

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Tooltip } from '@shared/components';
 import { UserMessage } from '../UserMessage/UserMessage';
 import { SystemMessage } from '../SystemMessage/SystemMessage';
+import { IconButton } from '@shared/ui';
 import type { Message as TMessage } from '@shared/types';
 import s from './message.module.css';
 
@@ -26,7 +27,12 @@ const Message: React.FC<Props> = ({
   meta,
 }): JSX.Element => {
   return (
-    <div className={classNames(s.message, { [s.short]: isShort })} data-message="true" data-message-id={_id}>
+    <div
+      className={classNames(s.message, { [s.short]: isShort })}
+      data-message="true"
+      data-message-id={_id}
+      data-message-text={content.text}
+    >
       <Tooltip text={fullTime} className={s.timestampWrapper}>
         <div className={s.timestamp}>{createdAt}</div>
       </Tooltip>
@@ -38,8 +44,17 @@ const Message: React.FC<Props> = ({
         )}
       </div>
       <div className={s.contextMenu}>
+        <Tooltip position="top" positioning="absolute" text="Копировать">
+          <IconButton faClass="fa-regular fa-clone" className={s.contextButton} data-message-action="copy" />
+        </Tooltip>
         {userIsOwner && (
-          <i className={classNames('fa-solid fa-trash-can', s.deleteMessage)} data-message-action="delete"></i>
+          <Tooltip position="top" positioning="absolute" text="Удалить">
+            <IconButton
+              faClass="fa-solid fa-trash-can"
+              className={classNames(s.delete, s.contextButton)}
+              data-message-action="delete"
+            />
+          </Tooltip>
         )}
       </div>
     </div>

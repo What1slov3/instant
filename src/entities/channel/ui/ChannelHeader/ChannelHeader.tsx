@@ -4,6 +4,7 @@ import { useGlobalListener } from '@shared/hooks';
 import { ChannelDropdown } from '../ChannelDropdown/ChannelDropdown';
 import type { Channel } from '@shared/types';
 import s from './channelheader.module.css';
+import { OpenChannelDropdown } from '@features/channel/open-channel-dropdown';
 
 type Props = {} & Pick<Channel, 'name' | 'banner' | '_id'>;
 
@@ -38,7 +39,7 @@ export const ChannelHeader: React.FC<Props> = ({ name, banner, _id }): JSX.Eleme
           <i className="fa-solid fa-chevron-down"></i>
         </div>
       </div>
-      {dropdownIsOpen && <ChannelDropdown channelId={_id} />}
+      {dropdownIsOpen && <OpenChannelDropdown channelId={_id} />}
     </div>
   );
 };
