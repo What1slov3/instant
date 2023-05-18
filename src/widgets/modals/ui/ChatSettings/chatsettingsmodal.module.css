@@ -1,4 +1,3 @@
 .wrapper {
-  width: 100vw;
-  max-width: 500px;
+  width: min(500px, 100vw - 20px);
 }

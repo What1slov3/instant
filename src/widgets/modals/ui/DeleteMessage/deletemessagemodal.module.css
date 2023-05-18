@@ -1,6 +1,5 @@
 .wrapper {
-  min-width: 450px;
-  max-width: 600px;
+  width: min(600px, 100vw - 20px);
 }
 
 .message {

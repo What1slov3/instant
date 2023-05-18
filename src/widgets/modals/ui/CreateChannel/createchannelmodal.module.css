@@ -1,5 +1,5 @@
 .wrapper {
-  width: 440px;
+  width: min(440px, 100vw - 20px);
 }
 
 .channelNameInput {

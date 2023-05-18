@@ -35,4 +35,4 @@ export type MessageMeta = {
   };
 } | null;
 
-export type MessageAction = 'delete' | 'edit';
+export type MessageAction = 'delete' | 'edit' | 'copy';

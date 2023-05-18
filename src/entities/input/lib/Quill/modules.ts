@@ -1,10 +1,10 @@
 import Delta from 'quill-delta';
-import { regexEmoji } from '@shared/regexs';
+import { regex } from '@shared/regexs';
 
 const matchIgnore = (node: Element, delta: Delta) => {
   let ops: Delta['ops'] = [];
   delta.ops.forEach((op) => {
-    if (op.attributes && typeof op.attributes.alt === 'string' && op.attributes.alt.match(regexEmoji)?.[0]) {
+    if (op.attributes && typeof op.attributes.alt === 'string' && op.attributes.alt.match(regex.emoji)?.[0]) {
       ops.push({
         insert: op.attributes.alt as string,
       });

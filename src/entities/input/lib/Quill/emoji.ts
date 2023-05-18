@@ -1,8 +1,8 @@
 import { DeltaStatic } from 'quill';
 import Delta from 'quill-delta';
 import { quillGetText } from './utils';
-import { regexEmojiShortname } from '@shared/regexs';
 import { emojiShortnames } from '@entities/emoji';
+import { regex } from '@shared/regexs';
 import type Quill from 'quill';
 
 export function emojiQuill(quill: Quill) {
@@ -13,7 +13,7 @@ export function emojiQuill(quill: Quill) {
 
     let indexOffset = 0;
 
-    [...quillGetText(quill).matchAll(regexEmojiShortname)].forEach((shortnameMatch) => {
+    [...quillGetText(quill).matchAll(regex.emojiShortname)].forEach((shortnameMatch) => {
       const emojiMatch = Object.keys(emojiShortnames).find(
         (key: string) => key === shortnameMatch[0]
       ) as keyof typeof emojiShortnames;

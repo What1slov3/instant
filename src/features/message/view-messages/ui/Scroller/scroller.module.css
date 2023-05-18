@@ -1,7 +1,8 @@
 .chatWindow {
   border-radius: 10px;
   padding-right: 5px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100%;
   contain: size style;
   transform: translate(0, 0, 0);
