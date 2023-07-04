@@ -1,24 +1,17 @@
-import { ID } from "@shared/types";
+import { ChatGroup, ID } from '@shared/types';
 
-export type ChannelsState = {
+export type SliceChannels = {
   channels: Channel[];
 };
 
 export type Channel = {
-  _id: ID;
-  chatGroups: ChatGroup<ID>[];
+  id: ID;
+  chatGroups?: ChatGroup<ID>[];
   icon: string;
   name: string;
   members: ID[];
   ownerId: ID;
   systemChatId: ID;
   createdAt: string;
-  updatedAt: string;
   banner: string;
-};
-
-export type ChatGroup<T> = {
-  _id: ID;
-  name: string;
-  chats: T[];
 };

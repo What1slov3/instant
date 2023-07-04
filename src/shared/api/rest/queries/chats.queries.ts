@@ -1,6 +1,6 @@
 import { API_ROUTES } from '@shared/api/rest/routes';
 import { APIAccessor } from '@shared/api/rest';
-import type { Chat, ID } from '@shared/types';
+import type { Chat, ChatGroup, ID } from '@shared/types';
 
 export const chatsQueries = {
   getChats: (ids: string[]) => {
@@ -11,5 +11,8 @@ export const chatsQueries = {
   },
   updateChat: (chatId: ID, data: Partial<Chat>) => {
     return APIAccessor.patch<Chat>(`${API_ROUTES.CHATS.UPDATE}/${chatId}`, { ...data });
+  },
+  init: (channelId: ID) => {
+    return APIAccessor.get<ChatGroup<ID>[]>(`${API_ROUTES.CHATS.INIT}`, { params: { channelId } });
   },
 };

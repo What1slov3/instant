@@ -7,3 +7,4 @@ export * from './ui/DeleteMessage/DeleteMessageModal';
 export * from './ui/ImageAttachment/ImageAttachmentmodal';
 export * from './ui/ChatMemebersList/ChatMembersListModal';
 export * from './ui/ChatSettings/ChatSettingsModal';
+export * from './ui/LeaveChannel/LeaveChannelModal';

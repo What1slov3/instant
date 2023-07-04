@@ -1,20 +1,20 @@
 import { thunkDeleteMessage, thunkGetHistory, thunkSendMessage } from './thunk';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import type { Message, MessagesState } from '@shared/types';
+import type { Message, SliceMessages } from '@shared/types';
 
-const initialState: MessagesState = {};
+const initialState: SliceMessages = {};
 
 const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
     addMessage: (state, action: PayloadAction<Message>) => {
-      state[action.payload.context.chatId].unshift(action.payload);
+      state[action.payload.chatId].unshift(action.payload);
     },
     deletedMessage: (state, action: PayloadAction<Message>) => {
-      const chatId = action.payload.context.chatId;
+      const chatId = action.payload.chatId;
       state[chatId].splice(
-        state[chatId].findIndex((message) => action.payload._id === message._id),
+        state[chatId].findIndex((message) => action.payload.id === message.id),
         1
       );
     },
@@ -26,16 +26,6 @@ const messagesSlice = createSlice({
         state[data.chatId] = [];
       }
       state[data.chatId].push(...data.history);
-    });
-    builder.addCase(thunkSendMessage.fulfilled, (state, action) => {
-      state[action.payload.context.chatId].unshift(action.payload);
-    });
-    builder.addCase(thunkDeleteMessage.fulfilled, (state, action) => {
-      const chatId = action.payload.context.chatId;
-      state[chatId].splice(
-        state[chatId].findIndex((message) => action.payload._id === message._id),
-        1
-      );
     });
   },
 });

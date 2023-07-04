@@ -10,16 +10,19 @@ export const channelsQueries = {
       { headers: { 'Content-Type': 'multipart/form-data' } }
     );
   },
-  get: (channelIds: ID | ID[]) => {
+  get: (channelIds: ID | ID[], withMembers = true) => {
     return APIAccessor.get<Channel[]>(API_ROUTES.CHANNELS.GET, {
-      params: { ids: typeof channelIds === 'string' ? channelIds : channelIds.join(',') },
+      params: { ids: typeof channelIds === 'string' ? channelIds : channelIds.join(','), withMembers },
     });
   },
   updateChannel: (channelId: ID, data: Partial<Omit<Channel, 'banner' | 'icon'> & { icon?: File; banner?: File }>) => {
-    const { members, chatGroups, ...rest } = data;
+    const { members, ...rest } = data;
 
     return APIAccessor.patch<Channel>(`${API_ROUTES.CHANNELS.UPDATE_CHANNEL}/${channelId}`, rest, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
+  },
+  leaveChannel: (channelId: string) => {
+    return APIAccessor.get(`${API_ROUTES.CHANNELS.LEAVE}`, { params: { channelId } });
   },
 };

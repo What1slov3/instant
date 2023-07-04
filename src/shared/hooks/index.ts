@@ -8,3 +8,4 @@ export * from './useMultipleUploadImages';
 export * from './useWindowResize';
 export * from './useAxiosQuery';
 export * from './useUsersCache';
+export * from './useCustomNavbar';

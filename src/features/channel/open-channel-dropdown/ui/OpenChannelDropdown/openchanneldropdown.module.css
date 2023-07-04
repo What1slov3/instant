@@ -20,3 +20,8 @@
 .invite * {
   color: var(--purple-400);
 }
+
+.leave,
+.leave * {
+  color: var(--error-500);
+}

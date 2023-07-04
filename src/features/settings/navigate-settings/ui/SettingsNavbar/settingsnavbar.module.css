@@ -1,0 +1,58 @@
+.wrapper {
+  padding: 10px;
+  border-radius: 10px;
+  overflow-y: auto;
+  background: var(--background-secondary);
+}
+
+.sectionName {
+  cursor: default;
+  padding: 10px 5px;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.navTab {
+  display: block;
+  padding: 5px 10px;
+  width: 100%;
+  color: var(--gray-200);
+  border-radius: 8px;
+}
+
+.navTab:hover,
+.active {
+  background: var(--background-primary);
+}
+
+.logout {
+  margin-top: auto;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout,
+.logout * {
+  font-size: 15px;
+}
+
+.logout:hover {
+  background: #c9574f6b;
+}
+
+.logout:hover,
+.logout:hover * {
+  color: var(--error-500);
+}
+
+.logout:focus {
+  box-shadow: 0px 0px 0px 2px var(--error-500);
+}
+
+.version {
+  color: var(--gray-400);
+  font-size: 13px;
+}

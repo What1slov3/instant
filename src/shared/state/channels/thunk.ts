@@ -1,6 +1,6 @@
 import { APIQueries } from '@shared/api/rest';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Channel, ID } from '@shared/types';
+import type { Channel, ID } from '@shared/types';
 
 export const thunkCreateChannel = createAsyncThunk(
   'channels/create',
@@ -31,5 +31,15 @@ export const thunkUpdateChannel = createAsyncThunk(
 
 export const thunkJoinChannelByInvite = createAsyncThunk('channels/join', async (inviteId: string) => {
   const res = await APIQueries.invites.joinChannelByInvite(inviteId);
+  return res.data;
+});
+
+export const thunkInitChats = createAsyncThunk('channels/initChats', async (channelId: ID) => {
+  const res = await APIQueries.chats.init(channelId);
+  return res.data;
+});
+
+export const thunkLeaveChannel = createAsyncThunk('channels/leave', async (channelId: ID) => {
+  const res = await APIQueries.channels.leaveChannel(channelId);
   return res.data;
 });

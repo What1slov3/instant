@@ -2,10 +2,15 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { useAppSelector, thunkGetMe } from '@shared/state';
-import { ChannelsPage, EnvironmentPage, InvitePage, MainPage, SettingsPage } from '../pages';
 import { SocketInstance } from '@shared/api/socket';
 import { ModalRenderer } from './modals';
-import SidePanel from '@widgets/app/ui/SidePanel/SidePanel';
+import { MainPage } from '@pages/MainPage';
+import { EnvironmentPage } from '@pages/EnvironmentPage';
+import { ChannelsPage } from '@pages/ChannelsPage';
+import { SettingsPage } from '@pages/SettingsPage';
+import { InvitePage } from '@pages/InvitePage';
+import { SidePanel } from '@widgets/app';
+import { SOCKET_EVENTS } from '@shared/api/socket/events';
 import s from './styles/app.module.css';
 
 function App() {
@@ -23,8 +28,27 @@ function App() {
   }, [connection, isInitated]);
 
   useEffect(() => {
-    SocketInstance.emit('join', Object.keys(chats));
+    SocketInstance.emit(SOCKET_EVENTS.CONNECT, {
+      userId: user.id,
+    });
+  }, [user.id]);
+
+  useEffect(() => {
+    SocketInstance.emit(SOCKET_EVENTS.CHATS.JOIN, {
+      userId: user.id,
+      chats: Object.keys(chats),
+    });
   }, [chats]);
+
+  useEffect(() => {
+    SocketInstance.emit(SOCKET_EVENTS.CONNECT, {
+      userId: user.id,
+    });
+    SocketInstance.emit(SOCKET_EVENTS.CHATS.JOIN, {
+      userId: user.id,
+      chats: Object.keys(chats),
+    });
+  }, [connection.ws]);
 
   return (
     <>

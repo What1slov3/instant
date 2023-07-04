@@ -13,12 +13,14 @@ export const TEXTS = {
       CREATE_CHAT: 'Создать чат',
       UPDATE_PASSWORD: 'Обновить пароль',
       CHAT_MEMBERS_LIST: 'Участники чата',
-      CHAT_SETTINGS: 'Настройки чата'
+      CHAT_SETTINGS: 'Настройки чата',
+      LEAVE: 'Вы действительно хотите покинуть канал?'
     },
     DESCRIPTIONS: {
       CREATE_CHANNEL: 'Дайте название и красивую иконку\nИх всегда можно изменить в настройках',
       DELETE_MESSAGE: 'Это действие нельзя отменить',
       CREATE_CHAT: 'Чат будет создан в группе',
+      LEAVE: 'Вы всегда сможете вернуться сюда по ссылке-приглашению'
     },
   },
   ERRORS: {

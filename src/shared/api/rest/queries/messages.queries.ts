@@ -1,6 +1,6 @@
 import { API_ROUTES } from '@shared/api/rest/routes';
 import { APIAccessor } from '@shared/api/rest';
-import type { Message, MessageContent, MessageContext } from '@shared/types';
+import type { Message, MessageContent } from '@shared/types';
 
 export const messagesQueries = {
   getHistory: (chatId: string, offset: number, limit: number) => {
@@ -8,12 +8,12 @@ export const messagesQueries = {
       params: { chatId, offset, limit },
     });
   },
-  send: (content: MessageContent, context: MessageContext) => {
-    return APIAccessor.post<Message>(API_ROUTES.MESSAGES.SEND_MESSAGE, { content, context });
+  send: (content: MessageContent, chatId: string) => {
+    return APIAccessor.post<Message>(API_ROUTES.MESSAGES.SEND_MESSAGE, { content, chatId });
   },
-  delete: (_id: string, context: MessageContext) => {
+  delete: (_id: string, chatId: string) => {
     return APIAccessor.delete<Message>(API_ROUTES.MESSAGES.DELETE_MESSAGE, {
-      data: { _id, context },
+      data: { _id, chatId },
     });
   },
 };

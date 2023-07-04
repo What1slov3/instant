@@ -1,6 +1,6 @@
 import { APIQueries } from '@shared/api/rest';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { MessageContent, MessageContext, ID } from '@shared/types';
+import type { MessageContent, ID } from '@shared/types';
 
 export const thunkGetHistory = createAsyncThunk(
   'messages/getHistory',
@@ -12,16 +12,16 @@ export const thunkGetHistory = createAsyncThunk(
 
 export const thunkSendMessage = createAsyncThunk(
   'messages/send',
-  async ({ content, context }: { content: MessageContent; context: MessageContext }) => {
-    const res = await APIQueries.messages.send(content, context);
+  async ({ content, chatId }: { content: MessageContent; chatId: string }) => {
+    const res = await APIQueries.messages.send(content, chatId);
     return res.data;
   }
 );
 
 export const thunkDeleteMessage = createAsyncThunk(
   'messages/delete',
-  async ({ _id, context }: { _id: ID; context: MessageContext }) => {
-    const res = await APIQueries.messages.delete(_id, context);
+  async ({ _id, chatId }: { _id: ID; chatId: string }) => {
+    const res = await APIQueries.messages.delete(_id, chatId);
     return res.data;
   }
 );

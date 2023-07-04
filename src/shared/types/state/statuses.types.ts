@@ -1,6 +1,6 @@
 import { ID } from '@shared/types';
 
-export type StatusesState = {
+export interface SliceStatuses {
   initated: boolean;
   connection: Connection;
   fullyLoadedResources: FullyLoadedResources;

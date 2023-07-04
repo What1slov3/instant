@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { MessageDivider, MessageMemo } from '@entities/message';
 import { completeSystemFormating } from '@shared/libs';
-import { UsersCache, Message, User } from '@shared/types';
+import { SliceUserCache, Message, User } from '@shared/types';
 import { TimeFormatter, checkIsDifferentDays, checkTimestampOlder } from '@shared/utils';
 
 /**
@@ -18,7 +18,7 @@ export const renderMessageFeedMessageWithDividers = (
   prevMessage: Message | null,
   channelName: string,
   user: User,
-  usersCache: UsersCache
+  usersCache: SliceUserCache
 ) => {
   const isNewDay = prevMessage && checkIsDifferentDays(message.createdAt, prevMessage.createdAt || 0);
   const isShort =
@@ -29,7 +29,7 @@ export const renderMessageFeedMessageWithDividers = (
   const tmUpdatedAt = new TimeFormatter(message.updatedAt);
 
   return (
-    <Fragment key={message._id}>
+    <Fragment key={message.id}>
       {isNewDay && <MessageDivider date={tmCreatedAt.getDateDivider()} />}
       <MessageMemo
         {...message}
@@ -49,7 +49,7 @@ export const renderMessageFeedMessageWithDividers = (
         createdAt={tmCreatedAt.getMessageTimeShort()}
         fullTime={tmCreatedAt.getFullMessageTime()}
         isShort={isShort}
-        userIsOwner={user._id === message.senderId}
+        userIsOwner={user.id === message.senderId}
       />
     </Fragment>
   );

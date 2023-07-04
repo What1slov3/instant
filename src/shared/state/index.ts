@@ -11,4 +11,6 @@ export * from './user/thunk';
 export * from './users/index';
 export * from './users/thunk';
 export * from './app/index';
+export * from './permissions/index';
+export * from './permissions/thunk';
 export * from './state';

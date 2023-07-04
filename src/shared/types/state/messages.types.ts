@@ -1,11 +1,11 @@
 import { Chat, ID } from '@shared/types';
 
-export type MessagesState = Record<Chat['_id'], Message[]>;
+export interface SliceMessages extends Record<Chat['id'], Message[]> {};
 
 export type Message = {
-  _id: ID;
+  id: ID;
   content: MessageContent;
-  context: MessageContext;
+  chatId: string;
   updatedAt: string;
   createdAt: string;
   senderId: ID;
@@ -19,11 +19,6 @@ export type MessageAttachments = {
 export type MessageContent = {
   text: string;
   attachments?: MessageAttachments;
-};
-
-export type MessageContext = {
-  chatId: ID;
-  channelId: ID;
 };
 
 export type MessageType = 'greetings' | never;

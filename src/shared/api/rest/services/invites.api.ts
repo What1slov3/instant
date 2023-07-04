@@ -8,7 +8,7 @@ export const invitesAPI = commonAPI.injectEndpoints({
       query: (channelId: ID) => `${API_ROUTES.INVITES.GET_CHANNEL_INVITE}/${channelId}`,
     }),
     getChannelFromInvite: build.query<
-      Pick<Channel, '_id' | 'icon' | 'name' | 'banner'> & { membersCount: number },
+      Pick<Channel, 'id' | 'icon' | 'name' | 'banner'> & { membersCount: number; canJoin: boolean },
       any
     >({
       query: (inviteId: string) => `${API_ROUTES.INVITES.GET_CHANNEL_FROM_INVITE}/${inviteId}`,

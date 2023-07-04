@@ -10,6 +10,7 @@ type Props = {
   style?: React.CSSProperties;
   onEnter?: Function;
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
+  disabled?: boolean;
 } & FCChildren;
 
 export const ModalButton: React.FC<Props> = ({
@@ -19,14 +20,16 @@ export const ModalButton: React.FC<Props> = ({
   style,
   onEnter,
   onKeyDown,
+  disabled = false,
 }): JSX.Element => {
   return (
     <StyledButton
-      className={classNames(s.modalButton, className)}
+      className={classNames(s.modalButton, className, { [s.disabled]: disabled })}
       onClick={onClick}
       onKeyDown={onKeyDown}
       onEnter={onEnter}
       style={style}
+      disabled={disabled}
     >
       {children}
     </StyledButton>

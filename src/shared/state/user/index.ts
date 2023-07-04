@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { thunkGetMe, thunkUpdateUserProfile } from './thunk';
 import { thunkCreateChannel, thunkJoinChannelByInvite } from '@shared/state';
-import type { LoadingStatus, UserState } from '@shared/types';
+import type { LoadingStatus, SliceUser } from '@shared/types';
 
-const initialState: UserState = {
-  _id: '',
+const initialState: SliceUser = {
+  id: '',
   username: '',
   tag: '',
   avatar: '',
@@ -30,7 +30,7 @@ const userSlice = createSlice({
       return { ...state, ...action.payload };
     });
     builder.addCase(thunkCreateChannel.fulfilled, (state, action) => {
-      state.channels.push(action.payload._id);
+      state.channels.push(action.payload.id);
     });
     builder.addCase(thunkUpdateUserProfile.fulfilled, (state, action) => {
       return { ...state, ...action.payload, loadingStatus: { status: 'succeeded', error: null } };
@@ -45,7 +45,7 @@ const userSlice = createSlice({
       state.loadingStatus = { status: 'failed', error: 'Error' };
     });
     builder.addCase(thunkJoinChannelByInvite.fulfilled, (state, action) => {
-      state.channels.push(action.payload._id);
+      state.channels.push(action.payload.id);
     });
   },
 });

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { Modal, UIState } from '@shared/types';
+import type { Modal, SliceUI } from '@shared/types';
 
-const initialState: UIState = {
+const initialState: SliceUI = {
   modal: {
     name: null,
     payload: null,

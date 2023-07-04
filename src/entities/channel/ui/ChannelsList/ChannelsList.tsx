@@ -50,12 +50,12 @@ export const ChannelsList: React.FC<Props> = ({ connection, channels }): JSX.Ele
     return channels.map((channel) => {
       return (
         <ChannelItem
-          key={channel._id}
+          key={channel.id}
           iconUrl={channel.icon}
           name={channel.name}
-          channelId={channel._id}
+          channelId={channel.id}
           openingChatId={channel.systemChatId}
-          isActive={connection.channelId === channel._id}
+          isActive={connection.channelId === channel.id}
         />
       );
     });

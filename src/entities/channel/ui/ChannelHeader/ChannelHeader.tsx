@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import { useGlobalListener } from '@shared/hooks';
-import { ChannelDropdown } from '../ChannelDropdown/ChannelDropdown';
+import { OpenChannelDropdown } from '@features/channel/open-channel-dropdown';
 import type { Channel } from '@shared/types';
 import s from './channelheader.module.css';
-import { OpenChannelDropdown } from '@features/channel/open-channel-dropdown';
 
-type Props = {} & Pick<Channel, 'name' | 'banner' | '_id'>;
+type Props = { isOwner: boolean } & Pick<Channel, 'name' | 'banner' | 'id'>;
 
-export const ChannelHeader: React.FC<Props> = ({ name, banner, _id }): JSX.Element => {
+export const ChannelHeader: React.FC<Props> = ({ name, banner, id, isOwner }): JSX.Element => {
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
 
   useGlobalListener(
@@ -39,7 +38,7 @@ export const ChannelHeader: React.FC<Props> = ({ name, banner, _id }): JSX.Eleme
           <i className="fa-solid fa-chevron-down"></i>
         </div>
       </div>
-      {dropdownIsOpen && <OpenChannelDropdown channelId={_id} />}
+      {dropdownIsOpen && <OpenChannelDropdown channelId={id} isOwner={isOwner} />}
     </div>
   );
 };

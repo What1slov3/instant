@@ -16,7 +16,7 @@ export const DeleteMessageModal: React.FC<DeleteMessageModalPayload> = ({ messag
   const modalControl = useModalControls();
 
   const handleDeleteMessage = () => {
-    dispatch(thunkDeleteMessage({ _id: message._id, context: message.context }));
+    dispatch(thunkDeleteMessage({ _id: message.id, chatId: message.chatId }));
     modalControl.close();
   };
 

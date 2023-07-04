@@ -8,6 +8,7 @@ import {
   userQueries,
   usersQueries,
   invitesQueries,
+  permissionsQueries,
 } from '@shared/api/rest/queries';
 
 export function logout() {
@@ -92,4 +93,5 @@ export const APIQueries = {
   users: usersQueries,
   files: filesQueries,
   invites: invitesQueries,
+  permissions: permissionsQueries,
 };

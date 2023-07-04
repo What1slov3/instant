@@ -1,5 +1,6 @@
 export const API_BASE = process.env.REACT_APP_API_URL;
 
+//  TODO add methods into this schema
 export const API_ROUTES = {
   AUTH: {
     REFRESH_TOKEN: '/auth/refresh',
@@ -15,11 +16,13 @@ export const API_ROUTES = {
     CREATE: '/channels/create',
     GET: '/channels',
     UPDATE_CHANNEL: '/channels',
+    LEAVE: '/channels/leave',
   },
   CHATS: {
     GET: '/chats',
     CREATE: '/chats/create',
     UPDATE: '/chats',
+    INIT: '/chats/forChannel',
   },
   MESSAGES: {
     GET_HISTORY: '/messages/history',
@@ -33,5 +36,8 @@ export const API_ROUTES = {
   },
   FILES: {
     UPLOAD: '/files/upload',
+  },
+  PERMISSIONS: {
+    GET: '/permissions',
   },
 };

@@ -1,9 +1,9 @@
 import type { ID, LoadingStatus } from '@shared/types';
 
-export type UserState = User & LoadingStatus;
+export interface SliceUser extends User, LoadingStatus {};
 
 export type User = {
-  _id: ID;
+  id: ID;
   username: string;
   avatar: string;
   tag: string;

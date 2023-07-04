@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import type { AppState } from '@shared/types';
+import type { SliceApp } from '@shared/types';
 
-const initialState: AppState = {
+const initialState: SliceApp = {
   settings: {
     messageGroupGap: 0,
     messageFontSize: 14,
@@ -13,7 +13,7 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    updateAppSettings: (state, action: PayloadAction<Partial<AppState['settings']>>) => {
+    updateAppSettings: (state, action: PayloadAction<Partial<SliceApp['settings']>>) => {
       state.settings = { ...state.settings, ...action.payload };
     },
   },

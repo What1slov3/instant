@@ -1,9 +1,9 @@
 import { ID } from '@shared/types';
 
-export type UsersCache = Record<ID, CachedUser & { timestamp: number }>;
+export interface SliceUserCache extends Record<ID, CachedUser & { timestamp: number }> {}
 
 export type CachedUser = {
-  _id: ID;
+  id: ID;
   username: string;
   avatar: string;
   tag: string;

@@ -1,0 +1,29 @@
+.wrapper {
+  gap: 2px;
+  border-right: 2px solid var(--background-darker);
+  padding-right: 10px;
+}
+
+.navTab {
+  display: block;
+  margin-left: -10px;
+  color: var(--gray-200);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navTab {
+  width: calc(100% + 10px);
+}
+
+.navTab > button {
+  width: 100%;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  text-align-last: left;
+}
+
+.navTab:hover,
+.isActive {
+  background: var(--background-darker);
+}

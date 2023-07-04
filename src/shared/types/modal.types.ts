@@ -7,7 +7,7 @@ export type ChannelInviteModalPayload = {
   channelId: ID;
 };
 export type CreateChatModalPayload = {
-  chatGroup: Omit<ChatGroup<Chat>, 'chats'>;
+  chatGroup: Omit<ChatGroup<Chat>, 'chats' | 'owningChannelId'>;
   channelId: ID;
 };
 export type ImageAttachmentPayload = {
@@ -15,6 +15,9 @@ export type ImageAttachmentPayload = {
 };
 export type ChatMembersListPayload = Connection;
 export type ChatSettingsPayload = Connection;
+export type LeaveChannelPayload = {
+  id: ID;
+};
 
 export type ModalsWithoutPayload = 'createChannel' | 'channelSettings' | 'changePassword';
 export type ModalName =
@@ -24,7 +27,8 @@ export type ModalName =
   | 'createChat'
   | 'imageAttachment'
   | 'chatMembersList'
-  | 'chatSettings';
+  | 'chatSettings'
+  | 'leaveChannel';
 
 export type Modal =
   | { name: null; payload: null }
@@ -57,4 +61,5 @@ export type Modal =
       payload: ImageAttachmentPayload;
     }
   | { name: 'chatMembersList'; payload: ChatMembersListPayload }
-  | { name: 'chatSettings'; payload: ChatSettingsPayload };
+  | { name: 'chatSettings'; payload: ChatSettingsPayload }
+  | { name: 'leaveChannel'; payload: LeaveChannelPayload };

@@ -1,5 +1,5 @@
 import type { Modal } from '@shared/types';
 
-export type UIState = {
+export interface SliceUI {
   modal: Modal;
 };

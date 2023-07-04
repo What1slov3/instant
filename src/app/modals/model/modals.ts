@@ -1,4 +1,4 @@
-import type { Modal, ModalName } from '@shared/types';
+import type { ModalName } from '@shared/types';
 import {
   ChangePasswordModal,
   ChannelInviteModal,
@@ -9,6 +9,7 @@ import {
   CreateChatModal,
   DeleteMessageModal,
   ImageAttachmentModal,
+  LeaveChannelModal,
 } from '@widgets/modals';
 
 export const MODALS: Record<NonNullable<ModalName>, React.FC<any>> = {
@@ -21,4 +22,5 @@ export const MODALS: Record<NonNullable<ModalName>, React.FC<any>> = {
   imageAttachment: ImageAttachmentModal,
   chatMembersList: ChatMembersListModal,
   chatSettings: ChatSettingsModal,
+  leaveChannel: LeaveChannelModal,
 };

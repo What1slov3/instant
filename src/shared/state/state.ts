@@ -9,6 +9,7 @@ import {
   uiReducer,
   userReducer,
   appReducer,
+  permissionsReducer,
 } from '@shared/state';
 import { userIntegrityCacheListener } from './middlewares/userIntegrity';
 import { usersReducer } from './users';
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   messages: messagesReducer,
   usersCache: usersReducer,
   app: appReducer,
+  permissions: permissionsReducer,
   [commonAPI.reducerPath]: commonAPI.reducer,
 });
 

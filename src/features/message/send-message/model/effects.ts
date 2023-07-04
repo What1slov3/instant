@@ -11,10 +11,7 @@ export const effects = {
           text,
           attachments,
         },
-        context: {
-          channelId: connection.channelId!,
-          chatId: connection.chatId!,
-        },
+        chatId: connection.chatId!,
       })
     );
   },

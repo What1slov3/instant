@@ -18,17 +18,17 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat, channelName }): JSX.E
 
   const fullyLoadedResources = useAppSelector((state) => state.statuses.fullyLoadedResources);
   const chatLoadingStatus = useAppSelector((state) => state.statuses.chatLoadingStatus);
-  const history = useAppSelector((state) => state.messages[chat._id] || []);
+  const history = useAppSelector((state) => state.messages[chat.id] || []);
 
   useEffect(() => {
     dispatch(
       setChatLoadingStatus({
-        hasMore: !fullyLoadedResources.chatIds.includes(chat._id),
+        hasMore: !fullyLoadedResources.chatIds.includes(chat.id),
         loading: false,
         isLoaded: false,
       })
     );
-  }, [chat._id]);
+  }, [chat.id]);
 
   const handleMessageClick = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
@@ -51,7 +51,7 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat, channelName }): JSX.E
   const deleteMessage = (messageId: ID) => {
     modalControls.open({
       name: 'deleteMessage',
-      payload: { message: history.find((message) => message._id === messageId)! },
+      payload: { message: history.find((message) => message.id === messageId)! },
     });
   };
 
@@ -62,8 +62,8 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat, channelName }): JSX.E
   return (
     <div className={s.wrapper} onClick={handleMessageClick}>
       <Scroller
-        key={chat._id}
-        chatId={chat._id}
+        key={chat.id}
+        chatId={chat.id}
         chatName={chat.name}
         history={history}
         channelName={channelName}

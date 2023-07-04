@@ -16,7 +16,7 @@ export const ViewChatMembers: React.FC<Props> = ({ chatId }): JSX.Element => {
   const channelMembers = useAppSelector(
     (state) =>
       state.channels.channels.find((channel) =>
-        channel.chatGroups.find((chatGroup) => chatGroup.chats.includes(chatId))
+        channel.chatGroups?.find((chatGroup) => chatGroup.chats.includes(chatId))
       )!.members
   );
 

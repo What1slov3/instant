@@ -6,9 +6,12 @@ export * from './state/state.types';
 export * from './state/ui.types';
 export * from './state/user.types';
 export * from './state/messages.types';
-export * from './state/app.stypes';
+export * from './state/app.types';
 export * from './state/users.types';
 export * from './modal.types';
 export * from './utils/LSA.types';
+export * from './permissions.types';
+export * from './state/permissions.types'
 export * from './socket/index';
 export * from './state/common.types';
+export * from './connection.types'

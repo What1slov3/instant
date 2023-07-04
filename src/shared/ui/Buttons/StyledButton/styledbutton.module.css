@@ -10,6 +10,11 @@
   transition: 0.1s;
 }
 
-.styledButton:hover {
+.styledButton:not(.disabled):hover {
   opacity: 0.8;
+}
+
+.disabled {
+  cursor: default;
+  background: var(--background-light) !important;
 }

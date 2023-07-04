@@ -8,7 +8,7 @@ type Props = {
   user: User;
 };
 
-const SidePanel: React.FC<Props> = ({ user }): JSX.Element => {
+export const SidePanel: React.FC<Props> = ({ user }): JSX.Element => {
   return (
     <nav className={s.wrapper}>
       <div>
@@ -29,5 +29,3 @@ const SidePanel: React.FC<Props> = ({ user }): JSX.Element => {
     </nav>
   );
 };
-
-export default SidePanel;

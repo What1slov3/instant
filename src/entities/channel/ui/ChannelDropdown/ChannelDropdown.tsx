@@ -6,6 +6,6 @@ type Props = {
   channelId: ID;
 } & FCChildren;
 
-export const ChannelDropdown: React.FC<Props> = ({ channelId, children }): JSX.Element => {
+export const ChannelDropdown: React.FC<Props> = ({  children }): JSX.Element => {
   return <div className={classNames(s.wrapper)}>{children}</div>;
 };

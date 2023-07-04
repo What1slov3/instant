@@ -24,7 +24,7 @@ export const CreateChatModal: React.FC<Props> = ({ chatGroup, channelId }): JSX.
   } = useForm();
 
   const onSubmitHandler = (data: any) => {
-    dispatch(thunkCreateChat({ name: data.name, chatGroupId: chatGroup._id, owningChannelId: channelId }));
+    dispatch(thunkCreateChat({ name: data.name, chatGroupId: chatGroup.id, owningChannelId: channelId }));
     modalControls.close();
   };
 

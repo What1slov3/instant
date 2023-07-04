@@ -17,7 +17,7 @@ type Props = {
 } & Omit<TMessage, 'updatedAt' | 'createdAt'>;
 
 const Message: React.FC<Props> = ({
-  _id,
+  id,
   createdAt,
   fullTime,
   isShort,
@@ -30,7 +30,7 @@ const Message: React.FC<Props> = ({
     <div
       className={classNames(s.message, { [s.short]: isShort })}
       data-message="true"
-      data-message-id={_id}
+      data-message-id={id}
       data-message-text={content.text}
     >
       <Tooltip text={fullTime} className={s.timestampWrapper}>

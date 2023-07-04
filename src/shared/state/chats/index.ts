@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { thunkCreateChat, thunkGetChats, thunkUpdateChat } from './thunk';
-import type { Chat, ChatsState } from '@shared/types';
+import type { Chat, SliceChats } from '@shared/types';
 
-const initialState: ChatsState = {};
+const initialState: SliceChats = {};
 
 const chatsSlice = createSlice({
   name: 'chats',
@@ -11,17 +11,17 @@ const chatsSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(thunkGetChats.fulfilled, (state, action) => {
       const fetchedChats = action.payload.reduce((prev, curr) => {
-        prev[curr._id] = curr;
+        prev[curr.id] = curr;
         return prev;
       }, {} as Record<string, Chat>);
 
       return { ...state, ...fetchedChats };
     });
     builder.addCase(thunkCreateChat.fulfilled, (state, action) => {
-      state[action.payload._id] = action.payload;
+      state[action.payload.id] = action.payload;
     });
     builder.addCase(thunkUpdateChat.fulfilled, (state, action) => {
-      state[action.payload._id] = action.payload;
+      state[action.payload.id] = action.payload;
     });
   },
 });

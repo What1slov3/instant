@@ -1,11 +1,17 @@
 import { ID } from '@shared/types';
 
-export type ChatsState = Record<string, Chat>;
+export interface SliceChats extends Record<string, Chat> {};
 
 export type Chat = {
-  _id: ID;
-  owningChannelId: ID;
+  id: ID;
   name: string;
+  chatGroupId: ID;
   createdAt: string;
-  updatedAt: string;
+};
+
+export type ChatGroup<T extends string | Chat> = {
+  id: ID;
+  name: string;
+  owningChannelId: ID;
+  chats: T[];
 };

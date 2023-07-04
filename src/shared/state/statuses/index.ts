@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { thunkGetHistory, thunkGetMe } from '..';
 import { stateStyledLogger } from '@shared/libs';
-import type { Connection, ChatLoadingStatus, FullyLoadedResources, StatusesState } from '@shared/types';
+import type { Connection, ChatLoadingStatus, FullyLoadedResources, SliceStatuses } from '@shared/types';
 
-const initialState: StatusesState = {
+const initialState: SliceStatuses = {
   initated: false,
   connection: {
     channelId: '',

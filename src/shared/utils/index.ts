@@ -8,3 +8,4 @@ export * from './toMB';
 export * from './checkTimestampsOtherDays';
 export * from './getRandom';
 export * from './getUniqueStringArray';
+export * from './getModifiedValues';

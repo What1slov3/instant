@@ -3,11 +3,16 @@ import { User } from '@shared/types';
 import { Avatar } from '@shared/components';
 import s from './userlistcard.module.css';
 
-type Props = Pick<User, '_id' | 'avatar' | 'tag' | 'username'>;
+type Props = {
+  controls?: {
+    element: JSX.Element;
+    onHover?: boolean;
+  };
+} & Pick<User, 'id' | 'avatar' | 'tag' | 'username'>;
 
-export const UserListCard: React.FC<Props> = ({ _id, avatar, tag, username }): JSX.Element => {
+export const UserListCard: React.FC<Props> = ({ id, avatar, tag, username, controls }): JSX.Element => {
   return (
-    <div className={classNames(s.userCard, 'flex flexaic gap10')}>
+    <div className={classNames({ [s.onHover]: controls?.onHover }, s.userCard, 'flex flexaic gap10')}>
       <Avatar url={avatar} width={50} />
       <div>
         <div className={s.username}>
@@ -15,6 +20,7 @@ export const UserListCard: React.FC<Props> = ({ _id, avatar, tag, username }): J
           <span>#{tag}</span>
         </div>
       </div>
+      {controls && <div className={s.controls}>{controls.element}</div>}
     </div>
   );
 };

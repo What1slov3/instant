@@ -2,12 +2,12 @@ import { useModalControls } from '@shared/hooks';
 import { Accordion } from '@shared/components';
 import { IconButton } from '@shared/ui';
 import { ChatItem } from '@entities/channel';
-import type { Chat, ChatGroup, ChatsState, Connection } from '@shared/types';
+import type { Chat, ChatGroup, SliceChats, Connection } from '@shared/types';
 import s from './channelchatlist.module.css';
 
 type Props = {
   chatGroups: ChatGroup<Chat>[];
-  loadedChats: ChatsState;
+  loadedChats: SliceChats;
   connection: Connection;
 };
 
@@ -21,14 +21,14 @@ export const ChannelChatsList: React.FC<Props> = ({ chatGroups, connection, load
       activeBlock = (
         <ChatItem
           name={openedChat.name}
-          chatId={openedChat._id}
+          chatId={openedChat.id}
           connection={connection}
           settingsButton={
             <IconButton
               faClass="fa-solid fa-cog"
               className={s.settingButton}
               onClick={() => {
-                modalControls.open({ name: 'chatSettings', payload: { ...connection, chatId: openedChat._id } });
+                modalControls.open({ name: 'chatSettings', payload: { ...connection, chatId: openedChat.id } });
               }}
             />
           }
@@ -49,7 +49,7 @@ export const ChannelChatsList: React.FC<Props> = ({ chatGroups, connection, load
                 modalControls.open({
                   name: 'createChat',
                   payload: {
-                    chatGroup: { name: group.name, _id: group._id },
+                    chatGroup: { name: group.name, id: group.id },
                     channelId: connection.channelId!,
                   },
                 })
@@ -61,16 +61,16 @@ export const ChannelChatsList: React.FC<Props> = ({ chatGroups, connection, load
             if (chat) {
               return (
                 <ChatItem
-                  key={chat._id}
+                  key={chat.id}
                   name={chat.name}
-                  chatId={chat._id}
+                  chatId={chat.id}
                   connection={connection}
                   settingsButton={
                     <IconButton
                       faClass="fa-solid fa-cog"
                       className={s.settingButton}
                       onClick={() => {
-                        modalControls.open({ name: 'chatSettings', payload: { ...connection, chatId: chat._id } });
+                        modalControls.open({ name: 'chatSettings', payload: { ...connection, chatId: chat.id } });
                       }}
                     />
                   }

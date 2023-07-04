@@ -9,13 +9,22 @@ type Props = FCChildren & {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
   onEnter?: Function;
+  disabled?: boolean;
 };
 
-export const StyledButton: React.FC<Props> = ({ children, style, onClick, className, onEnter, onKeyDown }): JSX.Element => {
+export const StyledButton: React.FC<Props> = ({
+  children,
+  style,
+  onClick,
+  className,
+  onEnter,
+  onKeyDown,
+  disabled = false,
+}): JSX.Element => {
   return (
     <Button
       style={style}
-      className={classNames(className, s.styledButton)}
+      className={classNames(className, s.styledButton, { [s.disabled]: disabled })}
       onClick={onClick}
       onEnter={onEnter}
       onKeyDown={onKeyDown}

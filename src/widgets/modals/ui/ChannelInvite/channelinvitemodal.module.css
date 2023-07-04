@@ -1,5 +1,5 @@
 .link {
-  width: min(500px, calc(100vw - 20px));
+  width: min(600px, calc(100vw - 60px));
   padding: 10px;
   border-radius: 5px;
   background: var(--background-tooltip);
