@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Tooltip } from '@shared/components';
 import { UserMessage } from '../UserMessage/UserMessage';
 import { SystemMessage } from '../SystemMessage/SystemMessage';
-import { IconButton } from '@shared/ui';
+import { MessageToolbar } from '../MessageToolbar/MessageToolbar';
 import type { Message as TMessage } from '@shared/types';
 import s from './message.module.css';
 
@@ -13,7 +13,6 @@ type Props = {
   fullTime: string;
   isShort?: boolean;
   username: string;
-  userIsOwner: boolean;
 } & Omit<TMessage, 'updatedAt' | 'createdAt'>;
 
 const Message: React.FC<Props> = ({
@@ -21,10 +20,10 @@ const Message: React.FC<Props> = ({
   createdAt,
   fullTime,
   isShort,
-  userIsOwner,
   content,
   username,
   meta,
+  senderId,
 }): JSX.Element => {
   return (
     <div
@@ -32,6 +31,7 @@ const Message: React.FC<Props> = ({
       data-message="true"
       data-message-id={id}
       data-message-text={content.text}
+      data-sender-id={senderId}
     >
       <Tooltip text={fullTime} className={s.timestampWrapper}>
         <div className={s.timestamp}>{createdAt}</div>
@@ -43,20 +43,7 @@ const Message: React.FC<Props> = ({
           <UserMessage content={content} username={username} />
         )}
       </div>
-      <div className={s.contextMenu}>
-        <Tooltip position="top" positioning="absolute" text="Копировать">
-          <IconButton faClass="fa-regular fa-clone" className={s.contextButton} data-message-action="copy" />
-        </Tooltip>
-        {userIsOwner && (
-          <Tooltip position="top" positioning="absolute" text="Удалить">
-            <IconButton
-              faClass="fa-solid fa-trash-can"
-              className={classNames(s.delete, s.contextButton)}
-              data-message-action="delete"
-            />
-          </Tooltip>
-        )}
-      </div>
+      <MessageToolbar senderId={senderId} ownerClass={s.contextMenu} />
     </div>
   );
 };

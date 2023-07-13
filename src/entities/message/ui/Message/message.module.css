@@ -38,36 +38,8 @@
 
 .contextMenu {
   display: none;
-  position: absolute;
-  right: 30px;
-  top: 0;
-  transform: translateY(-50%);
-  background: var(--background-dark);
-}
-
-.contextButton {
-  height: 30px;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray-100);
-  cursor: pointer;
-}
-
-.contextMenu,
-.contextButton {
-  border-radius: 5px;
-}
-
-.contextButton:hover {
-  background: var(--background-inactive);
 }
 
 .message:hover .contextMenu {
   display: flex;
-}
-
-.delete {
-  color: var(--error-400);
 }

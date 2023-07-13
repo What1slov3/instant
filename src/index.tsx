@@ -2,10 +2,10 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import App from './app/App';
-import './index.css';
 import { Shortcut, LSA } from '@shared/libs/index';
 import { store } from '@shared/state/index';
+import App from './app/App';
+import './index.css';
 
 export const shortcutInstance = new Shortcut();
 export const LSAInstance = new LSA();

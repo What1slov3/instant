@@ -66,7 +66,7 @@ export const BasicPage: React.FC<Props> = ({ channel }): JSX.Element => {
   };
 
   return (
-    <div className='flex flexcolumn'>
+    <div className="flex flexcolumn">
       <ChannelAppearanceSettings
         iconHandleDrop={iconHandleDrop}
         iconHandleUpload={iconHandleUpload}

@@ -16,11 +16,11 @@ export const ModerateChannelUsers: React.FC<Props> = ({ channel, user }): JSX.El
   const { cache, isLoading } = useUsersCache();
 
   const [page, setPage] = useState(1);
-  const [setted, setSetted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // TODO временный фикс для корректной установки рефа в скролле
   useEffect(() => {
-    setSetted(true);
+    setMounted(true);
   }, []);
 
   const loadUsers = () => {
@@ -57,7 +57,7 @@ export const ModerateChannelUsers: React.FC<Props> = ({ channel, user }): JSX.El
         hasMore={page < Math.ceil(channel.members.length / config.GET_USERS_LIST_LIMIT)}
         loading={isLoading}
       >
-        {setted && renderUserCards}
+        {mounted && renderUserCards}
       </InfiniteScroll>
     </div>
   );

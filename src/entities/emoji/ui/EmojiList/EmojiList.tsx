@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { emojisCategoryList } from '@entities/emoji';
 import { EmojiCategory } from '../EmojiCategory/EmojiCategory';
 import { RowsList } from '../RowsList/RowsList';
@@ -29,9 +28,9 @@ export const EmojiList: React.FC<Props> = ({ setEmoji, searchingShortname, setHo
   };
 
   const renderSearching = () => {
-    const emojis = emojisCategoryList.reduce((prev, curr) => {
+    const emojis = emojisCategoryList.reduce((prev, category) => {
       return prev.concat(
-        curr.emojis.filter((emoji) => {
+        category.emojis.filter((emoji) => {
           return emoji.shortname.includes(searchingShortname.trim());
         })
       );

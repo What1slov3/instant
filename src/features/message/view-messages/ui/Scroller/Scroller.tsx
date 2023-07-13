@@ -12,7 +12,6 @@ import s from './scroller.module.css';
 type Props = {
   chatId: string;
   chatName: string;
-  channelName: string;
   history: Message[];
   chatLoadingStatus: ChatLoadingStatus;
   fullyLoadedResources: FullyLoadedResources;
@@ -24,10 +23,10 @@ export const Scroller: React.FC<Props> = ({
   history,
   chatLoadingStatus,
   fullyLoadedResources,
-  channelName,
 }): JSX.Element => {
   const usersCache = useAppSelector((state) => state.usersCache);
   const user = useAppSelector((state) => state.user);
+  const channel = useAppSelector((state) => state.statuses.connection.channel!);
 
   const [isScrolledBottom, setIsScrolledBottom] = useState(true); // Чат проскроллен в самый низ
   const [showBottomScroll, setShowBottomScroll] = useState(false); // Показать кнопку скролла в низ
@@ -165,7 +164,7 @@ export const Scroller: React.FC<Props> = ({
 
     for (let i = Math.min(visibleChunkIndex * config.CHAT_CHUNK_SIZE - 1, history.length); i >= 0; i--) {
       if (history[i]) {
-        messages.push(renderMessageFeedMessageWithDividers(history[i], history[i + 1], channelName, user, usersCache));
+        messages.push(renderMessageFeedMessageWithDividers(history[i], history[i + 1], channel, usersCache));
       }
     }
 
@@ -200,7 +199,7 @@ export const Scroller: React.FC<Props> = ({
         </div>
         <div className={s.anchor}></div>
       </div>
-      <ScrollBottomButton show={showBottomScroll} onClick={scrollToBottom} />
+      {showBottomScroll && <ScrollBottomButton onClick={scrollToBottom} />}
     </>
   );
 };

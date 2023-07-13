@@ -1,7 +1,7 @@
-import { emojiCategoryNamesEngToRus, emojisCategoryList } from '@entities/emoji/model/emojisCategoryList';
-import s from './emojicategorylist.module.css';
 import classNames from 'classnames';
 import { Tooltip } from '@shared/components';
+import { emojiCategoryNamesEngToRus, emojisCategoryList } from '@entities/emoji/model/emojisCategoryList';
+import s from './emojicategorylist.module.css';
 
 type Props = {
   onClick: (index: number) => void;

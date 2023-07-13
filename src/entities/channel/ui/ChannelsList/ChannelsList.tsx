@@ -36,7 +36,7 @@ const ChannelItem: React.FC<PropsChannelItem> = ({
 
 type Props = {
   connection: Connection;
-  channels: Channel[];
+  channels: Record<ID, Channel>;
 };
 
 export const ChannelsList: React.FC<Props> = ({ connection, channels }): JSX.Element => {
@@ -47,7 +47,7 @@ export const ChannelsList: React.FC<Props> = ({ connection, channels }): JSX.Ele
   };
 
   const renderChannels = () => {
-    return channels.map((channel) => {
+    return Object.entries(channels).map(([channelId, channel]) => {
       return (
         <ChannelItem
           key={channel.id}

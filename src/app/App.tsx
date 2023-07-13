@@ -22,7 +22,7 @@ function App() {
   const chats = useAppSelector((state) => state.chats);
 
   useEffect(() => {
-    if (connection.ws && !isInitated) {
+    if (connection.wsId && !isInitated) {
       dispatch(thunkGetMe());
     }
   }, [connection, isInitated]);
@@ -48,7 +48,7 @@ function App() {
       userId: user.id,
       chats: Object.keys(chats),
     });
-  }, [connection.ws]);
+  }, [connection.wsId]);
 
   return (
     <>

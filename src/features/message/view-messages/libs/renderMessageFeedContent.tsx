@@ -1,14 +1,14 @@
 import { Fragment } from 'react';
 import { MessageDivider, MessageMemo } from '@entities/message';
 import { completeSystemFormating } from '@shared/libs';
-import { SliceUserCache, Message, User } from '@shared/types';
 import { TimeFormatter, checkIsDifferentDays, checkTimestampOlder } from '@shared/utils';
+import type { SliceUserCache, Message, Channel } from '@shared/types';
 
 /**
  * Function to render message feed with time dividers
  * @param message - message to be rendered
  * @param prevMessage - previous message in chat history
- * @param channelName - current channel
+ * @param channel - current channel
  * @param user - current user
  * @param usersCache - cached users
  * @returns
@@ -16,8 +16,7 @@ import { TimeFormatter, checkIsDifferentDays, checkTimestampOlder } from '@share
 export const renderMessageFeedMessageWithDividers = (
   message: Message,
   prevMessage: Message | null,
-  channelName: string,
-  user: User,
+  channel: Channel,
   usersCache: SliceUserCache
 ) => {
   const isNewDay = prevMessage && checkIsDifferentDays(message.createdAt, prevMessage.createdAt || 0);
@@ -38,18 +37,17 @@ export const renderMessageFeedMessageWithDividers = (
             ? {
                 ...message.content,
                 text: completeSystemFormating(message.content.text, {
-                  channelName,
+                  channelName: channel.name,
                   username: usersCache[message.meta.data.userId]?.username || 'Undefined',
                 }),
               }
             : message.content
         }
-        username={message.meta?.type ? channelName : usersCache[message.senderId]?.username || 'Undefined'}
+        username={message.meta?.type ? channel.name : usersCache[message.senderId]?.username || 'Undefined'}
         updatedAt={tmUpdatedAt.getMessageTimeShort()}
         createdAt={tmCreatedAt.getMessageTimeShort()}
         fullTime={tmCreatedAt.getFullMessageTime()}
         isShort={isShort}
-        userIsOwner={user.id === message.senderId}
       />
     </Fragment>
   );

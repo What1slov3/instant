@@ -8,51 +8,47 @@ import {
   thunkUpdateChannel,
 } from './thunk';
 import { thunkCreateChat } from '..';
-import type { SliceChannels, ID } from '@shared/types';
+import type { SliceChannels, ID, Channel } from '@shared/types';
 
-const initialState: SliceChannels = {
-  channels: [],
-};
+const initialState: SliceChannels = {};
 
 const channelsSlice = createSlice({
   name: 'channels',
   initialState,
   reducers: {
     kickChannelUser: (state, action: PayloadAction<{ channelId: ID; userId: ID }>) => {
-      const channel = state.channels.find((channel) => channel.id === action.payload.channelId)!;
-      channel.members = channel.members.filter((userId) => userId !== action.payload.userId);
+      const channel = state[action.payload.channelId];
+      channel.members = channel.members = channel.members.filter((userId) => userId !== action.payload.userId);
     },
   },
   extraReducers(builder) {
-    builder.addCase(thunkCreateChannel.fulfilled, (state, action) => {
-      state.channels.push(action.payload);
-    });
     builder.addCase(thunkGetChannels.fulfilled, (state, action) => {
-      state.channels = state.channels.concat(action.payload);
+      return action.payload.reduce((prev, curr) => {
+        prev[curr.id] = curr;
+        return prev;
+      }, {} as Record<ID, Channel>);
+    });
+    builder.addCase(thunkCreateChannel.fulfilled, (state, action) => {
+      state[action.payload.id] = action.payload;
     });
     builder.addCase(thunkUpdateChannel.fulfilled, (state, action) => {
-      const index = state.channels.findIndex((channel) => channel.id === action.payload.id);
-      state.channels[index] = action.payload;
+      state[action.payload.id] = action.payload;
     });
     builder.addCase(thunkCreateChat.fulfilled, (state, action) => {
-      const index = state.channels.findIndex((channel) =>
-        channel.chatGroups!.find((chatGroup) => chatGroup.id === action.payload.chatGroupId)
-      );
-      const chatGroupIndex = state.channels[index].chatGroups!.findIndex(
-        (chatGroup) => chatGroup.id === action.meta.arg.chatGroupId
-      );
-      state.channels[index].chatGroups![chatGroupIndex].chats.push(action.payload.id);
+      const channel = state[action.meta.arg.owningChannelId];
+      const chatGroupIndex = channel.chatGroups!.findIndex((chatGroup) => chatGroup.id === action.meta.arg.chatGroupId);
+      channel.chatGroups![chatGroupIndex].chats.push(action.payload.id);
     });
     builder.addCase(thunkInitChats.fulfilled, (state, action) => {
-      const channelIndex = state.channels.findIndex((channel) => channel.id === action.meta.arg);
-      state.channels[channelIndex].chatGroups = action.payload;
+      state[action.meta.arg].chatGroups = action.payload;
     });
     builder.addCase(thunkJoinChannelByInvite.fulfilled, (state, action) => {
-      state.channels.push(action.payload);
+      state[action.payload.id] = action.payload;
     });
     builder.addCase(thunkLeaveChannel.fulfilled, (state, action) => {
-      const channelIndex = state.channels.findIndex((channel) => channel.id === action.meta.arg);
-      state.channels.splice(channelIndex, 1);
+      const copy = { ...state };
+      delete copy[action.meta.arg];
+      return copy;
     });
   },
 });

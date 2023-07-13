@@ -8,11 +8,8 @@ import { useCustomNavbar } from '@shared/hooks';
 import s from './channelsettingsmodal.module.css';
 
 export const ChannelSettingsModal: React.FC = (): JSX.Element => {
-  const connection = useAppSelector((state) => state.statuses.connection);
-  const channels = useAppSelector((state) => state.channels.channels);
+  const channel = useAppSelector((state) => state.statuses.connection.channel!);
   const user = useAppSelector((state) => state.user);
-
-  const channel = channels.find((channel) => channel.id === connection.channelId)!;
 
   const [activeTab, setActiveTab] = useCustomNavbar(channelNavBarSettingsTabs, 'Главная');
 

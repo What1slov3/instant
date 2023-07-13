@@ -6,9 +6,11 @@ import type { Connection, ChatLoadingStatus, FullyLoadedResources, SliceStatuses
 const initialState: SliceStatuses = {
   initated: false,
   connection: {
-    channelId: '',
-    chatId: '',
-    ws: '',
+    channelId: null,
+    chatId: null,
+    wsId: null,
+    channel: null,
+    chat: null,
   },
   fullyLoadedResources: {
     channelIds: [],
@@ -28,6 +30,9 @@ const statusesSlice = createSlice({
     setConnection: (state, action: PayloadAction<Partial<Connection>>) => {
       state.connection = { ...state.connection, ...action.payload };
       stateStyledLogger('Connection updated', state.connection);
+    },
+    resetConnection: (state) => {
+      state.connection = { ...state.connection, channel: null, channelId: null, chat: null, chatId: null };
     },
     setFullyLoadedResources: (state, action) => {
       (Object.keys(action.payload) as (keyof FullyLoadedResources)[]).forEach((resource) => {
@@ -69,5 +74,5 @@ const statusesSlice = createSlice({
   },
 });
 
-export const { setConnection, setFullyLoadedResources, setChatLoadingStatus } = statusesSlice.actions;
+export const { setConnection, setFullyLoadedResources, setChatLoadingStatus, resetConnection } = statusesSlice.actions;
 export const statusesReducer = statusesSlice.reducer;

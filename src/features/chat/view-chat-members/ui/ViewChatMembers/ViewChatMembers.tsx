@@ -13,21 +13,16 @@ type Props = {
 export const ViewChatMembers: React.FC<Props> = ({ chatId }): JSX.Element => {
   // ? Пока отсутвует функционал прав доступа к чату и онлайн-статус
   // ? то просто берем всех юзеров канала
-  const channelMembers = useAppSelector(
-    (state) =>
-      state.channels.channels.find((channel) =>
-        channel.chatGroups?.find((chatGroup) => chatGroup.chats.includes(chatId))
-      )!.members
-  );
+  const channelMembers = useAppSelector((state) => state.statuses.connection.channel!.members);
 
   const { cache, isLoading } = useUsersCache();
 
   const [page, setPage] = useState(1);
-  const [setted, setSetted] = useState(false);
+  const [rendered, setRendered] = useState(false);
 
   // TODO временный фикс для корректной установки рефа в скролле
   useEffect(() => {
-    setSetted(true);
+    setRendered(true);
   }, []);
 
   const loadUsers = () => {
@@ -50,7 +45,7 @@ export const ViewChatMembers: React.FC<Props> = ({ chatId }): JSX.Element => {
         hasMore={page < Math.ceil(channelMembers.length / config.GET_USERS_LIST_LIMIT)}
         loading={isLoading}
       >
-        {setted && renderUserCards}
+        {rendered && renderUserCards}
       </InfiniteScroll>
     </div>
   );

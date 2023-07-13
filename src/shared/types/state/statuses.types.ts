@@ -1,16 +1,18 @@
-import { ID } from '@shared/types';
+import { Channel, Chat, ID } from '@shared/types';
 
 export interface SliceStatuses {
   initated: boolean;
   connection: Connection;
   fullyLoadedResources: FullyLoadedResources;
   chatLoadingStatus: ChatLoadingStatus;
-};
+}
 
 export type Connection = {
   channelId: ID | null;
   chatId: ID | null;
-  ws: string | null;
+  wsId: ID | null;
+  channel: Channel | null;
+  chat: Chat | null;
 };
 
 export type FullyLoadedResources = {

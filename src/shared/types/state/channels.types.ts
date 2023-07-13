@@ -1,8 +1,6 @@
 import { ChatGroup, ID } from '@shared/types';
 
-export type SliceChannels = {
-  channels: Channel[];
-};
+export type SliceChannels = Record<ID, Channel>;
 
 export type Channel = {
   id: ID;

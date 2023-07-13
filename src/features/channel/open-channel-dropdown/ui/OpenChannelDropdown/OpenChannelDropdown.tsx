@@ -2,7 +2,8 @@ import classNames from 'classnames';
 import { ChannelDropdown } from '@entities/channel';
 import { useModalControls } from '@shared/hooks';
 import { Permissions } from '@shared/libs';
-import { EPermissions, ModalsWithoutPayload, type ID } from '@shared/types';
+import { EPermissions } from '@shared/types';
+import type { ModalsWithoutPayload, ID } from '@shared/types';
 import s from './openchanneldropdown.module.css';
 
 type Props = {
@@ -30,7 +31,7 @@ export const OpenChannelDropdown: React.FC<Props> = ({ channelId, isOwner }): JS
       <button className={classNames(s.option, s.invite, 'flex flexjcsb flexaic')} onClick={handleOpenInvite}>
         Пригласить людей <i className="fa-solid fa-user-plus"></i>
       </button>
-      {Permissions.checkPermissions('channel', channelId, EPermissions['OWNER']) && (
+      {Permissions.checkPermissions({ context: 'channel', requiredPermissions: EPermissions['OWNER'] }) && (
         <button
           className={classNames(s.option, 'flex flexjcsb flexaic')}
           onClick={handleOpenModal}

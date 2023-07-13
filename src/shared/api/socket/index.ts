@@ -11,7 +11,7 @@ export class MainWebSocketGateway {
 
     this._socket.on('connect', () => {
       socketStyledLogger(`Connected with ID: ${this._socket.id}`);
-      store.dispatch(setConnection({ ws: this._socket.id }));
+      store.dispatch(setConnection({ wsId: this._socket.id }));
     });
   }
 
