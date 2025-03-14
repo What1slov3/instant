@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import {
   statusesReducer,
   channelsReducer,
@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => {
+  middleware: getDefaultMiddleware => {
     return getDefaultMiddleware().concat([thunk, commonAPI.middleware, userIntegrityCacheListener.middleware]);
   },
 });

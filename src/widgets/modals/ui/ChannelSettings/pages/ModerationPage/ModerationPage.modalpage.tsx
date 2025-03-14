@@ -13,7 +13,7 @@ export const ModerationPage: React.FC<Props> = ({ channel, user }): JSX.Element 
     <div className="flex flexcolumn gap10">
       <h3>Участники сервера</h3>
       <ModalDescription>Количество участников — {channel.members.length}</ModalDescription>
-      <ModerateChannelUsers channel={channel} user={user} />
+      <ModerateChannelUsers channel={channel} />
     </div>
   );
 };

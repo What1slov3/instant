@@ -19,7 +19,7 @@ export class Shortcut {
   }
 
   unpress(keyCode: string) {
-    this.pressed = this.pressed.filter((pressedKey) => pressedKey !== keyCode);
+    this.pressed = this.pressed.filter(pressedKey => pressedKey !== keyCode);
   }
 
   includes(keyCode: string | string[]) {
@@ -30,7 +30,7 @@ export class Shortcut {
       return this.pressed.includes(keyCode);
     }
     if (Array.isArray(keyCode)) {
-      return this.pressed.filter((pressedKey) => keyCode.includes(pressedKey)).length === keyCode.length;
+      return this.pressed.filter(pressedKey => keyCode.includes(pressedKey)).length === keyCode.length;
     }
   }
 

@@ -3,7 +3,7 @@ import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import { emojiQuill } from '@entities/input/lib/Quill/emoji';
 import { quillModules } from '@entities/input/lib/Quill';
-import { shortcutInstance } from '../../../..';
+import { ShortcutInstance } from '../../../..';
 import s from './messageinput.module.css';
 
 Quill.register('modules/emoji', emojiQuill);
@@ -23,12 +23,10 @@ export const MessageInput: React.FC<Props> = ({
     inputRef.current.getEditor().root.dataset.placeholder = placeholder;
   }, [placeholder]);
 
-  const modules = useMemo(() => {
-    return quillModules;
-  }, []);
+  const modules = useMemo(() => quillModules, []);
 
   const keyDownHandler = (e: KeyboardEvent) => {
-    if (!shortcutInstance.includes('Shift') && e.code === 'Enter') {
+    if (!ShortcutInstance.includes('Shift') && e.code === 'Enter') {
       onSend();
       inputRef.current.getEditor().setText('');
     }

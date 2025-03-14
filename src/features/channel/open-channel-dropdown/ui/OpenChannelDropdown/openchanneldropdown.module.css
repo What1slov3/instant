@@ -23,5 +23,5 @@
 
 .leave,
 .leave * {
-  color: var(--error-500);
+  color: var(--error-400);
 }

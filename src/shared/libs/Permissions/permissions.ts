@@ -45,7 +45,7 @@ function summarizePermissions(permissions: number | number[]) {
   if (Array.isArray(permissions)) {
     let summaryPermissions = 0;
 
-    permissions.forEach((permission) => {
+    permissions.forEach(permission => {
       summaryPermissions |= permission;
     });
 

@@ -8,11 +8,6 @@ type Props = (
       direction: 'top';
     }
   | {
-      loader?: JSX.Element | React.Component; // Прелоадер, показывается, если передан
-      next: Function; // Функция загрузки следующих данных
-      end?: JSX.Element | React.Component; // Компонент отображаемый в конце, когда загрузка кончилась
-      hasMore: boolean; // Есть ли еще данные для загрузки
-      loading: boolean; // Идет ли сейчас загрузка
       getScroll?: never; // Переместиться нa предыдущее место скролла, чтобы избежать залипания
       direction: 'bottom';
     }

@@ -1,4 +1,4 @@
-export const SOCKET_EVENTS = {
+export const SOCKET_EVENTS = Object.freeze({
   MESSAGE: {
     RECIEVED: 'userMessage/received',
     DELETED: 'userMessage/deleted',
@@ -10,4 +10,4 @@ export const SOCKET_EVENTS = {
   CHATS: {
     JOIN: 'chats/join',
   },
-};
+} as const);

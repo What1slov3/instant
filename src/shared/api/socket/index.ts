@@ -9,6 +9,8 @@ export class MainWebSocketGateway {
   constructor() {
     this._socket = io(process.env.REACT_APP_WEBSOCKET_URL, { transports: ['websocket'] });
 
+    this._socket.compress(true);
+
     this._socket.on('connect', () => {
       socketStyledLogger(`Connected with ID: ${this._socket.id}`);
       store.dispatch(setConnection({ wsId: this._socket.id }));
@@ -18,6 +20,8 @@ export class MainWebSocketGateway {
   get socket() {
     return this._socket;
   }
+
+  set socket(value) {}
 }
 
 export const SocketInstance = new MainWebSocketGateway().socket;

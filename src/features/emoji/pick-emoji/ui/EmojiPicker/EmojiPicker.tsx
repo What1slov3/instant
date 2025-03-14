@@ -43,7 +43,7 @@ export const EmojiPicker: React.FC<Props> = ({ setEmoji }): JSX.Element => {
     isOpen,
     (e: MouseEvent) => {
       if (!(e.target as HTMLDivElement).closest('[data-emoji]')) {
-        toggleIsOpen();
+        toggleIsOpen(); // close opened widget
       }
     },
     []

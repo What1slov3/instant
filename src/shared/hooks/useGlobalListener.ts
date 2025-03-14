@@ -13,6 +13,7 @@ export const useGlobalListener = (
       document.addEventListener(event, cb);
     }
 
+    // TODO listen true|false check
     return () => {
       if (listen) {
         document.removeEventListener(event, cb);

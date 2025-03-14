@@ -7,5 +7,6 @@ declare namespace NodeJS {
     REACT_APP_ACCESS_TOKEN_LS_FIELD: string;
     REACT_APP_SIGNUP_PAGE_ROUTE: string;
     REACT_APP_WEBSOCKET_URL: string;
+    REACT_APP_PAGE_DEFAULT_NAME: string;
   }
 }

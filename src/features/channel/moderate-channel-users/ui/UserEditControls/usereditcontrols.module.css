@@ -1,0 +1,13 @@
+.wrapper {
+  
+  animation: open 0.3s forwards;
+}
+
+@keyframes open {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100px;
+  }
+}

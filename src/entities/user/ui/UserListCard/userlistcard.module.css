@@ -1,6 +1,7 @@
 .userCard {
   padding: 5px;
   border-radius: 10px;
+  flex-wrap: wrap;
 }
 
 .username,
@@ -12,7 +13,7 @@
   color: var(--gray-400);
 }
 
-.userCard:hover {
+.userCard:hover, .active {
   background: var(--background-secondary);
 }
 

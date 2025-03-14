@@ -1,0 +1,45 @@
+.tooltipWrapper {
+  position: relative;
+  user-select: none;
+}
+
+.tooltipBox {
+  width: max-content;
+  max-width: 300px;
+  z-index: 10000;
+  contain: layout;
+  animation: show 0.2s ease;
+}
+
+.tooltipBox.top {
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+.tooltipBox.right {
+  right: -10px;
+  top: 50%;
+  transform: translate(100%, -50%);
+}
+
+.tooltipBox.bottom {
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+}
+
+.tooltipBox.left {
+  left: -10px;
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -11,6 +11,7 @@ import {
   permissionsQueries,
 } from '@shared/api/rest/queries';
 
+// TODO Перенести в адекватное место
 export function logout() {
   fetch(`${API_BASE}${API_ROUTES.AUTH.LOGOUT}`).then((res) => {
     if (res.status === 200) {
@@ -20,16 +21,16 @@ export function logout() {
 }
 
 export class API {
-  private _APIAccessor: AxiosInstance;
+  private _APIInterface: AxiosInstance;
   private _accessToken: string = localStorage.getItem(process.env.REACT_APP_ACCESS_TOKEN_LS_FIELD) || '';
 
   constructor() {
-    this._APIAccessor = axios.create({
+    this._APIInterface = axios.create({
       baseURL: API_BASE,
       withCredentials: true,
     });
 
-    this._APIAccessor.interceptors.request.use(
+    this._APIInterface.interceptors.request.use(
       async (config) => {
         config.headers.setAuthorization(`Bearer ${this._accessToken}`);
         return config;
@@ -37,7 +38,7 @@ export class API {
       (err) => Promise.reject(err)
     );
 
-    this._APIAccessor.interceptors.response.use(
+    this._APIInterface.interceptors.response.use(
       (response) => {
         return response;
       },
@@ -50,7 +51,7 @@ export class API {
           localStorage.setItem(process.env.REACT_APP_ACCESS_TOKEN_LS_FIELD, this._accessToken);
           axios.defaults.headers.common['Authorization'] = `Bearer ${this._accessToken}`;
 
-          return this._APIAccessor(originalRequest);
+          return this._APIInterface(originalRequest);
         }
 
         return Promise.reject(err);
@@ -78,13 +79,15 @@ export class API {
     return Boolean(this._accessToken);
   }
 
-  public APIAccessor() {
-    return this._APIAccessor;
+  public getAPIAccessor() {
+    return this._APIInterface;
   }
 }
 
 export const APIInstance = new API();
-export const APIAccessor = APIInstance.APIAccessor();
+export const APIInterface = APIInstance.getAPIAccessor();
+
+// TODO подумать как это оформить красивее
 export const APIQueries = {
   user: userQueries,
   channels: channelsQueries,

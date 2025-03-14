@@ -1,5 +1,6 @@
 import type { Connection } from '@shared/types';
 
+// TODO refactor
 export function parseURLtoConnection(): Partial<Connection> {
   const splittedPathname = window.location.pathname.slice(1).split('/');
   let connection: string[] = [];

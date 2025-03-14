@@ -32,7 +32,7 @@ export const useMultipleUploadAndProcessingImages = (maxFilesCount: number) => {
 
   const setIcon = (file: File | undefined) => {
     setError(null);
-    if (file && file.type.startsWith('image/')) {
+    if (file?.type.startsWith('image/')) {
       if (file.size > config.MAX_FILE_SIZE) {
         setError(`${TEXTS.ERRORS.ATTACHMENTS.FILE_SIZE} (>${config.MAX_FILE_SIZE / 1024 ** 2}МБ)`);
         return;

@@ -11,7 +11,7 @@ export * from './state/users.types';
 export * from './modal.types';
 export * from './utils/LSA.types';
 export * from './permissions.types';
-export * from './state/permissions.types'
+export * from './state/permissions.types';
 export * from './socket/index';
 export * from './state/common.types';
-export * from './connection.types'
+export * from './connection.types';

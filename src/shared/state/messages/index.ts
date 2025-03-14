@@ -11,7 +11,7 @@ const messagesSlice = createSlice({
     addMessage: (state, action: PayloadAction<Message>) => {
       state[action.payload.chatId].unshift(action.payload);
     },
-    deletedMessage: (state, action: PayloadAction<Message>) => {
+    deleteMessage: (state, action: PayloadAction<Message>) => {
       const chatId = action.payload.chatId;
       state[chatId].splice(
         state[chatId].findIndex((message) => action.payload.id === message.id),
@@ -30,5 +30,5 @@ const messagesSlice = createSlice({
   },
 });
 
-export const { addMessage, deletedMessage } = messagesSlice.actions;
+export const { addMessage, deleteMessage } = messagesSlice.actions;
 export const messagesReducer = messagesSlice.reducer;

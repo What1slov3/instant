@@ -18,7 +18,7 @@ const routes: PanelButtonProps[] = [
 
 export const PanelButton: React.FC<PanelButtonProps> = ({ tooltipText, link, faClassName, style }): JSX.Element => {
   return (
-    <Tooltip position="right" text={tooltipText} style={style}>
+    <Tooltip position="top" text={tooltipText} style={style}>
       <NavLink to={link} className={({ isActive }) => (isActive ? s.active : undefined)}>
         <i className={`${faClassName} ${s.navLink}`}></i>
       </NavLink>

@@ -1,0 +1,11 @@
+.wrapper {
+  margin-top: 5px;
+  max-height: 0;
+  transition: 0.2s max-height;
+  overflow: hidden;
+}
+
+.wrapper.opened {
+  max-height: 100px;
+  transition: 0.2s max-height;
+}

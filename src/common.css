@@ -79,6 +79,14 @@
   -webkit-text-fill-color: transparent;
 }
 
+.hoverOpacity:hover {
+  opacity: 0.9;
+}
+
+.hoverBrightness:hover {
+  filter: brightness(105%);
+}
+
 /* in message */
 
 .inMessageUrl {

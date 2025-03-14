@@ -11,6 +11,6 @@ export * from './Modals/ModaSegmentTitle';
 export * from './Modals/ModalDescription';
 export * from './Modals/ModalHeader';
 export * from './Modals/ModalSegment';
-export * from './Page/Page';
+export * from '../components/Page/Page';
 export * from './Buttons/IconButton/IconButton';
 export * from './Input/InputTitleWithError';

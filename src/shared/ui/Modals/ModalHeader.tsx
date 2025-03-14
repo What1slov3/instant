@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { CSSProperties } from 'react';
-import type { FC } from 'react';
+import type { FC, CSSProperties } from 'react';
 import type { FCChildren } from '@shared/types';
 import s from './modal.module.css';
 

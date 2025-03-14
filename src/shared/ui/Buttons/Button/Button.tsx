@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import classNames from 'classnames';
 import { useGlobalListener } from '@shared/hooks';
 import type { FCChildren } from '@shared/types';
@@ -12,16 +13,12 @@ type Props = FCChildren & {
 };
 
 export const Button: React.FC<Props> = ({ children, style, onClick, className, onEnter, onKeyDown }): JSX.Element => {
-  useGlobalListener(
-    'keypress',
-    Boolean(onEnter),
-    (e: React.KeyboardEvent) => {
-      if (e.code === 'Enter') {
-        onEnter?.();
-      }
-    },
-    [onEnter]
-  );
+  const keypressMemo = useCallback((e: React.KeyboardEvent) => {
+    if (e.code === 'Enter') {
+      onEnter?.();
+    }
+  }, []);
+  useGlobalListener('keypress', Boolean(onEnter), keypressMemo, [onEnter]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.code === 'Enter') {

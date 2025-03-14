@@ -1,11 +1,11 @@
-import { APIAccessor } from '..';
+import { APIInterface } from '..';
 import { API_ROUTES } from '../routes';
-import type { ConnectionContext } from '@shared/types';
+import type { ConnectionContext, User } from '@shared/types';
 
 export const permissionsQueries = {
   get: (context: ConnectionContext, contextId: string) => {
-    return APIAccessor.get<
-      { userId: string } & { [key in ConnectionContext]: { contextId: string; permissions: number } }
+    return APIInterface.get<
+      { userId: User['id'] } & { [key in ConnectionContext]: { contextId: string; permissions: number } }
     >(API_ROUTES.PERMISSIONS.GET, { params: { context, contextId } });
   },
 };

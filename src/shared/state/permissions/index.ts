@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { SlicePermissions } from '@shared/types';
 import { thunkGetPermissions } from './thunk';
+import type { SlicePermissions } from '@shared/types';
 
 const initialState: SlicePermissions = {
   chat: {},
   channel: {},
+  permissions: ''
 };
 
 const permissionsSlice = createSlice({

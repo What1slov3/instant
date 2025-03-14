@@ -1,6 +1,6 @@
 import { Socket } from 'socket.io-client';
 import { SOCKET_EVENTS } from '../events';
-import { store, addMessage, deletedMessage } from '@shared/state';
+import { store, addMessage, deleteMessage } from '@shared/state';
 import type { RecievedMessage, DeletedMessage } from '@shared/types';
 
 export function messageGateway(socket: Socket) {
@@ -8,6 +8,6 @@ export function messageGateway(socket: Socket) {
     store.dispatch(addMessage(message));
   });
   socket.on(SOCKET_EVENTS.MESSAGE.DELETED, (message: DeletedMessage) => {
-    store.dispatch(deletedMessage(message));
+    store.dispatch(deleteMessage(message));
   });
 }

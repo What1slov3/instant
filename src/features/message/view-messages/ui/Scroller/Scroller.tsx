@@ -105,8 +105,8 @@ export const Scroller: React.FC<Props> = ({
   const historyNext = useCallback(() => {
     if (visibleChunkIndex < totalChunksCount) {
       if (
-        !fullyLoadedResources.chatIds.includes(chatId) &&
-        history.length - visibleChunkIndex * config.CHAT_CHUNK_SIZE < config.CHAT_CHUNK_SIZE
+        history.length - visibleChunkIndex * config.CHAT_CHUNK_SIZE < config.CHAT_CHUNK_SIZE &&
+        !fullyLoadedResources.chatIds.includes(chatId)
       ) {
         effects.getHistory(
           chatId!,

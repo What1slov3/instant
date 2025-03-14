@@ -8,6 +8,6 @@ export const effects = {
     dispatch(setConnection(data));
   },
   resetConnection() {
-    dispatch(resetConnection);
+    dispatch(resetConnection());
   },
 };

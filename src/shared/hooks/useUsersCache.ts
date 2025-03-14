@@ -6,10 +6,11 @@ import { updateUsersCache, useAppSelector } from '@shared/state';
 import { config } from '@shared/config';
 import type { ID } from '@shared/types';
 
+// TODO сделать пакетную обработку единой и независимой, сейчас каждый из хуков дублирует логику и не знает об исполнении другого хука
 export const useUsersCache = () => {
   const dispatch = useDispatch<any>();
 
-  const cache = useAppSelector((state) => state.usersCache);
+  const cache = useAppSelector(state => state.usersCache);
 
   const { startRequest, isLoading, data } = useAxiosQuery(APIQueries.users.getUsers);
 
@@ -21,7 +22,7 @@ export const useUsersCache = () => {
         startRequest(Array.from(bufferRef.current));
         bufferRef.current.clear();
       }
-    }, 500);
+    }, 1000);
 
     return () => {
       clearInterval(interval);

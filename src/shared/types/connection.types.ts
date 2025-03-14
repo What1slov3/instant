@@ -1,1 +1,1 @@
-export type ConnectionContext = | 'chat' | 'channel';
+export type ConnectionContext = 'chat' | 'channel';

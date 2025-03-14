@@ -1,0 +1,19 @@
+.checkbox {
+  user-select: none;
+  border: 2px solid var(--background-tooltip);
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.checked {
+  border: 0px solid transparent;
+  background: var(--purple-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checked > * {
+  color: #fff;
+}

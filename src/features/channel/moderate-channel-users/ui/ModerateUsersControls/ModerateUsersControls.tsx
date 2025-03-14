@@ -9,9 +9,15 @@ type Props = {
   channelId: ID;
   userId: ID;
   isCurrentUser: boolean;
+  setIsEditing: () => void;
 };
 
-export const ModerateUsersControls: React.FC<Props> = ({ channelId, userId, isCurrentUser }): JSX.Element => {
+export const ModerateUsersControls: React.FC<Props> = ({
+  channelId,
+  userId,
+  isCurrentUser,
+  setIsEditing,
+}): JSX.Element => {
   const kick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.currentTarget;
     target.classList.add(s.fly);
@@ -29,13 +35,22 @@ export const ModerateUsersControls: React.FC<Props> = ({ channelId, userId, isCu
         requiredPermissions: [EPermissions['OWNER'], EPermissions['ADMIN']],
         mode: 'or',
       }) && (
-        <Tooltip text="Выгнать" positioning="absolute">
-          {!isCurrentUser && (
-            <button className={classNames(s.controlButton, s.kick)} onClick={kick}>
-              <i className="fa-solid fa-rocket"></i>
-            </button>
-          )}
-        </Tooltip>
+        <>
+          <Tooltip text="Редактировать" positioning="absolute">
+            {!isCurrentUser && (
+              <button className={(s.button, 'hoverBrightness')} onClick={setIsEditing}>
+                <i className="fa-solid fa-pencil"></i>
+              </button>
+            )}
+          </Tooltip>
+          <Tooltip text="Выгнать" positioning="absolute">
+            {!isCurrentUser && (
+              <button className={classNames(s.button, s.kick, 'hoverBrightness')} onClick={kick}>
+                <i className="fa-solid fa-rocket"></i>
+              </button>
+            )}
+          </Tooltip>
+        </>
       )}
     </>
   );

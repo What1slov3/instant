@@ -8,12 +8,12 @@ import { Page } from '@shared/ui';
 import { ChannelGreetings, ChannelHeader, ChannelsList } from '@entities/channel';
 import { MessageFeedWidget } from '@widgets/message/feed';
 import { MessageInputWidget } from '@widgets/message/input';
-import { ChannelTopBarWidget } from '@widgets/chat/channelTopbar';
+import { ChannelTopBarWidget } from '@widgets/chat/channel-topbar';
 import { ChannelChatsList } from '@features/channel/view-channel-chats';
 import { Permissions } from '@shared/libs';
 import { effects } from '../model/effects';
 import { hooks } from '../lib/hooks';
-import type { Channel, Chat, ChatGroup, Connection, ID } from '@shared/types';
+import type { Channel, Chat, ChatGroup, Connection } from '@shared/types';
 import s from './channelspage.module.css';
 
 export const ChannelsPage: React.FC = (): JSX.Element => {

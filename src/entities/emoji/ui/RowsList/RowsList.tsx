@@ -24,6 +24,7 @@ export const RowsList: React.FC<Props> = ({ virtual, onClick, onHover, emojiPerR
         emojiBuffer = [];
       }
     }
+    
     return rows;
   };
 

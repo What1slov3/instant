@@ -24,8 +24,10 @@ export const Range: React.FC<Props> = ({ values, setValue, value, defaultValue }
   }, []);
 
   useEffect(() => {
-    const offset = (rangeRef.current.getBoundingClientRect().width / (end - start)) * (value - values[0]);
+    const rangeRefBoundingClientRect = rangeRef.current.getBoundingClientRect();
+
     if (grabberRef.current) {
+      const offset = (rangeRefBoundingClientRect.width / (end - start)) * (value - values[0]);
       if (value !== values.at(-1)) {
         if (offset > 7.5) {
           grabberRef.current.style.left = offset - 7 + 'px';
@@ -35,15 +37,13 @@ export const Range: React.FC<Props> = ({ values, setValue, value, defaultValue }
           activeRangeRef.current.style.width = offset + 7 + 'px';
         }
       } else {
-        grabberRef.current.style.left = offset - 14.5 + 'px';
+        grabberRef.current.style.left = offset - 15 + 'px';
         activeRangeRef.current.style.width = offset + 'px';
       }
     }
-  }, [value]);
 
-  useEffect(() => {
     if (rangeRef.current) {
-      const valueOffset = rangeRef.current.getBoundingClientRect().width / (end - start);
+      const valueOffset = rangeRefBoundingClientRect.width / (end - start);
       setRenderedValues(
         values.map((value, index) => {
           const leftOffset =
@@ -73,18 +73,21 @@ export const Range: React.FC<Props> = ({ values, setValue, value, defaultValue }
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
 
-    let shiftX = e.clientX - grabberRef.current.getBoundingClientRect().left;
+    const grabberBoundingClientRect = grabberRef.current.getBoundingClientRect();
+    const rangeBoundingClientRect = rangeRef.current.getBoundingClientRect();
+
+    let shiftX = e.clientX - grabberBoundingClientRect.left;
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 
     function onMouseMove(e: MouseEvent) {
-      let newLeft = e.clientX - shiftX - rangeRef.current.getBoundingClientRect().left;
+      let newLeft = e.clientX - shiftX - rangeBoundingClientRect.left;
       let rightEdge = rangeRef.current.offsetWidth - grabberRef.current.offsetWidth;
 
       let smallest: number;
       let index: number = 0;
-      let offsetOneSize = rangeRef.current.getBoundingClientRect().width / (end - start);
+      let offsetOneSize = rangeBoundingClientRect.width / (end - start);
 
       if (newLeft < 0) {
         newLeft = 0;

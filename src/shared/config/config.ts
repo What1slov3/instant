@@ -1,3 +1,4 @@
+// TODO конфиг должен быть вшит ???
 export const config = {
   MAX_FILE_SIZE: 8388608,
   MAX_ATTACHMENT_SIZE: 6291456,

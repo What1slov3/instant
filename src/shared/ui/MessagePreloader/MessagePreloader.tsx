@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './messagepreloader.module.css';
 
 export const MessagePreloader: React.FC = ({}): JSX.Element => {

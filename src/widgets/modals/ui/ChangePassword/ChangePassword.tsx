@@ -22,7 +22,7 @@ export const ChangePasswordModal: React.FC = (): JSX.Element => {
     APIQueries.user
       .changePassword(data.currentPassword, data.newPassword)
       .then(() => modalControls.close())
-      .catch((err) => setError('currentPassword', { type: 'custom', message: err.response.data.message }));
+      .catch(err => setError('currentPassword', { type: 'custom', message: err.response.data.message }));
   };
 
   return (
@@ -33,3 +33,10 @@ export const ChangePasswordModal: React.FC = (): JSX.Element => {
     </div>
   );
 };
+
+type Person = {
+  a: 1,
+  b: 2
+}
+
+type Person2 = Omit<Person, 'b'>

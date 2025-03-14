@@ -5,9 +5,10 @@ import type { Message } from '@shared/types';
 
 export const userIntegrityCacheListener = createListenerMiddleware();
 
+// TODO унифицировать/фабрика
 userIntegrityCacheListener.startListening({
   matcher: isAnyOf(thunkSendMessage.fulfilled, thunkGetHistory.fulfilled),
-  effect: async (action, listenerApi) => {
+  effect: async (action: any, listenerApi) => {
     const state = listenerApi.getState() as GlobalState;
 
     let nonCachedUsersSet = new Set<string>();
