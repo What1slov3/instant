@@ -1,11 +1,25 @@
 import { APIInterface } from '..';
 import { API_ROUTES } from '../routes';
-import type { ConnectionContext, User } from '@shared/types';
+import type { EPermissionsContext, User } from '@shared/types';
 
 export const permissionsQueries = {
-  get: (context: ConnectionContext, contextId: string) => {
-    return APIInterface.get<
-      { userId: User['id'] } & { [key in ConnectionContext]: { contextId: string; permissions: number } }
-    >(API_ROUTES.PERMISSIONS.GET, { params: { context, contextId } });
+  get: async (context: EPermissionsContext, contextId: string) => {
+    const result = await APIInterface.get<{
+      userId: User['id'];
+      contextId: string;
+      rule: number;
+      context: EPermissionsContext;
+    }>(API_ROUTES.PERMISSIONS.GET, {
+      params: { context, contextId },
+    });
+
+    const resultDataWithContext = {
+      ...result.data,
+      context,
+    };
+
+    result.data = resultDataWithContext;
+
+    return result;
   },
 };

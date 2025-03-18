@@ -28,6 +28,7 @@ export const API_ROUTES = {
     GET_HISTORY: '/messages/history',
     SEND_MESSAGE: '/messages/send',
     DELETE_MESSAGE: '/messages',
+    EDIT_MESSAGE: '/messages/edit'
   },
   INVITES: {
     GET_CHANNEL_INVITE: '/invites/channel',

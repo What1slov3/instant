@@ -12,17 +12,17 @@ export class Shortcut {
     });
   }
 
-  press(keyCode: string) {
+  private press(keyCode: string) {
     if (!this.pressed.includes(keyCode)) {
       this.pressed.push(keyCode);
     }
   }
 
-  unpress(keyCode: string) {
+  private unpress(keyCode: string) {
     this.pressed = this.pressed.filter(pressedKey => pressedKey !== keyCode);
   }
 
-  includes(keyCode: string | string[]) {
+  public includes(keyCode: string | string[]) {
     if (typeof keyCode === 'string') {
       if (['Control', 'Shift', 'Alt'].includes(keyCode)) {
         return this.pressed.includes(`${keyCode}Left`) || this.pressed.includes(`${keyCode}Right`);
@@ -34,7 +34,7 @@ export class Shortcut {
     }
   }
 
-  isException(key: string) {
+  public isException(key: string) {
     return exceptionKeys.includes(key);
   }
 }

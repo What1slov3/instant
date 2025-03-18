@@ -13,15 +13,15 @@ import { ChannelChatsList } from '@features/channel/view-channel-chats';
 import { Permissions } from '@shared/libs';
 import { effects } from '../model/effects';
 import { hooks } from '../lib/hooks';
-import type { Channel, Chat, ChatGroup, Connection } from '@shared/types';
+import { EPermissionsContext, type Channel, type Chat, type ChatGroup, type Connection } from '@shared/types';
 import s from './channelspage.module.css';
 
 export const ChannelsPage: React.FC = (): JSX.Element => {
   const location = useLocation();
 
-  const user = useAppSelector((state) => state.user);
-  const connection = useAppSelector((state) => state.statuses.connection);
-  const channels = useAppSelector((state) => state.channels);
+  const user = useAppSelector(state => state.user);
+  const connection = useAppSelector(state => state.statuses.connection);
+  const channels = useAppSelector(state => state.channels);
 
   hooks.useInitChannels();
   hooks.useChangeActualConnection();
@@ -63,14 +63,14 @@ type Props = {
 export const SelectedChannel: React.FC<Props> = ({ channel, connection, isOwner }): JSX.Element => {
   const dispatch = useDispatch<any>();
 
-  const loadedChats = useAppSelector((state) => state.chats);
+  const loadedChats = useAppSelector(state => state.chats);
 
   const [chatGroups, setChatGroups] = useState<ChatGroup<Chat>[]>([]);
 
   // ? Загружаем права доступа пользователя на данный канал
   useEffect(() => {
-    if (!Permissions.checkPermissionsExist('channel', channel.id)) {
-      dispatch(thunkGetPermissions({ context: 'channel', contextId: channel.id }));
+    if (!Permissions.checkPermissionsExist(EPermissionsContext.CHANNEL, channel.id)) {
+      dispatch(thunkGetPermissions({ context: EPermissionsContext.CHANNEL, contextId: channel.id }));
     }
   }, [channel.id]);
 
@@ -79,11 +79,11 @@ export const SelectedChannel: React.FC<Props> = ({ channel, connection, isOwner 
   // ? Собираем чаты в чат-группы
   useEffect(() => {
     if (channel.chatGroups) {
-      const chatGroupsWithChats = channel.chatGroups.map((chatGroup) => {
+      const chatGroupsWithChats = channel.chatGroups.map(chatGroup => {
         return {
           id: chatGroup.id,
           name: chatGroup.name,
-          chats: chatGroup.chats.map((chatId) => loadedChats[chatId]),
+          chats: chatGroup.chats.map(chatId => loadedChats[chatId]),
           owningChannelId: chatGroup.owningChannelId,
         };
       });

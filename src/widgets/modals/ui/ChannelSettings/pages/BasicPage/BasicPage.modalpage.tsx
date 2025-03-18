@@ -53,7 +53,6 @@ export const BasicPage: React.FC<Props> = ({ channel }): JSX.Element => {
         ...getModifiedValues<Partial<Omit<Channel, 'banner' | 'icon'>>>(dirtyFields, data),
       };
 
-      console.log(dirtyData);
       dispatch(
         thunkUpdateChannel({
           channelId: channel.id,

@@ -25,3 +25,11 @@ export const thunkDeleteMessage = createAsyncThunk(
     return res.data;
   }
 );
+
+export const thunkEditMessage = createAsyncThunk(
+  'messages/edit',
+  async ({ _id, content }: { _id: ID; content: MessageContent }) => {
+    const res = await APIQueries.messages.edit(_id, content);
+    return res.data;
+  }
+);

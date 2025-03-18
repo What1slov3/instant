@@ -17,4 +17,10 @@ export const messagesQueries = {
       data: { _id, chatId },
     });
   },
+  edit: (_id: string, content: MessageContent) => {
+    return APIInterface.put<Message>(API_ROUTES.MESSAGES.EDIT_MESSAGE, {
+      _id,
+      content,
+    });
+  },
 };

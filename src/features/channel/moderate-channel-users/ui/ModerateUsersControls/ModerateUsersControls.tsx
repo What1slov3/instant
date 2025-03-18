@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { Tooltip } from '@shared/components';
 import { Permissions } from '@shared/libs';
 import { effects } from '../../model/effects';
-import { EPermissions, type ID } from '@shared/types';
+import { EPermissions, EPermissionsContext, type ID } from '@shared/types';
 import s from './moderateuserscontrols.module.css';
 
 type Props = {
@@ -31,7 +31,7 @@ export const ModerateUsersControls: React.FC<Props> = ({
   return (
     <>
       {Permissions.checkPermissions({
-        context: 'channel',
+        context: EPermissionsContext.CHANNEL,
         requiredPermissions: [EPermissions['OWNER'], EPermissions['ADMIN']],
         mode: 'or',
       }) && (

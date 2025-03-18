@@ -14,3 +14,4 @@ export * from './Modals/ModalSegment';
 export * from '../components/Page/Page';
 export * from './Buttons/IconButton/IconButton';
 export * from './Input/InputTitleWithError';
+export * from './Buttons/TextButton/TextButton';

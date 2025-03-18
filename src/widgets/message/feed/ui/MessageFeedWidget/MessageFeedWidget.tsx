@@ -1,7 +1,7 @@
 import { MouseEvent, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModalControls } from '@shared/hooks';
-import { useAppSelector, setChatLoadingStatus } from '@shared/state';
+import { useAppSelector, setChatLoadingStatus, markMessageAsEditing } from '@shared/state';
 import { Scroller } from '@features/message/view-messages';
 import type { Chat, ID, MessageAction } from '@shared/types';
 import s from './messagefeedwidget.module.css';
@@ -15,9 +15,9 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat }): JSX.Element => {
 
   const modalControls = useModalControls();
 
-  const fullyLoadedResources = useAppSelector((state) => state.statuses.fullyLoadedResources);
-  const chatLoadingStatus = useAppSelector((state) => state.statuses.chatLoadingStatus);
-  const history = useAppSelector((state) => state.messages[chat.id] || []);
+  const fullyLoadedResources = useAppSelector(state => state.statuses.fullyLoadedResources);
+  const chatLoadingStatus = useAppSelector(state => state.statuses.chatLoadingStatus);
+  const history = useAppSelector(state => state.messages[chat.id] || []);
 
   useEffect(() => {
     dispatch(
@@ -37,10 +37,13 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat }): JSX.Element => {
         const action = target.dataset.messageAction as MessageAction;
         switch (action) {
           case 'delete':
-            deleteMessage(elem.dataset.messageId!);
+            handleDeleteMessage(elem.dataset.messageId!);
             break;
           case 'copy':
-            copyText(elem.dataset.messageText!);
+            handleCopyText(elem.dataset.messageText!);
+            break;
+          case 'edit':
+            handleEditMessage(elem.dataset.messageId!);
             break;
         }
       }
@@ -48,15 +51,19 @@ export const MessageFeedWidget: React.FC<Props> = ({ chat }): JSX.Element => {
     [history]
   );
 
-  const deleteMessage = (messageId: ID) => {
+  const handleDeleteMessage = (messageId: ID) => {
     modalControls.open({
       name: 'deleteMessage',
-      payload: { message: history.find((message) => message.id === messageId)! },
+      payload: { message: history.find(message => message.id === messageId)! },
     });
   };
 
-  const copyText = (text: string) => {
+  const handleCopyText = (text: string) => {
     navigator.clipboard.writeText(text);
+  };
+
+  const handleEditMessage = (messageId: ID) => {
+    dispatch(markMessageAsEditing({ chatId: chat.id, message: history.find(message => message.id === messageId)! }));
   };
 
   return (

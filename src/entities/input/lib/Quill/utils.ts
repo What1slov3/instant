@@ -11,6 +11,10 @@ export function quillGetText(editor: Quill | React.MutableRefObject<ReactQuill>)
   return text.slice(0, text.length - 1);
 }
 
+export function quillSetText(editor: Quill | React.MutableRefObject<ReactQuill>, text: string) {
+  isQuillRef(editor) ? editor.current.getEditor().setText(text) : editor.setText(text);
+}
+
 export const setEmojiInQuill = (editor: Quill | React.MutableRefObject<ReactQuill>, emoji: string) => {
   editor = isQuillRef(editor) ? editor.current.getEditor() : editor;
   editor.focus();

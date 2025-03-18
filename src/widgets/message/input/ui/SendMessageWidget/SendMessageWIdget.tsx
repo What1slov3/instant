@@ -30,7 +30,7 @@ export const MessageInputWidget: React.FC<Props> = ({ connection, placeholder })
   useGlobalListener(
     'paste',
     true,
-    (e) => {
+    e => {
       processUpload(e.clipboardData!.files);
     },
     []

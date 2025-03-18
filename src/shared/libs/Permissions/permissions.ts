@@ -1,5 +1,4 @@
 import { store } from '@shared/state';
-import { EPermissions } from '@shared/types';
 import type { ConnectionContext, ID } from '@shared/types';
 
 function checkPermissions({

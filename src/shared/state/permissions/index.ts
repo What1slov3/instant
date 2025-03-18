@@ -5,7 +5,6 @@ import type { SlicePermissions } from '@shared/types';
 const initialState: SlicePermissions = {
   chat: {},
   channel: {},
-  permissions: ''
 };
 
 const permissionsSlice = createSlice({
@@ -15,9 +14,9 @@ const permissionsSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(thunkGetPermissions.fulfilled, (state, action) => {
       const context = action.meta.arg.context;
-      const contextId = action.payload[context].contextId;
+      const contextId = action.payload.contextId;
 
-      state[context][contextId] = action.payload[context].permissions;
+      state[context][contextId] = action.payload.rule;
     });
   },
 });

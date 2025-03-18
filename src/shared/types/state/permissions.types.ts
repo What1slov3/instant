@@ -1,7 +1,6 @@
-import { ID } from '../common.types';
+import type { ID } from '../common.types';
 
 export interface SlicePermissions {
   chat: Record<ID, number>;
   channel: Record<ID, number>;
-  permissions: any
 }
